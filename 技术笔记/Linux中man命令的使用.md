@@ -24,7 +24,7 @@ categories: 技术笔记
 
 * `man -f`:与`whatis`命令功能相同，可以简洁地显示命令的功能，以及它所属的章节。
 ![](https://gitee.com/zhangjie0524/picgo/raw/master/20210606220020.jpg)
-* `man -k`:与`apropos`命令功能相同，可以在所有命令的manual页面中的Description部分中查找命令后接的关键词，然后对查找到关键词的页面简洁的返回一行。
+* `man -k`:与`apropos`命令功能相同，可以在所有命令的manual页面中的Description部分中查找命令后接的关键词，然后对查找到关键词的页面简洁地返回一行描述，以及有该命令完整的名字和所在的页面。
 ![](https://gitee.com/zhangjie0524/picgo/raw/master/20210606220638.png)
 * 可以在查命令时，指定对应的章节，如：`man 3 sleep`只查第二节的sleep：
 ![](https://gitee.com/zhangjie0524/picgo/raw/master/20210606220936.png)
