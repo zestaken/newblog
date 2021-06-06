@@ -26,7 +26,7 @@ categories: 技术笔记
 ![](https://gitee.com/zhangjie0524/picgo/raw/master/20210606220020.jpg)
 * `man -k`:与`apropos`命令功能相同，可以在所有命令的manual页面中的Description部分中查找命令后接的关键词，然后对查找到关键词的页面简洁地返回一行描述，以及有该命令完整的名字和所在的页面。
 ![](https://gitee.com/zhangjie0524/picgo/raw/master/20210606220638.png)
-* 可以在查命令时，指定对应的章节，如：`man 3 sleep`只查第二节的sleep：
+* 可以在查命令时，指定对应的章节，如：`man 3 sleep`只查第三节的sleep：
 ![](https://gitee.com/zhangjie0524/picgo/raw/master/20210606220936.png)
    * 如果不指定对应的章节如：`man sleep`，则默认查最小的章节，对sleep来说，就是Sleep（1）
 
