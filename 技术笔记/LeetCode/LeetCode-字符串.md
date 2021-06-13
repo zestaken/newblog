@@ -9,16 +9,212 @@ categories: 技术笔记
 ## String类的charAt()与toCharArray()实现原理
 
 * 例题：[ip-地址无效化-1108](#1-ip-地址无效化-1108)
+* 看一下charAt()的源码：
+```java
+    public char charAt(int index) {
+        if ((index < 0) || (index >= value.length)) {
+            throw new StringIndexOutOfBoundsException(index);
+        }
+        return value[index];
+    }
+```
+* 这就是直接在数组中取值的方法。那么value是什么东西呢？
+```java
+    /** The value is used for character storage. */
+    private final char value[];
+
+    //再看看构造方法
+    public String() {
+        this.value = "".value;
+    }
+
+    public String(String original) {
+        this.value = original.value;
+        this.hash = original.hash;
+    }
+
+    //这个体现得最好，直接就是字符数组之间的copy
+    public String(char value[]) {
+        this.value = Arrays.copyOf(value, value.length);
+    }
+```
+* `value`的声明为一个字符数组，而且构造方法中通过`original.value`的方法赋值，也是将这个String对象中的value字符数组，赋给新的这个String对象。所以说白了，String类，就是一个字符数组给它加上一大堆方法封装而成的。（倒和C语言本质差不多）。
+* String类的核心是字符数组，所以能轻易把它转换为字符数组也不奇怪了，toCharArray的实质就是把封装在String中的字符数组value取出来用：
+```java
+    public char[] toCharArray() {
+        // Cannot use Arrays.copyOf because of class initialization order issues
+        char result[] = new char[value.length];
+        System.arraycopy(value, 0, result, 0, value.length);
+        return result;
+    }
+```
 
 ## StringBuilder的append()方法的参数
 
 * 例题：[ip-地址无效化-1108](#1-ip-地址无效化-1108)
+* append方法既能传字符，也能直接传字符串。事实上，不仅是字符和字符串，基本上其它类型如int，long等都能传，因为它们都能转为字符啊。看一下append是如何实现的：
+```java
+    public AbstractStringBuilder append(char c) {
+        ensureCapacityInternal(count + 1);
+        //直接在字符数组最后一位后加一个字符
+        value[count++] = c;
+        return this;
+    }
+
+    public AbstractStringBuilder append(int i) {
+        if (i == Integer.MIN_VALUE) {
+            append("-2147483648");
+            return this;
+        }
+        int appendedLength = (i < 0) ? Integer.stringSize(-i) + 1
+                                     : Integer.stringSize(i);
+        int spaceNeeded = count + appendedLength;
+        ensureCapacityInternal(spaceNeeded);
+        //将整型转化合适长度的字符存入value字符数组中
+        Integer.getChars(i, spaceNeeded, value);
+        count = spaceNeeded;
+        return this;
+    }
+
+    public AbstractStringBuilder append(String str) {
+        if (str == null)
+            return appendNull();
+        int len = str.length();
+        ensureCapacityInternal(count + len);
+        str.getChars(0, len, value, count);
+        count += len;
+        return this;
+    }
+```
+* 结合String的本质是字符数组这一点来看，这一切都十分简单：只要最后能转为char，什么都可以往字符数组里塞。
 
 ## StringBuilder的insert()方法使用
 
-## foreach循环的应用场景
+* 例题： [1-ip-地址无效化-1108](#1-ip-地址无效化-1108)
+* 首先看一下insert方法插入字符的源码，了解它的主要实现逻辑：
+```java
+    public AbstractStringBuilder insert(int offset, char c) {
+        ensureCapacityInternal(count + 1);
+        //将当前位置字符及其后面的字符依次向后挪一位
+        System.arraycopy(value, offset, value, offset + 1, count - offset);
+        //当前位置赋值为指定字符
+        value[offset] = c;
+        //字符串总长度加一
+        count += 1;
+        return this;
+    }
+```
+* 根据insert方法的实现逻辑，insert方法是将当前位置及其以后的字符依次向后移一位，然后当前位置变为指定字符。所以插入一个字符后，原来字符的下标就变为了`offsetn + 1`（原来字符及其以后的字符的下标都加一）,原来字符之前的字符相对位置不变。
+* 此外，类似append方法，insert方法也是可以直接插入字符串的（不仅字符串，还有许多其它的类型，如字符数组，浮点数（float），int，boolean等，只是最终效果都是添加成字符串）：
+```java
+//举两个例子
+    /**
+     * @throws IndexOutOfBoundsException {@inheritDoc}
+     */
+    @Override
+    public StringBuilder insert(int dstOffset, CharSequence s,
+                                int start, int end)
+    {
+        super.insert(dstOffset, s, start, end);
+        return this;
+    }
 
-## 
+    /**
+     * @throws StringIndexOutOfBoundsException {@inheritDoc}
+     */
+    @Override
+    public StringBuilder insert(int offset, Object obj) {
+            super.insert(offset, obj);
+            return this;
+    }
+```
+
+## String与StringBuilder
+
+* 要说String和StringBuilder有什么不同，最直观的使用体验就是，String是不能变的，初始化时是啥就是一直是啥，想要改String的内容，就只能重新初始化一个String在其中加上想要改的内容。而StringBuider呢，从它特有的append和insert方法就可以看出，这兄弟的内容和长短可以随便改。
+* String和StringBuilder的本质都是字符数组，但是其中又有不同：
+  * String：
+```java
+   /** The value is used for character storage. */
+    private final char value[];
+```
+  * StringBuilder:继承自AbstractStringBuilder，我们大致看一下AbstractStringBuilder就可以了解情况了。
+```java
+
+    /**
+     * The value is used for character storage.
+     */
+    char[] value;
+
+    //再看一个在append和insert方法中都出现了的方法：用于实现动态扩容
+    private void ensureCapacityInternal(int minimumCapacity) {
+        // overflow-conscious code
+        if (minimumCapacity - value.length > 0) {
+            value = Arrays.copyOf(value,
+                    newCapacity(minimumCapacity));
+        }
+    }
+```
+* 这下其实就很明显了，String核心是一个`final char[]`，而StringBuilder就是一个普通的`char[]`。final修饰的是初始化之后就不能改变的变量。而StringBuilder用着普通的字符数组，还为它配备了像ensureCapacityInternal这种动态扩容的方法以insert和append这种改变字符数组内容的方法，所以它可以随意变化值或长度。
+* 不得不说，这就是，铁打的字符数组，流水的方法。。。
+
+## foreach循环的原理
+
+* 例题：[1-ip-地址无效化-1108](#1-ip-地址无效化-1108)
+* foreach循环可以用来遍历数组或者集合。虽然遍历这两者的用法相同，但是实现原理却不一样。
+* 首先看看遍历数组时是什么情况,将我们遍历字符数组的代码编译后反编译一下：
+```java
+//自己编写的源码
+    //将String转为字符数组，利用foreach循环遍历
+    public String deFangIpaddr5 (String address) {
+        StringBuilder newAddress = new StringBuilder();
+        for(char temp : address.toCharArray()) {
+            if(temp == '.') {
+                newAddress.append("[.]");
+            } else {
+                newAddress.append(temp);
+            }
+        }
+        return newAddress.toString();
+    }
+
+//编译后反编译得到的源码
+   public String deFangIpaddr5(String address) {
+      StringBuilder newAddress = new StringBuilder();
+      char[] var3 = address.toCharArray();
+      int var4 = var3.length;
+
+      for(int var5 = 0; var5 < var4; ++var5) {
+         char temp = var3[var5];
+         if (temp == '.') {
+            newAddress.append("[.]");
+         } else {
+            newAddress.append(temp);
+         }
+      }
+
+      return newAddress.toString();
+   }
+```
+  * 二者对比一下，就可以看出，foreach循环做的事就是将我们以前遍历取值的的标准for循环封装了一下：
+```java
+for(int var5 = 0; var5 < var4; ++var5) {
+    char temp = var3[var5];
+    ...
+}
+
+//等价于
+
+for(char temp : address.toCharArray()) {
+    ...
+}
+```
+  * 这其中也要注意一个小细节，用于接收值的变量是每一次循环都要重新声明的，所以foreach循环中的临时变量只能现场声明，不能用之前声明好的。
+* 遍历集合的情况，偷个懒，等遇到了再说。。。
+
+
+
+
 
 
 
