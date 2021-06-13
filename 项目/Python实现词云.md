@@ -1,6 +1,6 @@
 ---
-title: Python深度学习环境
-date: 2021-06-06 08:02:19
+title: Python实现词云
+date: 2021-06-13 08:02:19
 tags: [Python, 深度学习]
 categories: 项目
 ---
@@ -14,7 +14,7 @@ categories: 项目
 * wordcloud包：wordcloud是优秀的词云展示第三方库，[官网](http://amueller.github.io/word_cloud/index.html)
 * Matplotlib：是 Python 的绘图库。 它可与 NumPy 一起使用，提供了一种有效的 MatLab 开源替代方案。[官网](https://matplotlib.org/)
 * jieba: jieba库是一款优秀的 Python 第三方中文分词库.[github地址](https://github.com/fxsjy/jieba)
-* PIL: Python图像库PIL(Python Image Library)是python的第三方图像处理库，但是由于其强大的功能与众多的使用人数，几乎已经被认为是python官方图像处理库了。不过
+* PIL: Python图像库PIL(Python Image Library)是python的第三方图像处理库，但是由于其强大的功能与众多的使用人数，几乎已经被认为是python官方图像处理库了。
 * 安装以上库：`pip install wordcloud matplotlib jieba pil`，如果使用pycharm的话，也可以不装，在使用到的时候被报错提醒再装。
 
 # 针对英文文本简单尝试
