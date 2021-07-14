@@ -5,7 +5,7 @@ tags: [LeetCode, 数据结构]
 categories: 技术笔记
 ---
 
-# 一维数组的动态和 1480
+# 1. 一维数组的动态和 1480
 
 * 题目：
 ---
@@ -76,7 +76,7 @@ public class Sums {
 }
 ```
 
-# 拥有糖果最多的孩子 1431
+# 2. 拥有糖果最多的孩子 1431
 
 * 题目：
 ---
@@ -133,7 +133,7 @@ public class Candy {
 }
 ```
 
-# 重新排列数组 1470
+# 3. 重新排列数组 1470
 
 * 题目：
 ---
@@ -177,7 +177,7 @@ public class Resort1470 {
 }
 ```
 
-#  左旋转字符串 剑指offer 58-II
+#  4. 左旋转字符串 剑指offer 58-II
 
 * 题目：
 ---
@@ -262,7 +262,7 @@ public class ReverseLeftWords {
 }
 ```
 
-# 好数对的数目 1512
+# 5. 好数对的数目 1512
 
 * 题目
 ---
@@ -307,4 +307,103 @@ public class NumPairs1512 {
 }
 ```
 
+# 6. 两个数组的交集 II 350
 
+* [题目](https://leetcode-cn.com/problems/intersection-of-two-arrays-ii/)：
+---
+给定两个数组，编写一个函数来计算它们的交集。
+
+示例 1：
+```
+输入：nums1 = [1,2,2,1], nums2 = [2,2]
+输出：[2,2]
+```
+示例 2:
+```
+输入：nums1 = [4,9,5], nums2 = [9,4,9,8,4]
+输出：[4,9]
+```
+
+说明：
+
+输出结果中每个元素出现的次数，应与元素在两个数组中出现次数的最小值一致。
+我们可以不考虑输出结果的顺序。
+进阶：
+
+如果给定的数组已经排好序呢？你将如何优化你的算法？
+如果 nums1 的大小比 nums2 小很多，哪种方法更优？
+如果 nums2 的元素存储在磁盘上，内存是有限的，并且你不能一次加载所有的元素到内存中，你该怎么办？
+
+## Java题解
+
+* 法一：遍历一个数组，将每个数出现的次数存入哈希表中，之后再遍历另一个数组并查找哈希表
+  * 代码：
+  ```java
+    public class Intersect350 {
+
+    public int[] intersect(int[] nums1, int[] nums2) {
+        //用哈希表存次数
+        HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+
+        //遍历一个数组，获取每个元素值以及出现次数
+        for(int i : nums1) {
+            if(!map.containsKey(i)) {
+                //初始计数为1
+                map.put(i, 1);
+            } else {
+                int count = map.get(i);
+                //第二次出现计数加一
+                count++;
+                map.put(i, count);
+            }
+        }
+
+        int[] res = new int[(nums1.length > nums2.length)?nums2.length:nums1.length];
+        int index = 0;
+        for(int i : nums2) {
+            if(map.containsKey(i)) {
+                int count = map.get(i);
+                //每出现一次计数减一，只在计数大于0时存入结果中，以保证出现次数与最少的数组相同
+                count--;
+                map.put(i, count);
+                if(count >= 0) {
+                    res[index] = i;
+                    index++;
+                }
+            }
+        }
+        return Arrays.copyOfRange(res, 0, index);
+    }
+  ```
+* 法二：先对两个数组进行排序，然后设置两个指针指向数组元素，每次相等的时候两个指针同时移动，不相等的时候较小的移动
+  * 结果：![](https://zjpicture.oss-cn-beijing.aliyuncs.com/img/20210714205354.png)
+  * 代码：
+    ```java
+            //先排序（升序）
+        Arrays.sort(nums1);
+        Arrays.sort(nums2);
+        //存储结果数组
+        int[] res = new int[(nums1.length > nums2.length)?nums2.length:nums1.length];
+        int count1 = 0;
+        int count2 = 0;
+        int index = 0;
+        while (true) {
+            if(nums1[count1] == nums2[count2]) {
+                //如果相等则双指针均前移
+                res[index] = nums1[count1];
+                index++;
+                count1++;
+                count2++;
+            } else if(nums1[count1] < nums2[count2]) {
+                count1++;
+            } else {
+                count2++;
+            }
+            if(count1 >= nums1.length || count2 >= nums2.length) {
+                break;
+            }
+        }
+
+        return Arrays.copyOfRange(res, 0, index);
+    ```
+  
