@@ -4,7 +4,8 @@ date: 2020-09-20 10:01:51
 tags: [LeetCode, 数据结构]
 categories: 技术笔记
 ---
-
+# 代码地址
+[github](https://github.com/zestaken/newblog/tree/master/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/LeetCode/Code/src/main/java/array)
 # 1. 一维数组的动态和 1480
 
 * 题目：
