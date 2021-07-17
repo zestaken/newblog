@@ -6,6 +6,7 @@ categories: 技术笔记
 ---
 # 代码地址
 [github](https://github.com/zestaken/newblog/tree/master/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/LeetCode/Code/src/main/java/array)
+
 # 1. 一维数组的动态和 1480
 
 * 题目：
@@ -407,4 +408,131 @@ public class NumPairs1512 {
 
         return Arrays.copyOfRange(res, 0, index);
     ```
+  
+# 7. 找到所有数组中消失的数字 448
+
+* [题目](https://leetcode-cn.com/problems/find-all-numbers-disappeared-in-an-array/)
+--- 
+给你一个含 n 个整数的数组 nums ，其中 nums[i] 在区间 [1, n] 内。请你找出所有在 [1, n] 范围内但没有出现在 nums 中的数字，并以数组的形式返回结果。
+```
+示例 1：
+输入：nums = [4,3,2,7,8,2,3,1]
+输出：[5,6]
+
+示例 2：
+输入：nums = [1,1]
+输出：[2]
+```
+
+提示：
+
+n == nums.length
+1 <= n <= 105
+1 <= nums[i] <= n
+
+进阶：你能在不使用额外空间且时间复杂度为 O(n) 的情况下解决这个问题吗? 你可以假定返回的数组不算在额外空间内。
+
+## java解法
+
+* 法一：排序后双指针扫描确定
+    * 结果：
+    ![EEorl6](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/EEorl6.png)
+    * 代码：
+    ```java
+    public List<Integer> findDisappearedNumbers(int[] nums) {
+        //用于存储所有数字
+        ArrayList<Integer> all = new ArrayList<>();
+        //存储消失的数字
+        ArrayList<Integer> disappear = new ArrayList<>();
+        int length = nums.length;
+        //将范围内所有数字存入all集合
+        for(int i = 1; i <= length; i++) {
+            all.add(i);
+        }
+        //对数组进行排序后，通过双指针扫描两个数组确定消失的数字
+        Arrays.sort(nums);
+
+        //双指针扫描两个数组/集合
+        for(int j = 0, i = 0; j < length && i < length; ) {
+            //all指针数字大于原数组指针数字，则原数组指针前移，all不变
+            if(all.get(j) > nums[i]) {
+                i++;
+                //判断边界，防止原数组扫描结束后all中剩余元素未被扫描
+                if(i >= length) {
+                    for(int t = j; t < length; t++) {
+                        disappear.add(all.get(t));
+                    }
+                }
+            } else if(all.get(j) == nums[i]) {// 两个指针同时迁移
+                j++;
+                i++;
+                //判断边界，防止原数组扫描结束后all中剩余元素未被扫描（all数组不可能在原数组之前扫描完）
+                if(i >= length) {
+                    for(int t = j; t < length; t++) {
+                        disappear.add(all.get(t));
+                    }
+                }
+            } else if(all.get(j) < nums[i]) { //all指针小于原数组指针数字则前移all指针，原数组不变
+                disappear.add(all.get(j));
+                j++;
+            }
+        }
+
+        return disappear;
+    }
+    ```
+* 法二：利用数组脚标可对应连续整数，通过修改原数组指定位置的值来筛选没有出现过的数。不用排序，所以时间复杂度减少
+  * 结果：
+  ![XfqEaq](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/XfqEaq.png)
+  * 代码：
+  ```java
+    public List<Integer> findDisappearedNumbers(int[] nums) {
+        ArrayList<Integer> ans = new ArrayList<>();
+        int length = nums.length;
+
+        for(int n : nums) {
+            int index = (n - 1) % length;//因为会加长度，导致有些位置上的数超过length，所以需要取模
+            //出现了的数字对应的位置的值加上长度
+            nums[index] += length;
+        }
+        
+        //再次遍历数组，如果值不大于长度length，则说明该位置脚标对应的值没有出现过
+        for(int i = 0; i < length; i++) {
+            if(nums[i] <= length) {
+                ans.add(i + 1);
+            }
+        }
+
+        return ans;
+    }
+    ```
+
+# 8. 旋转图像 48
+* [题目](https://leetcode-cn.com/problems/rotate-image/)
+---
+给定一个 n × n 的二维矩阵 matrix 表示一个图像。请你将图像顺时针旋转 90 度。
+你必须在 原地 旋转图像，这意味着你需要直接修改输入的二维矩阵。请不要 使用另一个矩阵来旋转图像。
+```
+输入：matrix = [[1,2,3],[4,5,6],[7,8,9]]
+输出：[[7,4,1],[8,5,2],[9,6,3]]
+
+输入：matrix = [[5,1,9,11],[2,4,8,10],[13,3,6,7],[15,14,12,16]]
+输出：[[15,13,2,5],[14,3,4,1],[12,6,8,9],[16,7,10,11]]
+
+输入：matrix = [[1]]
+输出：[[1]]
+
+输入：matrix = [[1,2],[3,4]]
+输出：[[3,1],[4,2]]
+```
+提示：
+
+matrix.length == n
+matrix[i].length == n
+1 <= n <= 20
+-1000 <= matrix[i][j] <= 1000
+
+## java解法
+
+
   
