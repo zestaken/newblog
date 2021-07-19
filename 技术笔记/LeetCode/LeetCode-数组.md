@@ -594,4 +594,34 @@ n == matrix[i].length
 
 ## Java解法
 
-* 法一：
+* 法一：从矩阵右上角开始寻找，直到超出矩阵边界，则目标不存在。当前元素比目标小，则下移，当前元素比目标大则左移。用一个元素的眼光来看，这个元素的左侧的元素的较小，下方的元素比自己小，从递归的观点来看，对每一个元素都这样处理。如果开始从左上角开始，没有选择较小元素的余地，一旦遇见比目标的元素，只能回退
+  * 结果：![](https://zjpicture.oss-cn-beijing.aliyuncs.com/img/20210719232725.png)
+  * 代码：
+```java
+    public boolean searchMatrix(int[][] matrix, int target) {
+        //从右上角开始搜索
+        int lines = matrix.length;
+        int rows = matrix[0].length;
+
+        for(int i = 0, j = rows - 1; i < lines && 0 <= j; ) {
+            if(matrix[i][j] > target) {
+                //比目标大，向左横向移动
+                j--;
+                if(j < 0) {
+                    return false;
+                }
+            }else if(matrix[i][j] < target) {
+                //比目标小，向下移动
+                i++;
+                if(i >= lines) {
+                    return false;
+                }
+            } else if (matrix[i][j] == target) {
+                return true;
+            }
+        }
+        return false;
+    }
+```
+
+# 10. 
