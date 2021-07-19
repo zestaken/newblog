@@ -535,6 +535,63 @@ matrix[i].length == n
 ## java解法
 
 * 法一：通过一圈一圈找到四个依次换位置的元素，来依次移动这些元素的值，来达到借助一个中间值变量实现原地旋转的效果。关键在于如何确定这些元素的下标的变化规律。
-    * 结果：
+    * 结果：![](https://zjpicture.oss-cn-beijing.aliyuncs.com/img/20210719214209.png)
     * 代码：
-  
+```java
+public class Rotate48 {
+    public void rotate(int[][] matrix) {
+        //从外向内一圈圈找，用times表示在第几圈
+        int times = 0;
+        //nums表示矩阵的列数（行数）
+        int nums = matrix.length;
+
+        while(times <= (nums / 2)) { //比如4x4矩阵就是两圈，3x3也是两圈
+            //在每一圈中再确定依次交换值的四个元素
+            int len = nums - times * 2; //len是圈的范围，每缩小一圈减少两个
+            for(int i = 0; i < len - 1; i++) {
+                //确定每一圈第一个元素的位置并用临时变量存储其值
+                //通过i来将第一个元素右移一位，其它三个元素顺势右移，遇到边界就贴着边界转换方向接着移
+                int temp = matrix[times][times + i];
+                //将上一个元素的值由其下一位元素的值来替代
+                matrix[times][times + i] = matrix[times + len - 1 - i][times];
+                matrix[times + len - 1 - i][times] = matrix[times + len - 1][times + len - 1 - i];
+                matrix[times + len - 1][times + len - 1 - i] = matrix[times + i][times + len - 1];
+                matrix[times + i][times + len - 1] = temp;
+                //虽然看起来复杂，但是每一个元素又一个坐标都是不随i的变化而变化，只要关注i对其有影响的坐标，顺势移动即可
+            }
+            //进入下一圈
+            times++;
+        }
+    }
+}
+```
+
+# 9. 搜索二维矩阵 II 240
+
+* [题目](https://leetcode-cn.com/problems/search-a-2d-matrix-ii/)
+---
+编写一个高效的算法来搜索 m x n 矩阵 matrix 中的一个目标值 target 。该矩阵具有以下特性：
+
+每行的元素从左到右升序排列。
+每列的元素从上到下升序排列。
+```
+输入：matrix = [[1,4,7,11,15],[2,5,8,12,19],[3,6,9,16,22],[10,13,14,17,24],[18,21,23,26,30]], target = 5
+输出：true
+
+输入：matrix = [[1,4,7,11,15],[2,5,8,12,19],[3,6,9,16,22],[10,13,14,17,24],[18,21,23,26,30]], target = 20
+输出：false
+
+```
+提示：
+
+m == matrix.length
+n == matrix[i].length
+1 <= n, m <= 300
+-109 <= matix[i][j] <= 109
+每行的所有元素从左到右升序排列
+每列的所有元素从上到下升序排列
+-109 <= target <= 109
+
+## Java解法
+
+* 法一：

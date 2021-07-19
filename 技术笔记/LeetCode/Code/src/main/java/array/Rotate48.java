@@ -15,7 +15,7 @@ public class Rotate48 {
                 //通过i来将第一个元素右移一位，其它三个元素顺势右移，遇到边界就贴着边界转换方向接着移
                 int temp = matrix[times][times + i];
                 //将上一个元素的值由其下一位元素的值来替代
-                matrix[times][times + 1] = matrix[times + len - 1 - i][times];
+                matrix[times][times + i] = matrix[times + len - 1 - i][times];
                 matrix[times + len - 1 - i][times] = matrix[times + len - 1][times + len - 1 - i];
                 matrix[times + len - 1][times + len - 1 - i] = matrix[times + i][times + len - 1];
                 matrix[times + i][times + len - 1] = temp;
