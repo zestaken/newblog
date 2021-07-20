@@ -5,7 +5,7 @@ tags: [LeetCode, 数据结构]
 categories: 技术笔记
 ---
 # 代码地址
-[github]()
+[github](https://github.com/zestaken/newblog/tree/master/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/LeetCode/Code/src/main/java/stack)
 
 # 1. 删除最外层的括号 1021
 

@@ -2,11 +2,11 @@ package stack;
 
 import java.util.Stack;
 
-public class MyQueue {
+public class MyQueue232 {
     Stack<Integer> in;
     Stack<Integer> out;
 
-    public MyQueue(){
+    public MyQueue232(){
         in = new Stack<>();
         out = new Stack<>();
     }
