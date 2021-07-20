@@ -4,8 +4,10 @@ date: 2021-02-06 12:49:16
 tags: [LeetCode, 数据结构]
 categories: 技术笔记
 ---
+# 代码地址
+[github]()
 
-# 删除最外层的括号 1021
+# 1. 删除最外层的括号 1021
 
 * 题目：
 ---
@@ -106,7 +108,7 @@ public String removeOuterParentheses(String S) {
 }
 ```
 
-# 剑指 Offer 09. 用两个栈实现队列
+# 2. 剑指 Offer 09. 用两个栈实现队列
 
 * 题目：
 ---
@@ -202,7 +204,7 @@ public class CQueue {
 
 }
 ```
-# 1047. 删除字符串中的所有相邻重复项
+# 3. 1047. 删除字符串中的所有相邻重复项
 
 * 题目：
 ---
@@ -298,7 +300,7 @@ class Solution {
     }
 ```
 
-# 682. 棒球比赛
+# 4. 682. 棒球比赛
 
 * 题目：
 ---
@@ -391,5 +393,103 @@ class Solution {
     }
 }
 ```
-* 法二：
+# 5. 用栈实现队列 232
+
+* [题目](https://leetcode-cn.com/problems/implement-queue-using-stacks/)
+---
+请你仅使用两个栈实现先入先出队列。队列应当支持一般队列支持的所有操作（push、pop、peek、empty）：
+
+实现 MyQueue 类：
+
+void push(int x) 将元素 x 推到队列的末尾
+int pop() 从队列的开头移除并返回元素
+int peek() 返回队列开头的元素
+boolean empty() 如果队列为空，返回 true ；否则，返回 false
+ 
+
+说明：
+
+你只能使用标准的栈操作 —— 也就是只有 push to top, peek/pop from top, size, 和 is empty 操作是合法的。
+你所使用的语言也许不支持栈。你可以使用 list 或者 deque（双端队列）来模拟一个栈，只要是标准的栈操作即可。
+ 
+
+进阶：
+
+你能否实现每个操作均摊时间复杂度为 O(1) 的队列？换句话说，执行 n 个操作的总时间复杂度为 O(n) ，即使其中一个操作可能花费较长时间。
+ 
+```
+示例：
+
+输入：
+["MyQueue", "push", "push", "peek", "pop", "empty"]
+[[], [1], [2], [], [], []]
+输出：
+[null, null, null, 1, 1, false]
+
+解释：
+MyQueue myQueue = new MyQueue();
+myQueue.push(1); // queue is: [1]
+myQueue.push(2); // queue is: [1, 2] (leftmost is front of the queue)
+myQueue.peek(); // return 1
+myQueue.pop(); // return 1, queue is [2]
+myQueue.empty(); // return false
+```
+
+提示：
+
+1 <= x <= 9
+最多调用 100 次 push、pop、peek 和 empty
+假设所有操作都是有效的 （例如，一个空的队列不会调用 pop 或者 peek 操作）
+
+## Java解法
+
+* 法一：用两个栈来实现队列，一个栈负责接收输入，一个栈负责pop和peek。通过再两个栈之间的倒腾，来颠倒元素的顺序，负负得正，变为先入先出
+  * 结果：![](https://zjpicture.oss-cn-beijing.aliyuncs.com/img/20210720215034.png)
+  * 代码：
+```java
+public class MyQueue {
+    Stack<Integer> in;
+    Stack<Integer> out;
+
+    public MyQueue(){
+        in = new Stack<>();
+        out = new Stack<>();
+    }
+
+    public void push(int x) {
+        in.push(x);
+    }
+
+    public int pop() {
+        while(!in.isEmpty()) {
+            int temp = in.pop();
+            out.push(temp);
+        }
+        int res =  out.pop();
+        while(!out.isEmpty()) {
+            int temp = out.pop();
+            in.push(temp);
+        }
+        return res;
+    }
+
+    public int peek() {
+        while(!in.isEmpty()) {
+            int temp = in.pop();
+            out.push(temp);
+        }
+        int res = out.peek();
+        while(!out.isEmpty()) {
+            int temp = out.pop();
+            in.push(temp);
+        }
+        return res;
+    }
+
+    public boolean empty() {
+        return in.isEmpty();
+    }
+}
+```
+
 
