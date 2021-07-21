@@ -492,4 +492,84 @@ public class MyQueue {
 }
 ```
 
+# 6. 最小栈 155
+
+* [题目](https://leetcode-cn.com/problems/min-stack/)
+---
+设计一个支持 push ，pop ，top 操作，并能在常数时间内检索到最小元素的栈。
+
+push(x) —— 将元素 x 推入栈中。
+pop() —— 删除栈顶的元素。
+top() —— 获取栈顶元素。
+getMin() —— 检索栈中的最小元素。
+ 
+```
+示例:
+
+输入：
+["MinStack","push","push","push","getMin","pop","top","getMin"]
+[[],[-2],[0],[-3],[],[],[],[]]
+
+输出：
+[null,null,null,null,-3,null,0,-2]
+
+解释：
+MinStack minStack = new MinStack();
+minStack.push(-2);
+minStack.push(0);
+minStack.push(-3);
+minStack.getMin();   --> 返回 -3.
+minStack.pop();
+minStack.top();      --> 返回 0.
+minStack.getMin();   --> 返回 -2.
+```
+提示：
+
+pop、top 和 getMin 操作总是在 非空栈 上调用。
+
+## Java解法
+
+* 法一：使用一个辅助栈，将当前最小的元素压入栈顶，每次pop的时候检查元素是否与辅助栈的栈顶元素相同，如果相同则将辅助栈栈顶元素也弹出。因为栈先进后出的特性，所以当当前最小元素弹出后顶替上来的元素值在栈中一定还存在。
+  * 结果：![d58FXH](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/d58FXH.png)
+  * 代码：
+```java
+public class MinStack155 {
+    Stack<Integer> value;
+    Stack<Integer> min;
+
+    public MinStack155() {
+        value = new Stack<>();
+        min = new Stack<>();
+    }
+
+    public void push(int val) {
+        //若当前值比栈中存的最小值小，则存入最小值栈中
+        if(min.isEmpty()) {
+            min.push(val);
+        }else if(val <= min.peek()) { //注意与最小值相等也要再压一次，弹出的时候才能持平
+            min.push(val);
+        }
+        value.push(val);
+    }
+
+    public int pop() {
+        if(value.peek().equals(min.peek())) {
+            min.pop();
+        }
+
+        return value.pop();
+    }
+
+    public int top() {
+        return value.peek();
+    }
+
+    public int getMin() {
+        return min.peek();
+    }
+
+}
+```
+  
+
 
