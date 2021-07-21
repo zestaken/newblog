@@ -443,7 +443,7 @@ myQueue.empty(); // return false
 
 ## Java解法
 
-* 法一：用两个栈来实现队列，一个栈负责接收输入，一个栈负责pop和peek。通过再两个栈之间的倒腾，来颠倒元素的顺序，负负得正，变为先入先出
+* 法一：用两个栈来实现队列，一个栈负责接收输入，一个栈负责pop和peek。通过在两个栈之间的倒腾，来颠倒元素的顺序，负负得正，变为先入先出
   * 结果：![](https://zjpicture.oss-cn-beijing.aliyuncs.com/img/20210720215034.png)
   * 代码：
 ```java
@@ -570,6 +570,96 @@ public class MinStack155 {
 
 }
 ```
-  
+
+# 7. 有效的括号 20
+
+* [题目](https://leetcode-cn.com/problems/valid-parentheses/)
+---
+给定一个只包括 '('，')'，'{'，'}'，'['，']' 的字符串 s ，判断字符串是否有效。
+
+有效字符串需满足：
+
+左括号必须用相同类型的右括号闭合。
+左括号必须以正确的顺序闭合。
+ 
+```
+示例 1：
+
+输入：s = "()"
+输出：true
+示例 2：
+
+输入：s = "()[]{}"
+输出：true
+示例 3：
+
+输入：s = "(]"
+输出：false
+示例 4：
+
+输入：s = "([)]"
+输出：false
+示例 5：
+
+输入：s = "{[]}"
+输出：true
+```
+
+提示：
+
+1 <= s.length <= 104
+s 仅由括号 '()[]{}' 组成
+
+## Java解法
+
+* 法一：利用栈的先进先出特性，左括号进栈，遇右括号则出栈匹配
+  * 结果：![XBDlRE](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/XBDlRE.png)
+  * 代码：
+```java
+public class ValidParentheses20 {
+
+    public boolean isValid(String s) {
+        Stack<Character> stack = new Stack<>();
+        int len = s.length();
+
+        if(len % 2 != 0) { //括号数为奇数肯定不对
+            return false;
+        }
+
+        //遍历括号，左括号进栈，右括号出栈比对
+        int i;
+        for(i = 0; i < len; i++) {
+            char temp = s.charAt(i);
+            if(temp == '(' || temp == '[' || temp == '{') {
+                stack.push(temp);
+            } else {
+                char temp2;
+                if(!stack.isEmpty()) {
+                    temp2 = stack.pop();
+                } else {
+                    return false;
+                }
+                if(temp2 == '(' && temp == ')') {
+                    continue;
+                } else if(temp2 == '[' && temp == ']') {
+                    continue;
+                } else if(temp2 == '{' && temp == '}') {
+                    continue;
+                } else {
+                    return false;
+                }
+            }
+        }
+
+        //最终字符串遍历完并且栈空则说明配对成功
+        if(stack.isEmpty() || i == len - 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+}
+```
 
 
