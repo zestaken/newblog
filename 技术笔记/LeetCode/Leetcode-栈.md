@@ -690,8 +690,45 @@ public class ValidParentheses20 {
 
 ## Java解法
 
-* 法一：
-  * 结果：
+* 法一：单调栈的思路：用栈存储温度对应的下标，每遇到温度较高的则出栈存储，温度小的则入栈，保证栈中对应温度呈递减排列
+  * 结果：![l6kYqI](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/l6kYqI.png)
+  * 与[最多能完成排序的块](https://leetcode-cn.com/problems/max-chunks-to-make-sorted/)类似，因为都是根据值的大小来划分位置，所以存值不重要，存位置下标才重要。此外，都利用了在关键结果出现前左右两边的值都是单纯的比关键结果小或者大的单调性。
   * 代码：
 ```java
+public class DailyTemperatures739 {
 
+    public int[] dailyTemperatures(int[] temperatures) {
+        int len = temperatures.length;
+        //存储下标的栈
+        Stack<Integer> stack = new Stack<>();
+        //用来存储结果的数组
+        int[] days = new int[len];
+
+        //遍历整个温度数组
+        for(int i = 0; i < len; i++) {
+            //当栈为空，或者当前遍历到的温度不大于栈中下标对应的温度，则将对应下标压入栈中
+            if(stack.isEmpty() || temperatures[i] <= temperatures[stack.peek()]) {
+                stack.push(i);
+                continue;
+            }
+            
+            //当栈不为空，或者当前温度高于栈顶下标对应的温度
+            while(!stack.isEmpty() && temperatures[i] > temperatures[stack.peek()]) {
+                //当遇到比自己温度高的，出栈，将下标相减就是间隔天数
+                int index = stack.pop();
+                days[index] = i - index;
+            }
+            stack.push(i);
+        }
+        
+        //最后还留在栈中的就是没有找到之后比自己温度高的，直接赋为0
+        while(!stack.isEmpty()) {
+            int index = stack.pop();
+            days[index] = 0;
+        }
+
+        return days;
+    }
+
+}
+```
