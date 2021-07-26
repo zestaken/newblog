@@ -48,9 +48,11 @@ public class StringUtil {
         Signature dsa;
         byte[] output = new byte[0];
         try{
-
+            dsa = Signature.getInstance("ECDSA", "BC");
+            dsa.initSign(privateKey);
+            byte[] strByte = 
         } catch (Exception e) {
-            
+
         }
     }
 }
