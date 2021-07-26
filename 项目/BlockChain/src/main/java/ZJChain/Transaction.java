@@ -2,6 +2,7 @@ package ZJChain;
 
 import utils.StringUtil;
 
+import java.security.PrivateKey;
 import java.security.PublicKey;
 import java.util.ArrayList;
 
@@ -52,6 +53,24 @@ public class Transaction {
                 StringUtil.getStringFromKey(sender) +
                 StringUtil.getStringFromKey(recipient) +
                 value + sequence);
+    }
+
+    /**
+     * 根据私钥和其它数据生成数字签名
+     * @param privateKey
+     */
+    public void generateSignature(PrivateKey privateKey) {
+        String data = StringUtil.getStringFromKey(sender) + StringUtil.getStringFromKey(recipient) + value;
+        signature = StringUtil.applyECDSASig(privateKey, data);
+    }
+
+    /**
+     * 检查数字签名，以验证数据没有损坏或者被修改
+     * @return
+     */
+    public boolean verifySignature() {
+        String data = StringUtil.getStringFromKey(sender) + StringUtil.getStringFromKey(recipient) + value;
+        return StringUtil.verifyECDSASig(sender, data, signature);
     }
 
 

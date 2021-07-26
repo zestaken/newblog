@@ -2,10 +2,7 @@ package utils;
 
 import jdk.nashorn.internal.runtime.ECMAException;
 
-import java.security.Key;
-import java.security.MessageDigest;
-import java.security.PrivateKey;
-import java.security.Signature;
+import java.security.*;
 import java.util.Base64;
 
 public class StringUtil {
@@ -44,15 +41,47 @@ public class StringUtil {
         return Base64.getEncoder().encodeToString(key.getEncoded());
     }
 
-    public static byte[] applyECDSASig(PrivateKey privateKey, String input) {
+    /**
+     * 根据ECDSA算法，由privatekey生成数字签名（字节数组）
+     * @param privateKey
+     * @param data
+     * @return
+     */
+    public static byte[] applyECDSASig(PrivateKey privateKey, String data) {
         Signature dsa;
+        //提前声明变量，避免最后不能返回有效值
         byte[] output = new byte[0];
         try{
             dsa = Signature.getInstance("ECDSA", "BC");
             dsa.initSign(privateKey);
-            byte[] strByte = 
+            byte[] strByte = data.getBytes();
+            dsa.update(strByte);
+            byte[] realSig = dsa.sign();
+            output = realSig;
         } catch (Exception e) {
+            e.printStackTrace();
+        }
 
+        return output;
+    }
+
+    /**
+     * 由publickey验证数字签名是否正确
+     * @param publicKey
+     * @param data
+     * @param signature
+     * @return
+     */
+    public static boolean verifyECDSASig(PublicKey publicKey, String data, byte[] signature) {
+        try {
+            Signature ecdsaVerify = Signature.getInstance("ECDSA", "BC");
+            ecdsaVerify.initVerify(publicKey);
+            ecdsaVerify.update(data.getBytes());
+            return ecdsaVerify.verify(signature);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            return false;
         }
     }
 }
