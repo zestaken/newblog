@@ -2,15 +2,18 @@ package ZJChain;
 
 import utils.StringUtil;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Block {
 
     public String hash;
     public String prevHash;
-    private String data;
-    private long timestamp;
-    private int nonce; //用于挖矿的变量
+    public String data;
+    public long timestamp;
+    public int nonce; //用于挖矿的变量
+    public ArrayList<Transaction> transactions = new ArrayList<>();
+    public String merkleRoot;
 
     public Block(String data, String prevHash) {
         this.data = data;
@@ -30,10 +33,15 @@ public class Block {
      * @throws Exception
      */
     public String calculateHash() throws Exception {
-        String calculatedHash = StringUtil.applySha256(prevHash+data+timestamp+nonce);
+        //取消使用data生成hash而使用merkleRoot
+        String calculatedHash = StringUtil.applySha256(prevHash+merkleRoot+timestamp+nonce);
         return calculatedHash;
     }
 
+    /**
+     * 挖矿计算
+     * @param difficulty
+     */
     public void mineBlock(int difficulty) {
         //生成目标字符串：此处是包含指定数量（difficulty）个连续的0的字符串
         String target = new String(new char[difficulty]).replace('\0', '0');
@@ -47,5 +55,20 @@ public class Block {
             }
         }
         System.out.println("nonce：" + nonce);
+    }
+
+    public boolean addTransaction(Transaction transaction) {
+        //验证交易的有效性
+        if(transaction == null) return false;
+        if(!prevHash.equals("0")) {
+            if(!transaction.processTransaction()) {
+                System.out.println("交易处理失败！");
+                return false;
+            }
+        }
+        //将交易添加到
+        transactions.add(transaction);
+        System.out.println("交易成功添加到Block中！");
+        return true;
     }
 }
