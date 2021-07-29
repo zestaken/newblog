@@ -91,7 +91,7 @@ public class Wallet {
 
         //将已经使用的UTXO从钱包中移除
         for(TransactionInput input : inputs) {
-            UTXOs.remove(input.UTXO.id);
+            UTXOs.remove(input.transactionOutputId);
         }
 
         return  newTransaction;

@@ -37,7 +37,7 @@ public class Transaction {
      */
     public ArrayList<TransactionInput> inputs = new ArrayList<TransactionInput>();
     /**
-     * 本次交易所涉及到的所有交易输出
+     * 本次交易所涉及到的所有交易输出（第0位output是发给别人的，第1位output是发给自己的）
      */
     public ArrayList<TransactionOutput> outputs = new ArrayList<TransactionOutput>();
 
@@ -74,7 +74,7 @@ public class Transaction {
      * 检查发送方数字签名，以验证数据没有损坏或者被修改
      * @return
      */
-    public boolean verifySignature() {
+    public boolean verifySignature() throws Exception {
         String data = StringUtil.getStringFromKey(sender) + StringUtil.getStringFromKey(recipient) + value;
         return StringUtil.verifyECDSASig(sender, data, signature);
     }
@@ -86,9 +86,13 @@ public class Transaction {
     public boolean processTransaction() {
 
         //验证交易的发送方的数字签名是否有效
-        if(!verifySignature()) {
-            System.out.println("交易签名验证失败");
-            return false;
+        try {
+            if(!verifySignature()) {
+                System.out.println("交易签名验证失败");
+                return false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
         //根据交易输出的id从整个区块链中有效的UTXO集合中获取对应的UTXO

@@ -21,6 +21,9 @@ public class ZJChain {
     public static float minimumTransaction = 0.1f;
     public static Wallet walletA;
     public static Wallet walletB;
+    /**
+     * 初始交易（创建区块链时初始化第一笔交易）
+     */
     public static Transaction genesisTransaction;
 
     /**
@@ -28,7 +31,6 @@ public class ZJChain {
      * @return
      */
     public boolean isChainValid() {
-        //todo 验证需修改
         Block curBlock;
         Block prevBlock;
         //用于检验挖矿难度是否达标的字符串
@@ -65,9 +67,61 @@ public class ZJChain {
                 return false;
             }
 
-            
+            TransactionOutput tempOutput;
+            for(int t = 0; i < curBlock.transactions.size(); t++) {
+                Transaction currentTransaction = curBlock.transactions.get(t);
+
+                //检查交易的签名
+                try {
+                    if(!currentTransaction.verifySignature()) {
+                        System.out.println("第" + t + "个交易的签名无效！");
+                        return false;
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                //检查交易的交易输出额和交易输入额是否相等
+                if(!(currentTransaction.getInputsValue() == currentTransaction.getOutputsValue())) {
+                    System.out.println("第" + t + "个交易的交易输出与交易输入额不相等！");
+                    return false;
+                }
+
+                //检查交易输入是否正确（交易输入要么来源于初始交易（和矿工），要么来源于其它交易输出）
+                for(TransactionInput input : currentTransaction.inputs) {
+                    tempOutput = tempUTXOs.get(input.transactionOutputId);
+
+                    if(tempOutput == null) {
+                        System.out.println("第" + t + "个交易的交易输入不存在！");
+                        return false;
+                    }
+
+                    if(input.UTXO.value != tempOutput.value) {
+                        System.out.println("第" + t + "个交易的交易输入的值无效！");
+                        return false;
+                    }
+
+                    tempUTXOs.remove(input.transactionOutputId);
+                }
+
+                //将交易输出加入临时UTXOs
+                for(TransactionOutput output : currentTransaction.outputs) {
+                    tempUTXOs.put(output.id, output);
+                }
+
+                if(currentTransaction.outputs.get(0).recipient != currentTransaction.recipient) {
+                    System.out.println("第" + t + "个交易的交易输出目的方错误！");
+                    return false;
+                }
+
+                if(currentTransaction.outputs.get(1).recipient != currentTransaction.sender) {
+                    System.out.println("第" + t + "个交易的找零的交易输出没有发给发送者！");
+                    return false;
+                }
+            }
         }
-        return true;
+         System.out.println("区块链有效！");
+         return true;
     }
 
     /**

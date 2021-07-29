@@ -73,19 +73,18 @@ public class StringUtil {
      * @param signature
      * @return
      */
-    public static boolean verifyECDSASig(PublicKey publicKey, String data, byte[] signature) {
-        try {
+    public static boolean verifyECDSASig(PublicKey publicKey, String data, byte[] signature) throws Exception {
             Signature ecdsaVerify = Signature.getInstance("ECDSA", "BC");
             ecdsaVerify.initVerify(publicKey);
             ecdsaVerify.update(data.getBytes());
             return ecdsaVerify.verify(signature);
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            return false;
-        }
     }
 
+    /**
+     * 根据交易生成merkleRoot标志区块
+     * @param transactions
+     * @return
+     */
     public static String getMerkleRoot(ArrayList<Transaction> transactions) {
         int count = transactions.size();
         ArrayList<String> previousTreeLayer = new ArrayList<>();
