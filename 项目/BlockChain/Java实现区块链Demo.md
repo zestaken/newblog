@@ -8,18 +8,32 @@ categories: 项目
 # 区块链与比特币概念
 
 * 区块链（BlockChain）起源于比特币，2008年11月1日，一位自称中本聪(Satoshi Nakamoto)的人发表了《比特币:一种点对点的电子现金系统》一文，阐述了基于P2P网络技术、加密技术、时间戳技术、区块链技术等的电子现金系统的构架理念，这标志着比特币的诞生。
-* 在比特币形成过程中，区块（Block）是一个一个的存储单元，记录了一定时间内各个区块节点全部的交流信息。各个区块之间通过随机散列(也称哈希算法)实现链接，后一个区块包含前一个区块的哈希值，随着信息交流的扩大，一个区块与一个区块相继接续，形成的结果就叫区块链（BlockChain）。
+
+* 在比特币系统中，区块（Block）是一个一个的存储单元，记录了一定时间内各个区块节点全部的交流信息。各个区块之间通过随机散列(也称哈希算法)实现链接，后一个区块包含前一个区块的哈希值，随着信息交流的扩大，一个区块与一个区块相继接续，形成的结果就叫区块链（BlockChain）。
+
+* 在知乎上看到一个漫画讲得很形象：
+
+  ![0QlkTi](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/0QlkTi.jpg)
+
+  ![XhKOwy](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/XhKOwy.jpg)
+
+  ![preview](https://pic2.zhimg.com/v2-8317abc7bb2e2058bb2e5242739aba01_r.jpg)
+
+  ![y71QB4](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/y71QB4.jpg)
+
 * 看着这些概念头脑中也难以形成一个具体的印象，不如实现一个区块链的demo来看一看。
+
 * [参考教程](https://medium.com/programmers-blockchain/create-simple-blockchain-java-tutorial-from-scratch-6eeed3cb03fa)
+
 * [代码地址](https://github.com/zestaken/BlockChainDemo)
 
 # 1. 实现Block结构
 
-* 区块链（BlockChain）顾名思义，是将一个个区块（ZJChain.Block）链接起来形成。所以我们实现区块链的第一步是实现Block结构。
-* 区块链的链不是传统的通过指针等技术实现，而是通过哈希值来链接。所以一个Block中需要包含自身的哈希值，前一个Block的哈希值，还有自身的数据。而当前块的哈希值是通过前一个块的哈希值、当前块的创建的时间以及当前块的数据三者根据加密算法计算得出的。所以Block中还要包含时间戳变量表示块创建时间。
+* 区块链（BlockChain）顾名思义，是将一个个区块（Block）链接起来形成。所以我们实现区块链的第一步是实现Block结构。
+* 区块链的链不是传统的通过指针等技术实现，而是通过哈希值来链接。所以一个Block中需要包含自身的哈希值，前一个Block的哈希值，还有自身的数据（这个数据与交易信息有关）。而当前块的哈希值是通过前一个块的哈希值、当前块的创建的时间以及当前块的数据三者根据加密算法计算得出的。所以Block中还要包含时间戳变量表示块创建时间。
 * Block类实现如下：
 ```java
-public class ZJChain.Block {
+public class Block {
 
     public String hash;
     public String prevHash;
@@ -84,9 +98,9 @@ public class ZJChain.Block {
 
 # 2. 实现区块链（BlockChain）结构
 
-* 前面构造来区块（ZJChain.Block），现在把他们连接起来存储就形成了区块链。我们采用ArrayList结构来组织这些Block。
+* 前面构造了区块（Block），现在把他们连接起来存储就形成了区块链。我们采用ArrayList结构来组织这些Block。
 ```java
-public class ZJChain.ZJChain {
+public class ZJChain {
 
     //blockChain为静态属性，所有对象都是在对同一个blockchain修改
     public static ArrayList<Block> blockChain = new ArrayList<Block>();
@@ -147,15 +161,15 @@ public class ZJChain.ZJChain {
    @Test
     public void test1() {
         //初始化区块链
-        ZJChain.ZJChain zjChain = new ZJChain.ZJChain();
+        ZJChain zjChain = new ZJChain();
         //向区块链中添加10个块
         for(int i = 0; i < 10; i++) {
             //创建新块
-            ZJChain.Block block;
+            Block block;
             if(zjChain.blockChain.size() == 0) {
-                block = new ZJChain.Block("ZJChain.Block: " + i, "0");
+                block = new Block("Block: " + i, "0");
             } else {
-                block = new ZJChain.Block("ZJChain.Block: " + i, zjChain.blockChain.get(
+                block = new Block("Block: " + i, zjChain.blockChain.get(
                         zjChain.blockChain.size() - 1).hash);
             }
             zjChain.addBlock(block);
@@ -169,7 +183,7 @@ public class ZJChain.ZJChain {
 
 # 3. 准备挖矿！！！
 
-* 提起比特币，区块链，便离不开挖矿这个话题。那什么是挖矿？比特币挖矿就是找到一个随机数（Nonce）参与哈希运算Hash（ZJChain.Block Header），使得最后得到的哈希值符合难度要求（在很多种组合中试出满足要求的组合, 有一点运气成分），用公式表示就是Hash（ZJChain.Block Header）<= target。具体的说就是使生成的哈希值的开头至少有指定数目个0。实现如下：
+* 提起比特币、区块链，便离不开挖矿这个话题。那什么是挖矿？比特币挖矿就是找到一个随机数（Nonce）参与哈希运算Hash，使得最后得到的哈希值符合难度要求（在很多种组合中试出满足要求的组合, 有一点运气成分），用公式表示就是Hash <= target。具体的说就是使生成的哈希值的开头至少有指定数目个0。实现如下：
 ```java
     public void mineBlock(int difficulty) {
         //生成目标字符串：此处是包含指定数量（difficulty）个连续的0的字符串
@@ -186,7 +200,7 @@ public class ZJChain.ZJChain {
         System.out.println("nonce：" + nonce);
     }
 ```
-* 简单来看挖矿难度的高低就是生成区块头的哈希值有多少0。difficulty每增加1，运算量都是呈几何增加，十分恐怖。
+* 简单来看挖矿难度的高低就是生成区块头的哈希值有多少0，前面固定的0越多，满足条件的值就越少，计算得到符合标准的hash值的概率就低，宏观上说需要计算的次数就越多。difficulty每增加1，运算量都是呈几何速率增加，十分恐怖。
 * 当难度为4:![SAWTcE](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/SAWTcE.png)
 * 当难度为5:![lVcfrW](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/lVcfrW.png)
 * 当难度为6:![4IZwd2](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/4IZwd2.png)（好家伙，直接跑了8分多钟。。。）
@@ -203,7 +217,7 @@ public class ZJChain.ZJChain {
 
 # 4. 创建钱包
 
-* 比特币是一种点对点的电子现金系统，没有实物形态，可以存储在比特币钱包里。日常生活中，钱包是用来放钱的，但比特币钱包里却没有比特币，而只是确立比特币所有权的工具：比特币被记录在比特币网络的区块链（前面实现的BlockChain）中，比特币的所有权是通过数字密钥、比特币地址和数字签名（接下来要实现的）来确立的。
+* 比特币是一种点对点的电子现金系统，没有实物形态，可以存储在比特币钱包里。日常生活中，钱包是用来放钱的，但比特币钱包里却没有比特币，而只是确立比特币所有权的工具：比特币被记录在比特币网络的区块中（即Block，实际记录的也不是具体的比特币而是一笔笔交易记录）中，比特币的所有权是通过数字密钥、比特币地址和数字签名（接下来要实现的）来确立的。
 * 数字密钥并不存储在网络中，而是由用户生成并存储在一个文件或简单的数据库中，称为钱包。比特币钱包里存储着你的比特币信息，包括比特币地址（类似于你的银行卡账号）和数字秘钥。
 * 数字秘钥是用公钥加密创建一个密钥对，用于控制比特币的获取。密钥对包括一个私钥，和由其衍生出的唯一的公钥。公钥用于接收比特币，而私钥用于生成比特币支付时的交易签名（类似于你银行卡的密码）。支付比特币时，比特币的当前所有者需要在交易中提交其公钥和签名（每次交易的签名都不同，但均从同一个私钥生成）。比特币网络中的所有人都可以通过所提交的公钥和签名进行验证，并确认该交易是否有效，即确认支付者在该时刻对所交易的比特币拥有所有权。比特币私钥就用来保护你的钱包，如果私钥丢失，你将永远失去这笔比特币。
 * Wallet实现：
@@ -242,9 +256,9 @@ public class Wallet {
 # 5. 实现交易（Transaction)
 
 * 既然是一种货币，那么最重要的功能就是用来交易，作为最早出现的加密货币，比特币采用了 UTXO 模型作为其底层存储的数据结构，其全称为 Unspent Transaction output，也就是未被使用的交易输出。
-*  UTXO 模型的加密货币中，某一个账户中的余额并不是由一个数字表示的，而是由当前区块链网络中所有跟当前账户有关的 UTXO 组成的。每一个UTXO就跟现实世界中的一张纸钞类似，一个UTXO只能用一次，如果数额超出则发给自己新的UTXO（自己给自己找零）。
+*  UTXO 模型的加密货币中，某一个账户中的余额并不是由一个数字表示的，而是由当前区块链网络中所有属于当前账户的 UTXO 组成的。每一个UTXO就跟现实世界中的一张纸钞类似，一个UTXO只能用一次，如果数额超出需要支付的价钱则发给自己新的UTXO（自己给自己找零）。
 *  比特币实质上没有存储货币，它有的不过是在一个个交易中记录的数字变化，而这个数字的源头来自矿工。我们挖矿产生的Block实质上是一个账本，其中记录一笔笔交易的记录。每挖出一个Block，就会从无到有生成可以用于交易的value（交易中的数字）给矿工，这便是比特币产生的地方。
-* 交易中每个人用钱包来保管自己的UTXO，以及公私钥。公钥就类似与银行卡号，别人通过指定你的公钥来转账给你。秘钥类似于你的密码，但是又有不同：每次你发起转账，都需要通过你的秘钥结合交易的内容来生成一个签名，通过验证签名与公钥来确认身份。签名与交易是一一对应的，即使暴露了也无妨，但是秘钥是绝对不能泄漏的。
+* 交易中每个人用钱包来保管自己的UTXO，以及公私钥。公钥就类似于银行卡号，别人通过指定你的公钥来转账给你。私钥类似于你的密码，但是又有不同：每次你发起转账，都需要通过你的私钥结合交易的内容来生成一个签名，通过验证签名与公钥来确认身份。签名与交易是一一对应的，即使暴露了也无妨，但是私钥是绝对不能泄漏的。
 * UTXO 其实就是交易的一部分，基于 UTXO 模型的交易由输入和输出两个部分组成:UTXO 模型中的每一笔交易都是由多个交易输入组成的，这些输入其实就是 UTXO + 签名:属于某个人的UTXO加上这个人的签名（由秘钥生成）则可以表示这个人授权使用这个UTXO。每一个交易都可能会有多个输出，每一个输出都可以指向不同的地址，其中也有当前输出包含的值 value，这个value也就是比特币的计量数。
 * 交易实现：
   * Transaction.java
@@ -420,7 +434,7 @@ public class TransactionInput {
      */
     public String transactionOutputId;
     /**
-     * 由交易输入产生了UTXO 未花费交易输出（你要使用的具体钞票）
+     * UTXO 未花费交易输出（你要使用的具体钞票）
      */
     public TransactionOutput UTXO;
 
@@ -570,7 +584,7 @@ public class Wallet {
 
 # 7. 完善其它类
 
-* 在StringUtil工具类中，增加生成和验证数字签名的功能。同时还有根据添加到区块中的交易生成merkleRoot的功能，merkelRoot用于标识区块的唯一性。
+* 在StringUtil工具类中，增加生成和验证数字签名的功能。同时还有根据添加到区块中的交易记录生成merkleRoot的功能，merkelRoot用于标识区块及其中的唯一性。
 ```java
 public class StringUtil {
 
@@ -755,7 +769,7 @@ public class Block {
     }
 }
 ```
-* ZJchain类:加强验证区块链有效功能，在将一个块添加到区块中前进行挖矿计算。
+* ZJchain类:加强验证区块链有效功能，在将一个块添加到区块前进行挖矿计算。
 ```java
 public class ZJChain {                                                                                   
                                                                                                          
@@ -903,7 +917,7 @@ public class ZJChain {
     }                                                                                                    
                                                                                                          
 }                                                                                                        
-```                                                                                                        
+```
 
 
 
@@ -912,8 +926,8 @@ public class ZJChain {
 * 在一个测试类中走一遍基本功能：
 ```java
     public void test2() {
-        //用于验证签名的部分
-        Security.addProvider(new org.bouncycastle.jce.provider.BouncyCastleProvider()); //Setup Bouncey castle as a Security Provider
+        //用于支撑验证签名的功能
+        Security.addProvider(new org.bouncycastle.jce.provider.BouncyCastleProvider()); 
 
         //初始化区块链
         ZJChain zjChain = new ZJChain();
@@ -932,7 +946,7 @@ public class ZJChain {
         ZJChain.genesisTransaction.generateSignature(coinBase.privateKey);
         //初始交易id设为0
         ZJChain.genesisTransaction.transactionId = "0";
-        //因为初始交易是凭空生成，所以很多参数需要手动设置
+        //因为初始交易是凭空生成，与普通交易不同，所以很多参数需要手动设置
         ZJChain.genesisTransaction.outputs.add(new TransactionOutput(
                 ZJChain.genesisTransaction.recipient,
                 ZJChain.genesisTransaction.value,
@@ -966,3 +980,10 @@ public class ZJChain {
 ```
 * 结果：
 ![5N08eT](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/5N08eT.png)
+
+
+
+# 9. 写在最后
+
+* 不得不说，比特币的出现是一次思维的革命。写这个小项目的时候虽然我没有去涉及高深的密码学算法，但是其中蕴含的天才思维逻辑也依旧让我震撼不已。
+* 再想到比特币的创始人至今不知道其真实姓名，此时看这神秘的“中本聪”仿佛有了看金庸笔下的隐世高手的感觉。这或许就是程序员的浪漫吧！
