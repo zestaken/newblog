@@ -25,19 +25,7 @@
     <list default="true" id="6ab367a6-38d4-44bc-a964-5b8ad9c77d6f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Java实现区块链.md" beforeDir="false" afterPath="$PROJECT_DIR$/Java实现区块链.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ZJChain/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ZJChain/Block.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ZJChain/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ZJChain/Transaction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ZJChain/Wallet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ZJChain/Wallet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ZJChain/ZJChain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ZJChain/ZJChain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/StringUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/StringUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ZJChain/BlockTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ZJChain/BlockTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ZJChain/ZJChainTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ZJChain/ZJChainTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Block.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ZJChain.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/StringUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/StringUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/BlockTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/ZJChainTest.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
