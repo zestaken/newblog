@@ -1,61 +1,7 @@
----
-title: LeetCode-队列
-date: 2021-07-31 11:20:59
-tags: [LeetCode, 数据结构]
-categories: 技术笔记
----
-# 代码地址
+package queue;
 
+import java.util.PriorityQueue;
 
-# 1. 合并k个升序链表 23
-
-* [题目](https://leetcode-cn.com/problems/merge-k-sorted-lists/)
----
-给你一个链表数组，每个链表都已经按升序排列。
-
-请你将所有链表合并到一个升序链表中，返回合并后的链表。
-
- 
-
-示例 1：
-```
-输入：lists = [[1,4,5],[1,3,4],[2,6]]
-输出：[1,1,2,3,4,4,5,6]
-解释：链表数组如下：
-[
-  1->4->5,
-  1->3->4,
-  2->6
-]
-将它们合并到一个有序链表中得到。
-1->1->2->3->4->4->5->6
-示例 2：
-
-输入：lists = []
-输出：[]
-示例 3：
-
-输入：lists = [[]]
-输出：[]
-```
-
-提示：
-
-```
-k == lists.length
-0 <= k <= 10^4
-0 <= lists[i].length <= 500
--10^4 <= lists[i][j] <= 10^4
-lists[i] 按 升序 排列
-lists[i].length 的总和不超过 10^4
-```
-
-## Java解法
-
-* 法一：使用[优先队列](https://www.apiref.com/java11-zh/java.base/java/util/PriorityQueue.html)，开始将各个链表的头节点加入优先队列中，优先队列会自动按值大小顺序添加到队列中，之后弹出队列元素，因为链表自身是有序的，弹出的一定是当前最小的元素，之后将弹出元素的下一节点添加到优先队列中，则又会自动排序，直到队列为空时，所有链表的元素都已经添加完了。
-  * 结果：![KM82lW](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/KM82lW.png)
-  * 代码：
-```java
 public class MergeKLists23 {
     /**
      * 创建一个实现Comparable接口的ListNode，作为优先队列的元素
@@ -115,4 +61,3 @@ public class MergeKLists23 {
     }
 
 }
-```
