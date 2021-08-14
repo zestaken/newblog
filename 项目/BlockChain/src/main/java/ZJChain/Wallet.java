@@ -42,15 +42,16 @@ public class Wallet {
 
     /**
      * 计算钱包的总余额
+     *
      * @return
      */
     public float getBalance() {
         float sum = 0;
         //遍历Map集合获取键值对对象
-        for(Map.Entry<String, TransactionOutput> item : ZJChain.UTXOs.entrySet()) {
-            TransactionOutput UTXO =  item.getValue();
+        for (Map.Entry<String, TransactionOutput> item : ZJChain.UTXOs.entrySet()) {
+            TransactionOutput UTXO = item.getValue();
             //检查该UTXO是否属于该钱包
-            if(UTXO.isMine(publicKey)) {
+            if (UTXO.isMine(publicKey)) {
                 //添加到钱包的UTXOs集合中
                 UTXOs.put(UTXO.id, UTXO);
                 sum += UTXO.value;
@@ -61,13 +62,14 @@ public class Wallet {
 
     /**
      * 创建交易，支出
+     *
      * @param _recipient
      * @param value
      * @return
      */
     public Transaction sendFunds(PublicKey _recipient, float value) {
         //检查余额是否足够
-        if(getBalance() < value) {
+        if (getBalance() < value) {
             System.out.println("余额不足，交易终止！");
             return null;
         }
@@ -76,11 +78,11 @@ public class Wallet {
 
         //查找钱包的UTXO，直到总金额达到要支付的金额
         float total = 0;
-        for(Map.Entry<String, TransactionOutput> item : UTXOs.entrySet()) {
+        for (Map.Entry<String, TransactionOutput> item : UTXOs.entrySet()) {
             TransactionOutput UTXO = item.getValue();
             total += UTXO.value;
             inputs.add(new TransactionInput(UTXO.id));
-            if(total >= value) {
+            if (total >= value) {
                 break;
             }
         }
@@ -90,11 +92,11 @@ public class Wallet {
         newTransaction.generateSignature(privateKey);
 
         //将已经使用的UTXO从钱包中移除
-        for(TransactionInput input : inputs) {
+        for (TransactionInput input : inputs) {
             UTXOs.remove(input.transactionOutputId);
         }
 
-        return  newTransaction;
+        return newTransaction;
     }
 
 }

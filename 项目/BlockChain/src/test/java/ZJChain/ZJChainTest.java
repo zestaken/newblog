@@ -10,10 +10,10 @@ public class ZJChainTest {
         //初始化区块链
         ZJChain zjChain = new ZJChain();
         //向区块链中添加10个块
-        for(int i = 0; i < 10; i++) {
+        for (int i = 0; i < 10; i++) {
             //创建新块
             Block block;
-            if(zjChain.blockChain.size() == 0) {
+            if (zjChain.blockChain.size() == 0) {
                 block = new Block("0");
                 block.mineBlock(5);
             } else {
@@ -24,7 +24,7 @@ public class ZJChainTest {
             zjChain.addBlock(block);
         }
 
-        for(Block block : zjChain.blockChain) {
+        for (Block block : zjChain.blockChain) {
             System.out.println("hash: " + block.hash + " prevHash: " + block.prevHash);
         }
         System.out.println("isvalid：" + zjChain.isChainValid());

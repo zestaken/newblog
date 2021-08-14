@@ -28,17 +28,19 @@ public class Block {
 
     /**
      * 计算当前块的哈希值
+     *
      * @return
      * @throws Exception
      */
     public String calculateHash() throws Exception {
         //取消使用data生成hash而使用merkleRoot
-        String calculatedHash = StringUtil.applySha256(prevHash+merkleRoot+timestamp+nonce);
+        String calculatedHash = StringUtil.applySha256(prevHash + merkleRoot + timestamp + nonce);
         return calculatedHash;
     }
 
     /**
      * 挖矿计算
+     *
      * @param difficulty
      */
     public void mineBlock(int difficulty) {
@@ -47,7 +49,7 @@ public class Block {
         //生成目标字符串：此处是包含指定数量（difficulty）个连续的0的字符串
         String target = new String(new char[difficulty]).replace('\0', '0');
         //检查当前块的hash值中从0到difficulty部分是否与target字符串相同，如果不相同，则修改nonce，重新计算hash
-        while(!hash.substring(0, difficulty).equals(target)) {
+        while (!hash.substring(0, difficulty).equals(target)) {
             nonce++;
             try {
                 hash = calculateHash();
@@ -60,14 +62,15 @@ public class Block {
 
     /**
      * 在将交易添加到块时执行交易
+     *
      * @param transaction
      * @return
      */
     public boolean addTransaction(Transaction transaction) {
         //验证交易的有效性
-        if(transaction == null) return false;
-        if(!prevHash.equals("0")) {
-            if(!transaction.processTransaction()) {
+        if (transaction == null) return false;
+        if (!prevHash.equals("0")) {
+            if (!transaction.processTransaction()) {
                 System.out.println("交易处理失败！");
                 return false;
             }

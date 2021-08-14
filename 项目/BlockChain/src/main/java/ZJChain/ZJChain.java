@@ -28,6 +28,7 @@ public class ZJChain {
 
     /**
      * 检查区块链的有效性
+     *
      * @return
      */
     public boolean isChainValid() {
@@ -40,14 +41,14 @@ public class ZJChain {
 
 
         //遍历blockchain，从1开始，保证prevblock的有效性
-        for(int i = 1; i < blockChain.size(); i++) {
+        for (int i = 1; i < blockChain.size(); i++) {
             curBlock = blockChain.get(i);
             prevBlock = blockChain.get(i - 1);
 
 
             try {
                 //检查hash值计算有效性
-                if(!curBlock.hash.equals(curBlock.calculateHash())) {
+                if (!curBlock.hash.equals(curBlock.calculateHash())) {
                     System.out.println("block的hash值计算错误");
                     return false;
                 }
@@ -56,24 +57,24 @@ public class ZJChain {
             }
 
             //检查hash值前后对应关系正确性
-            if(!prevBlock.hash.equals(curBlock.prevHash)) {
+            if (!prevBlock.hash.equals(curBlock.prevHash)) {
                 System.out.println("当前block与前面block的hash值不对应");
                 return false;
             }
 
-            if(!curBlock.hash.substring(0, difficulty).equals(target)) {
+            if (!curBlock.hash.substring(0, difficulty).equals(target)) {
                 //如果不满足难度标准，也无效
                 System.out.println("当前块未满足挖矿难度标准！");
                 return false;
             }
 
             TransactionOutput tempOutput;
-            for(int t = 0; i < curBlock.transactions.size(); t++) {
+            for (int t = 0; i < curBlock.transactions.size(); t++) {
                 Transaction currentTransaction = curBlock.transactions.get(t);
 
                 //检查交易的签名
                 try {
-                    if(!currentTransaction.verifySignature()) {
+                    if (!currentTransaction.verifySignature()) {
                         System.out.println("第" + t + "个交易的签名无效！");
                         return false;
                     }
@@ -82,21 +83,21 @@ public class ZJChain {
                 }
 
                 //检查交易的交易输出额和交易输入额是否相等
-                if(!(currentTransaction.getInputsValue() == currentTransaction.getOutputsValue())) {
+                if (!(currentTransaction.getInputsValue() == currentTransaction.getOutputsValue())) {
                     System.out.println("第" + t + "个交易的交易输出与交易输入额不相等！");
                     return false;
                 }
 
                 //检查交易输入是否正确（交易输入要么来源于初始交易（和矿工），要么来源于其它交易输出）
-                for(TransactionInput input : currentTransaction.inputs) {
+                for (TransactionInput input : currentTransaction.inputs) {
                     tempOutput = tempUTXOs.get(input.transactionOutputId);
 
-                    if(tempOutput == null) {
+                    if (tempOutput == null) {
                         System.out.println("第" + t + "个交易的交易输入不存在！");
                         return false;
                     }
 
-                    if(input.UTXO.value != tempOutput.value) {
+                    if (input.UTXO.value != tempOutput.value) {
                         System.out.println("第" + t + "个交易的交易输入的值无效！");
                         return false;
                     }
@@ -105,27 +106,28 @@ public class ZJChain {
                 }
 
                 //将交易输出加入临时UTXOs
-                for(TransactionOutput output : currentTransaction.outputs) {
+                for (TransactionOutput output : currentTransaction.outputs) {
                     tempUTXOs.put(output.id, output);
                 }
 
-                if(currentTransaction.outputs.get(0).recipient != currentTransaction.recipient) {
+                if (currentTransaction.outputs.get(0).recipient != currentTransaction.recipient) {
                     System.out.println("第" + t + "个交易的交易输出目的方错误！");
                     return false;
                 }
 
-                if(currentTransaction.outputs.get(1).recipient != currentTransaction.sender) {
+                if (currentTransaction.outputs.get(1).recipient != currentTransaction.sender) {
                     System.out.println("第" + t + "个交易的找零的交易输出没有发给发送者！");
                     return false;
                 }
             }
         }
-         System.out.println("区块链有效！");
-         return true;
+        System.out.println("区块链有效！");
+        return true;
     }
 
     /**
      * 向区块链中添加块
+     *
      * @param newBlock
      */
     public void addBlock(Block newBlock) {
@@ -136,6 +138,7 @@ public class ZJChain {
 
     /**
      * 将blockChain转换为json字符串本地存储
+     *
      * @return
      */
     public String toJson() {
@@ -145,6 +148,7 @@ public class ZJChain {
 
     /**
      * 设置挖矿难度
+     *
      * @param difficulty
      */
     public void setDifficulty(int difficulty) {
