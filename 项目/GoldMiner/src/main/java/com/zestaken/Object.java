@@ -10,7 +10,7 @@ public class Object {
     //坐标
     int x;
     int y;
-    //宽高
+    //宽高，把所有物体看作是一个矩形，宽高用于抓取判定
     int width;
     int height;
     //图片

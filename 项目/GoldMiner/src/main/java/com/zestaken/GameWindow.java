@@ -15,9 +15,13 @@ public class GameWindow extends JFrame {
     //创建背景图片类
     Bg bg = new Bg();
     //创建线类
-    Line line = new Line();
+    Line line = new Line(this);
     //创建金块
     Gold gold = new Gold();
+
+    //定义画布，用于实现双缓存
+    //todo 双缓存解决闪动原理
+    Image offScreenImage;
     /**
      * 窗口启动设置
      */
@@ -63,9 +67,19 @@ public class GameWindow extends JFrame {
      * 传入画笔，绘制图片
      */
     public void paint(Graphics g) {
-        bg.paintSelf(g);
-        line.paintSelf(g);
-        gold.paintSelf(g);
+        //初始化实现双缓存的画布，和窗口大小相同
+        offScreenImage = this.createImage(768, 1000);
+
+        //创建属于画布的画笔，调用这个画笔就是向这个画布上绘制
+        Graphics gImage = offScreenImage.getGraphics();
+
+        //将各种图案绘制到画布中
+        bg.paintSelf(gImage);
+        line.paintSelf(gImage);
+        gold.paintSelf(gImage);
+
+        //将画布绘制到窗口中,使用传入的画笔
+        g.drawImage(offScreenImage, 0, 0, null);
     }
 
     public static void main(String[] args) {
