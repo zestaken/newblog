@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 使用swing绘制游戏窗口
@@ -16,8 +18,16 @@ public class GameWindow extends JFrame {
     Bg bg = new Bg();
     //创建线类
     Line line = new Line(this);
-    //创建金块
-    Gold gold = new Gold();
+    //创建一个集合来存储金块，以实现同时出现多个金块
+   List<Object> golds = new ArrayList<Object>();
+   //设置一个静态代码块来初始化金块集合
+    //todo 静态代码块使用研究
+    {
+        //暂时初始化三个金块
+        for(int i = 0; i < 3; i++) {
+            golds.add(new Gold());
+        }
+    }
 
     //定义画布，用于实现双缓存
     //todo 双缓存解决闪动原理
@@ -76,7 +86,10 @@ public class GameWindow extends JFrame {
         //将各种图案绘制到画布中
         bg.paintSelf(gImage);
         line.paintSelf(gImage);
-        gold.paintSelf(gImage);
+        //遍历金块集合，将每个金块绘制出来
+        for(Object gold : golds) {
+            gold.paintSelf(gImage);
+        }
 
         //将画布绘制到窗口中,使用传入的画笔
         g.drawImage(offScreenImage, 0, 0, null);

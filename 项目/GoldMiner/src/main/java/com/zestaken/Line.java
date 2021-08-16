@@ -7,8 +7,8 @@ public class Line {
     int x = 380;
     int y = 180;
     //终点坐标
-    double endx = 500;
-    double endy = 500;
+    int endx = 500;
+    int endy = 500;
     //窗口元素,用于获取窗口中物体元素的宽高从而实现抓取判断
     GameWindow gameWindow;
 
@@ -26,17 +26,23 @@ public class Line {
     }
 
     void logic() {
-        if(endx > gameWindow.gold.x && endx < (gameWindow.gold.x + gameWindow.gold.width)
-            && endy > gameWindow.gold.y && endy < (gameWindow.gold.y + gameWindow.gold.height)) {
-            //检测到红线触碰了物体则红线转到抓取返回状态
-            state = 3;
+        //获取窗口的金块集合元素并遍历，以此判断每个金块
+        for(Object gold : this.gameWindow.golds) {
+            if(endx > gold.x && endx < (gold.x + gold.width)
+                    && endy > gold.y && endy < (gold.y + gold.height)) {
+                //检测到红线触碰了物体则红线转到抓取返回状态
+                state = 3;
+                //使金块标记为已被抓取可以移动
+                gold.flag = true;
+            }
         }
+
     }
 
     void line(Graphics g) {
         //todo 计算机中的坐标轴情况
-        endx = (x + (length * Math.cos(n * Math.PI)));
-        endy = (y + (length * Math.sin(n * Math.PI)));
+        endx = (int) (x + (length * Math.cos(n * Math.PI)));
+        endy = (int) (y + (length * Math.sin(n * Math.PI)));
         //设置颜色为红色
         g.setColor(Color.red);
         //根据始末坐标绘制线
@@ -64,7 +70,7 @@ public class Line {
                 line(g);
                 break;
             case 1:
-                if(length < 500) {
+                if(length < 700) {
                     length += 10;
                     line(g);
                 } else {
@@ -85,6 +91,21 @@ public class Line {
                 if(length > 100) {
                     length -= 10;
                     line(g);
+                    //使金块被抓回
+                    for(Object gold : this.gameWindow.golds) {
+                        //已是被抓取状态的金块才可以移动
+                        if(gold.flag) {
+                            //使金块与线的末端坐标同步以实现与线同步移动的效果
+                            gold.x = endx - 26; //金块使二维图像，设置一定偏移量效果更逼真
+                            gold.y = endy;
+                            if(length <= 100) {
+                                //当线收缩到矿工处时，通过将金块移到窗口外面使金块消失
+                                gold.x = -150;
+                                gold.y = -150;
+                                gold.flag = false;
+                            }
+                        }
+                    }
                 } else {
                     //转到摇摆状态
                     state = 0;

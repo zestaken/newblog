@@ -15,6 +15,8 @@ public class Object {
     int height;
     //图片
     Image img;
+    //判断金块是否被抓取可以移动的状态标记
+    boolean flag = false;
 
     /**
      * 绘制图片
