@@ -17,6 +17,8 @@ public class Object {
     Image img;
     //判断金块是否被抓取可以移动的状态标记
     boolean flag = false;
+    //质量属性，用于影响抓取物体后的线返回速度
+    int m;
 
     /**
      * 绘制图片

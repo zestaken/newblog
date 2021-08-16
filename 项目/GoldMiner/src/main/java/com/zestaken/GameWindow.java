@@ -19,13 +19,26 @@ public class GameWindow extends JFrame {
     //创建线类
     Line line = new Line(this);
     //创建一个集合来存储金块，以实现同时出现多个金块
-   List<Object> golds = new ArrayList<Object>();
+   List<Object> objs = new ArrayList<Object>();
    //设置一个静态代码块来初始化金块集合
     //todo 静态代码块使用研究
     {
         //暂时初始化三个金块
+        for(int i = 0; i < 11; i++) {
+            //按照不同的概率添加不同类型的金块
+            double random = Math.random();
+            if(random < 0.3) {
+                objs.add(new GoldMini());
+            } else if( 0.3 <= random && random < 0.8) {
+                objs.add(new Gold());
+            } else {
+                objs.add(new GoldPlus());
+            }
+
+        }
+        //暂时初始化三个石块
         for(int i = 0; i < 3; i++) {
-            golds.add(new Gold());
+            objs.add(new Rock());
         }
     }
 
@@ -87,8 +100,8 @@ public class GameWindow extends JFrame {
         bg.paintSelf(gImage);
         line.paintSelf(gImage);
         //遍历金块集合，将每个金块绘制出来
-        for(Object gold : golds) {
-            gold.paintSelf(gImage);
+        for(Object obj : objs) {
+            obj.paintSelf(gImage);
         }
 
         //将画布绘制到窗口中,使用传入的画笔
