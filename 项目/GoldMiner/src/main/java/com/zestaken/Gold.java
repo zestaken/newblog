@@ -8,11 +8,13 @@ public class Gold extends Object {
         //出现坐标随机获取，以减少多个金块出现在同一个地方重叠的现象(限制随机范围，以控制金块出现位置)
         //金块出现坐标
         this.x = (int) (Math.random() * 700);
-        this.y = (int) (Math.random() * 550 + 200);
+        this.y = (int) (Math.random() * 650 + 300);
         //金块长宽
         this.width = 52;
         this.height = 52;
         this.m = 30;
+        this.score = 2;
+        this.type = 0;
         //金块图片
         this.img = Toolkit.getDefaultToolkit().createImage("imgs/gold1.gif");
     }
@@ -24,6 +26,7 @@ class GoldMini extends Gold {
         this.width = 36;
         this.height = 36;
         this.m = 15;
+        this.score = 1;
         //金块图片
         this.img = Toolkit.getDefaultToolkit().createImage("imgs/gold0.gif");
     }
@@ -38,6 +41,7 @@ class GoldPlus extends Gold {
         this.width = 105;
         this.height = 105;
         this.m = 60;
+        this.score = 4;
         //金块图片
         this.img = Toolkit.getDefaultToolkit().createImage("imgs/gold2.gif");
     }

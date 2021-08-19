@@ -10,11 +10,17 @@ public class Line {
     //终点坐标
     int endx = 500;
     int endy = 500;
+    //线的钩爪图片
+    Image hook = Toolkit.getDefaultToolkit().getImage("imgs/hook.png");
     //窗口元素,用于获取窗口中物体元素的宽高从而实现抓取判断
     GameWindow gameWindow;
 
     //通过固定线长改变角度来获取不同角度下的横纵坐标来使直线动起来
+    //基本线长
     double length = 100;
+    //最大最小线长
+    double Min_length = 100;
+    double Max_length =850;
     //角度计算量度
     double n = 0;
     //旋转方向，dir为正，顺时针
@@ -41,6 +47,10 @@ public class Line {
 
     }
 
+    /**
+     * 绘制线
+     * @param g 画笔
+     */
     void line(Graphics g) {
         //todo 计算机中的坐标轴情况
         endx = (int) (x + (length * Math.cos(n * Math.PI)));
@@ -49,6 +59,10 @@ public class Line {
         g.setColor(Color.red);
         //根据始末坐标绘制线
         g.drawLine(x, y, (int)endx, (int)endy);
+        g.drawLine(x - 1, y, (int)endx - 1, (int)endy);
+        g.drawLine(x + 1, y, (int)endx + 1, (int)endy);
+        //绘制钩爪,并使线接在钩爪中央
+        g.drawImage(hook, endx - 36, endy - 2, null);
     }
 
     /**
@@ -72,7 +86,7 @@ public class Line {
                 line(g);
                 break;
             case 1:
-                if(length < 700) {
+                if(length < Max_length && endx > 0 && endx < 768) {
                     length += 10;
                     line(g);
                 } else {
@@ -81,7 +95,7 @@ public class Line {
                 }
                 break;
             case 2:
-                if(length > 100) {
+                if(length > Min_length) {
                     length -= 10;
                     line(g);
                 } else {
@@ -90,7 +104,7 @@ public class Line {
                 }
                 break;
             case 3:
-                if(length > 100) {
+                if(length > Min_length) {
                     int m = 0;
                     length -= 10;
                     line(g);
@@ -108,13 +122,34 @@ public class Line {
                                 obj.x = -150;
                                 obj.y = -150;
                                 obj.flag = false;
+                                //增加对应的积分
+                                Bg.totalScore += obj.score;
+                                //关闭药水（不管使用没有药水，确保使用了的药水在收回完毕后失效）
+                                Bg.waterFlag = false;
                             }
+
+                            //如果点击右键使用了药水
+                            if(Bg.waterFlag) {
+                                //对于金块是加速收回效果
+                                if(obj.type == 0) {
+                                    m = 5;
+                                }
+                                //如果是石块则是使石块直接爆破，回到无抓取返回状态（2）
+                                if(obj.type == 1) {
+                                    obj.x = -150;
+                                    obj.y = -150;
+                                    obj.flag = false;
+                                    Bg.waterFlag = false;
+                                }
+                            }
+
                             //通过延时来实现收缩缓慢的视觉效果
                             try {
                                 Thread.sleep(m);
                             } catch (InterruptedException e) {
                                 e.printStackTrace();
                             }
+
                         }
                     }
                 } else {

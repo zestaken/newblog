@@ -14,6 +14,8 @@ import java.util.List;
 //todo JFrame使用研究
 public class GameWindow extends JFrame {
 
+    //5种游戏状态: 未开始（0），运行中(1), 商店(2), 游戏失败（3）， 成功过关（4）
+    static int state = 0;
     //创建背景图片类
     Bg bg = new Bg();
     //创建线类
@@ -21,24 +23,61 @@ public class GameWindow extends JFrame {
     //创建一个集合来存储金块，以实现同时出现多个金块
    List<Object> objs = new ArrayList<Object>();
    //设置一个静态代码块来初始化金块集合
+
     //todo 静态代码块使用研究
     {
-        //暂时初始化三个金块
-        for(int i = 0; i < 11; i++) {
+        //根据关卡不同创建不同的数量
+        int nums = bg.goalScore / 2;
+        if(bg.goalScore > 41) {
+            nums = 41;
+        }
+
+        for(int i = 0; i < nums + 3; ) {
             //按照不同的概率添加不同类型的金块
             double random = Math.random();
-            if(random < 0.3) {
-                objs.add(new GoldMini());
-            } else if( 0.3 <= random && random < 0.8) {
-                objs.add(new Gold());
+            //用于临时存储当前生成的金块
+            Gold gold;
+            if(random < 0.2) {
+                gold = new GoldMini();
+            } else if( 0.2 <= random && random < 0.8) {
+                gold = new Gold();
             } else {
-                objs.add(new GoldPlus());
+                gold = new GoldPlus();
+            }
+            //检测金块是否重叠
+            boolean flag = true;
+            for(Object obj : objs) {
+                if(gold.getRec().intersects(obj.getRec())) {
+                    flag = false;
+                }
+            }
+            //如果没有重叠则添加到集合
+            if(flag) {
+                objs.add(gold);
+                //如果重叠则本次创建失败，i保持原值不变
+                i++;
+            }
+        }
+
+        //根据关卡不同创建不同的数量的石块
+        for(int i = 0; i < nums;) {
+            //临时存储当前创建的石块
+            Rock rock = new Rock();
+            //判断是否重叠
+            //检测金块是否重叠
+            boolean flag = true;
+            for(Object obj : objs) {
+                if(rock.getRec().intersects(obj.getRec())) {
+                    flag = false;
+                }
+            }
+            //如果没有重叠则添加到集合
+            if(flag) {
+                objs.add(rock);
+                //如果重叠则本次创建失败，i保持原值不变
+                i++;
             }
 
-        }
-        //暂时初始化三个石块
-        for(int i = 0; i < 3; i++) {
-            objs.add(new Rock());
         }
     }
 
@@ -65,17 +104,48 @@ public class GameWindow extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
+                switch(state) {
+                    case 0:
+                        //未开始时点击鼠标右键则进入游戏状态
+                        if(e.getButton() == 3) {
+                            state = 1;
+                        }
+                        break;
+                    case 1:
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        break;
+                    default:
+                }
                 //鼠标左键是1，右键是2，滚轮是3
-                if(e.getButton() == 1) {
+                //线在左右摇摆时点击左键伸长
+                if(e.getButton() == 1 && line.state == 0) {
                     //点击鼠标左键，线伸长
                     line.state = 1;
                 }
+                if(e.getButton() == 1 && Bg.nextLevel == true) {
+
+                }
+                //线在抓取返回状态时点击右键使用药水
+                if(e.getButton() == 3 && line.state == 3) {
+                    if(Bg.waterNum > 0) {
+                        Bg.waterNum--;
+                        Bg.waterFlag = true;
+                    }
+                }
             }
         });
+
         //通过无线循环不停的重新绘制来实现动态效果
         while(true) {
             //重新绘制的方法
             repaint();
+            //是否进入下一关
+            nextLevel();
             //设置睡眠时间，降低运动速度
             try {
                 Thread.sleep(10);
@@ -96,16 +166,46 @@ public class GameWindow extends JFrame {
         //创建属于画布的画笔，调用这个画笔就是向这个画布上绘制
         Graphics gImage = offScreenImage.getGraphics();
 
-        //将各种图案绘制到画布中
+        //将各种图案绘制到画布中,先画物体再画线使抓取时线在物体上面
         bg.paintSelf(gImage);
-        line.paintSelf(gImage);
-        //遍历金块集合，将每个金块绘制出来
-        for(Object obj : objs) {
-            obj.paintSelf(gImage);
+
+        //仅在游戏状态才绘制物体和钩子
+        if(state == 1) {
+            //遍历金块集合，将每个金块绘制出来
+            for(Object obj : objs) {
+                obj.paintSelf(gImage);
+            }
+            line.paintSelf(gImage);
         }
 
         //将画布绘制到窗口中,使用传入的画笔
         g.drawImage(offScreenImage, 0, 0, null);
+
+    }
+
+    /**
+     * 判断进入下一关
+     */
+    public void nextLevel() {
+        //仅在游戏状态中才判断是否进入下一关
+        if(state == 1) {
+            if(Bg.totalScore >= bg.goalScore) {
+                //关卡数加一
+                Bg.level++;
+                //进入下一关标志开启，暂停一会儿显示过关信息
+                Bg.nextLevel = true;
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                //todo 释放当前窗口
+                dispose();
+                GameWindow gameWindow = new GameWindow();
+                gameWindow.launch();
+            }
+        }
+
     }
 
     public static void main(String[] args) {
