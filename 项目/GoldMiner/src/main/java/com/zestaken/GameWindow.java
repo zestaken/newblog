@@ -109,34 +109,52 @@ public class GameWindow extends JFrame {
                         //未开始时点击鼠标右键则进入游戏状态
                         if(e.getButton() == 3) {
                             state = 1;
+                            //进入游戏状态时获取开始时间
+                            Bg.startTime = System.currentTimeMillis();
                         }
                         break;
                     case 1:
+                        //游戏状态
+                        //鼠标左键是1，右键是2，滚轮是3
+                        //线在左右摇摆时点击左键伸长
+                        if(e.getButton() == 1 && line.state == 0) {
+                            //点击鼠标左键，线伸长
+                            line.state = 1;
+                        }
+                        if(e.getButton() == 1 && Bg.nextLevel == true) {
+
+                        }
+                        //线在抓取返回状态时点击右键使用药水
+                        if(e.getButton() == 3 && line.state == 3) {
+                            if(Bg.waterNum > 0) {
+                                Bg.waterNum--;
+                                Bg.waterFlag = true;
+                            }
+                        }
                         break;
                     case 2:
+                        //点击鼠标右键确认购买
+                        if(e.getButton() == 3) {
+                            Bg.shop = true;
+                        }
+                        //如果点击鼠标左键进入下一关
+                        if(e.getButton() == 1) {
+                            state = 1;
+                        }
                         break;
                     case 3:
-                        break;
+                        //游戏失败状态去掉break，可以与游戏成功状态进行同样的操作
                     case 4:
+                        //游戏成功或者失败点击鼠标右键重新开始
+                        if(e.getButton() == 3) {
+                            bg.reGame();
+                            line.reGame();
+                            state = 0;
+                        }
                         break;
                     default:
                 }
-                //鼠标左键是1，右键是2，滚轮是3
-                //线在左右摇摆时点击左键伸长
-                if(e.getButton() == 1 && line.state == 0) {
-                    //点击鼠标左键，线伸长
-                    line.state = 1;
-                }
-                if(e.getButton() == 1 && Bg.nextLevel == true) {
 
-                }
-                //线在抓取返回状态时点击右键使用药水
-                if(e.getButton() == 3 && line.state == 3) {
-                    if(Bg.waterNum > 0) {
-                        Bg.waterNum--;
-                        Bg.waterFlag = true;
-                    }
-                }
             }
         });
 
@@ -187,22 +205,33 @@ public class GameWindow extends JFrame {
      * 判断进入下一关
      */
     public void nextLevel() {
-        //仅在游戏状态中才判断是否进入下一关
-        if(state == 1) {
+        //仅在游戏状态中并且倒计时结束才判断是否进入下一关
+        if(state == 1 && bg.gameTime()) {
             if(Bg.totalScore >= bg.goalScore) {
-                //关卡数加一
-                Bg.level++;
-                //进入下一关标志开启，暂停一会儿显示过关信息
-                Bg.nextLevel = true;
-                try {
-                    Thread.sleep(2000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+                //8关则成功通关
+                if(Bg.level == 2) {
+                    //转到游戏成功状态
+                    state = 4;
+                } else {
+                    //关卡数加一
+                    Bg.level++;
+                    //进入下一关标志开启，暂停一会儿显示过关信息
+                    Bg.nextLevel = true;
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    //进入商店状态
+                    state = 2;
                 }
                 //todo 释放当前窗口
                 dispose();
                 GameWindow gameWindow = new GameWindow();
                 gameWindow.launch();
+            } else {
+                //游戏失败,进入游戏失败状态
+                state = 3;
             }
         }
 

@@ -158,4 +158,14 @@ public class Line {
                 }
         }
     }
+
+    /**
+     * 重置线对象的所有属性
+     */
+    void reGame() {
+        n = 0;
+        length = 100;
+        dir = 1;
+        state = 0;
+    }
 }
