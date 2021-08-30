@@ -158,5 +158,103 @@ buildings 按 lefti 非递减排序
 ## Java解法
 
 * 法一：首先先要观察出关键点出现的规律：1 关键点的横坐标必然在建筑物的左右边界上 2 处于建筑物左边界上的关键点的高度就是该建筑的高度，右边界上的则不然，得出建筑包含关键点的概念：大于等于建筑左坐标，小于建筑右坐标；之后使用**扫描线法**，逐个遍历所有的建筑的边界横坐标，并找出包含该边界的建筑物，将该建筑物信息存储。然后在所有包含该边界的建筑物中（遍历）选出最高的高度就是关键点的坐标。在基本思路清晰后，使用**优先队列**减少遍历包含边界的建筑物信息得出最大高度的过程：以高度为比较变量，高度最高的放在队列最前，每次只要确保队列最前的建筑包含边界即可使用其高度作为关键点高度（如果不包含，说明边界已经超过了该建筑所在区域，因为边界是从左到右遍历的，所以该建筑在确定关键点上已经失效（之后的边界它必然也不会包含），可以从队列中移除）。最后要注意每次得到新的关键点时都要确定是否**与以前的关键点高度相同**，如果相同则丢弃这个关键点。
-  * 结果：
+  * 结果：![](https://zjpicture.oss-cn-beijing.aliyuncs.com/img/20210830084011.png)
   * 代码：
+```java
+public class SkyLine218 {
+
+    public List<List<Integer>> getSkyline(int[][] buildings) {
+        //创建优先队列，
+        PriorityQueue<int[]> priorityQueue = new PriorityQueue<int[]>((a, b)->b[1] - a[1]);
+
+        //存储建筑物的边界的集合(建筑物的左右横坐标)
+        List<Integer> boundaries = new ArrayList<>();
+        for(int[] building : buildings) {
+            boundaries.add(building[0]);
+            boundaries.add(building[1]);
+        }
+        //对边界进行排序(从小到大)
+        Collections.sort(boundaries);
+
+        //存储结果天际线的集合
+        List<List<Integer>> result = new ArrayList<>();
+
+        int n = buildings.length;
+        int index = 0;
+        //遍历边界一个个地找到天际线关键点
+        for(int boundary : boundaries) {
+            //从左到右遍历并找到包含该边界的建筑物，并添加到优先队列中去
+            //已经添加了的建筑不会再遍历
+            while(index < n && buildings[index][0] <= boundary) {
+                //将建筑物的右边界和高度整体存入优先队列中
+                priorityQueue.offer(new int[] {buildings[index][1], buildings[index][2]});
+                index++;
+            }
+            //确保优先队列首部的元素包含该边界（即右横坐标大于边界坐标）
+            while(!priorityQueue.isEmpty() && priorityQueue.peek()[0] <= boundary) {
+                priorityQueue.poll();
+            }
+
+            //获取优先队列首部的元素（建筑物）的高度，即最大高度（同时这个高度对应的建筑包含该边界）
+            int maxHeight = priorityQueue.isEmpty() ? 0 : priorityQueue.peek()[1];
+            //如果这个高度没有与前面的高度相同，则和边界一起存入结果集合中
+            if(result.size() == 0 || maxHeight != result.get(result.size() - 1).get(1)) {
+                result.add(Arrays.asList(boundary, maxHeight));
+            }
+        }
+        return result;
+    }
+}
+```
+
+# 3. 滑动窗口最大值 239
+
+*[题目](https://leetcode-cn.com/problems/sliding-window-maximum/)
+---
+给你一个整数数组 nums，有一个大小为 k 的滑动窗口从数组的最左侧移动到数组的最右侧。你只可以看到在滑动窗口内的 k 个数字。滑动窗口每次只向右移动一位。
+
+返回滑动窗口中的最大值。
+
+```
+示例 1：
+
+输入：nums = [1,3,-1,-3,5,3,6,7], k = 3
+输出：[3,3,5,5,6,7]
+解释：
+滑动窗口的位置                最大值
+---------------               -----
+[1  3  -1] -3  5  3  6  7       3
+ 1 [3  -1  -3] 5  3  6  7       3
+ 1  3 [-1  -3  5] 3  6  7       5
+ 1  3  -1 [-3  5  3] 6  7       5
+ 1  3  -1  -3 [5  3  6] 7       6
+ 1  3  -1  -3  5 [3  6  7]      7
+示例 2：
+
+输入：nums = [1], k = 1
+输出：[1]
+示例 3：
+
+输入：nums = [1,-1], k = 1
+输出：[1,-1]
+示例 4：
+
+输入：nums = [9,11], k = 2
+输出：[11]
+示例 5：
+
+输入：nums = [4,-2], k = 2
+输出：[4]
+``` 
+提示：
+```
+1 <= nums.length <= 105
+-104 <= nums[i] <= 104
+1 <= k <= nums.length
+```
+
+## Java解法
+
+* 法一：
+    * 结果：
+    * 代码：
