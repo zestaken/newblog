@@ -245,9 +245,9 @@ public class SkyLine218 {
 
 输入：nums = [4,-2], k = 2
 输出：[4]
-``` 
+
 提示：
-```
+
 1 <= nums.length <= 105
 -104 <= nums[i] <= 104
 1 <= k <= nums.length
@@ -255,6 +255,64 @@ public class SkyLine218 {
 
 ## Java解法
 
-* 法一：
-    * 结果：
+* 法一：使用双端队列存储窗口内容，每次移动窗口就是将双端队列的最前面去掉在尾部加入新元素。将双端队列中的新元素加入优先队列中去，并且记录每个元素对应的下标。每次移动窗口后，获取优先队列的顶部元素，并根据下标判断他是否是窗口中的元素，如果不是则弹出，再取出新的顶部元素，直到属于窗口中为止，这个顶部元素就是当前窗口最大的元素，将其加入结果数组中。
+    * 结果：![M6GE8z](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/M6GE8z.png)
     * 代码：
+```java
+public class SlidingWindowMaximum239 {
+
+    public int[] maxSlidingWindow(int[] nums, int k) {
+
+        //创建存储结果的数组
+        int length  = nums.length;
+        int[] res = new int[length - k + 1];
+        //创建双端队列
+        Deque deque = new LinkedList();
+        //初始化队列，将数组最前面的k位数装入队列
+        for(int i = 0; i < k; i++) {
+            deque.offerLast(nums[i]);
+        }
+
+        //用于比较的栈
+        Stack stack = new Stack();
+        //用优先队列来比较大小,优先队列元素：{num, index},数以及它对应的下标来感知最大值是否已经超出窗口
+        PriorityQueue<int[]> priorityQueue = new PriorityQueue<int[]>((a, b)->b[0] - a[0]);
+        //先计算出队列中的最大值
+        for(int j = 0; j < k; j++) {
+            int temp = (int) deque.pollLast();
+            priorityQueue.offer(new int[]{temp, k - j - 1});
+            //用栈来保存，以便复原双端队列
+            stack.push(temp);
+        }
+        //复原双端队列
+        while (!stack.isEmpty()) {
+            int temp = (int) stack.pop();
+            deque.offerLast(temp);
+        }
+
+        for(int i = 0; k + i <= length; i++) {
+
+            //获取在当前窗口的最大值
+            boolean flag = false; //是否获取到当前窗口最大值的标志
+            while(!flag) {
+                if(i <= priorityQueue.peek()[1] && priorityQueue.peek()[1]  < k + i) {
+                    res[i] = priorityQueue.peek()[0];
+                    flag = true;
+                } else {
+                    priorityQueue.poll();
+                }
+            }
+            //移动窗口
+            if(k + i < length) {
+                deque.pollFirst();
+                deque.offerLast(nums[k + i]);
+            }
+            //将最新加入窗口的元素加入优先队列
+            int temp = (int) deque.getLast();
+            priorityQueue.offer(new int[]{temp, k + i});
+        }
+
+        return res;
+    }
+}
+```

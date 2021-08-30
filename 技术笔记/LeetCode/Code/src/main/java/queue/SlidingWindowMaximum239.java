@@ -18,38 +18,44 @@ public class SlidingWindowMaximum239 {
         for(int i = 0; i < k; i++) {
             deque.offerLast(nums[i]);
         }
+
         //用于比较的栈
         Stack stack = new Stack();
         //用优先队列来比较大小,优先队列元素：{num, index},数以及它对应的下标来感知最大值是否已经超出窗口
         PriorityQueue<int[]> priorityQueue = new PriorityQueue<int[]>((a, b)->b[0] - a[0]);
+        //先计算出队列中的最大值
+        for(int j = 0; j < k; j++) {
+            int temp = (int) deque.pollLast();
+            priorityQueue.offer(new int[]{temp, k - j - 1});
+            //用栈来保存，以便复原双端队列
+            stack.push(temp);
+        }
+        //复原双端队列
+        while (!stack.isEmpty()) {
+            int temp = (int) stack.pop();
+            deque.offerLast(temp);
+        }
+
         for(int i = 0; k + i <= length; i++) {
-            //先计算出队列中的最大值
-            for(int j = 0; j < k; j++) {
-                int temp = (int) deque.pollLast();
-                priorityQueue.offer(new int[]{temp, k + i - j});
-                //用栈来保存，以便复原双端队列
-                stack.push(temp);
-            }
+
             //获取在当前窗口的最大值
             boolean flag = false; //是否获取到当前窗口最大值的标志
             while(!flag) {
-                if(i <= priorityQueue.peek()[1] && priorityQueue.peek()[1]  <= k + i) {
+                if(i <= priorityQueue.peek()[1] && priorityQueue.peek()[1]  < k + i) {
                     res[i] = priorityQueue.peek()[0];
                     flag = true;
                 } else {
                     priorityQueue.poll();
                 }
             }
-            //复原双端队列
-            while (!stack.isEmpty()) {
-                int temp = (int) stack.pop();
-                deque.offerFirst(temp);
-            }
             //移动窗口
             if(k + i < length) {
-                deque.pollLast();
+                deque.pollFirst();
                 deque.offerLast(nums[k + i]);
             }
+            //将最新加入窗口的元素加入优先队列
+            int temp = (int) deque.getLast();
+            priorityQueue.offer(new int[]{temp, k + i});
         }
 
         return res;

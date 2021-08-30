@@ -21,6 +21,10 @@ public class SlidingWindowMaximumTest {
         int k3 = 3;
         int[] expect3 = {3, 3, 2, 5};
 
+        int[] nums4 = {1, -1};
+        int k4 = 1;
+        int[] expect4 = {1, -1};
+
         int[] res1 = slidingWindowMaximum239.maxSlidingWindow(nums1, k1);
         System.out.print("res1: ");
         for(int i = 0; i < res1.length; i++) {
@@ -41,5 +45,12 @@ public class SlidingWindowMaximumTest {
             System.out.print(res3[i]);
         }
         assertArrayEquals(res3, expect3);
+
+        int[] res4 = slidingWindowMaximum239.maxSlidingWindow(nums4, k4);
+        System.out.print("\nres4: ");
+        for(int i = 0; i < res4.length; i++) {
+            System.out.print(res4[i]);
+        }
+        assertArrayEquals(res4, expect4);
     }
 }
