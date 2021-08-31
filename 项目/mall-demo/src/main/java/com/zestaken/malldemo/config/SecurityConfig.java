@@ -6,6 +6,7 @@ import com.zestaken.malldemo.component.RestfulAccessDeniedHandler;
 import com.zestaken.malldemo.dto.AdminUserDetails;
 import com.zestaken.malldemo.mbg.model.UmsAdmin;
 import com.zestaken.malldemo.mbg.model.UmsPermission;
+import com.zestaken.malldemo.service.UmsAdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
