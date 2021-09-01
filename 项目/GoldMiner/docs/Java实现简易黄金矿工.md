@@ -9,7 +9,7 @@ cover: https://zjpicture.oss-cn-beijing.aliyuncs.com/img/20210901222738.png
 # 项目地址
 
 * 点击图片跳转到项目源码地址。
-[![](https://zjpicture.oss-cn-beijing.aliyuncs.com/img/20210901222738.png)]()
+[![](https://zjpicture.oss-cn-beijing.aliyuncs.com/img/20210901222738.png)](https://github.com/zestaken/GoldMiner)
 
 # 游戏玩法
 
