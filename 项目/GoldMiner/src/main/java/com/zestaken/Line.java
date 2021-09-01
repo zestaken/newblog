@@ -1,7 +1,6 @@
 package com.zestaken;
 
 import java.awt.*;
-import java.util.TreeMap;
 
 public class Line {
     //起点坐标
