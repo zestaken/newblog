@@ -209,7 +209,7 @@ public class GameWindow extends JFrame {
         if(state == 1 && bg.gameTime()) {
             if(Bg.totalScore >= bg.goalScore) {
                 //8关则成功通关
-                if(Bg.level == 2) {
+                if(Bg.level == 8) {
                     //转到游戏成功状态
                     state = 4;
                 } else {
