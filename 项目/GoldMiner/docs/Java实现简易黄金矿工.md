@@ -59,6 +59,8 @@ cover: https://zjpicture.oss-cn-beijing.aliyuncs.com/img/20210901222738.png
 
 # 一些技术点
 
+* 游戏界面的绘制通过Java提供的AWT（Abstract Window Toolkit）工具包和AWT的升级版Swing用户界面库来实现。
+
 # 总结
 
 * 虽然是一个非常简单的游戏，但是这之中面向对象开发思想得到了淋漓尽致地体现。此外，今后对这种游戏的开发思路也有了一个大致地了解，以后玩游戏的时候看着游戏种种设计，也有了一个思考其实现方法的方向。
