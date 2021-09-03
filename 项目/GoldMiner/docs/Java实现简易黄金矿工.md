@@ -61,6 +61,44 @@ cover: https://zjpicture.oss-cn-beijing.aliyuncs.com/img/20210901222738.png
 
 * 游戏界面的绘制通过Java提供的AWT（Abstract Window Toolkit）工具包和AWT的升级版Swing用户界面库来实现。
 
+## 双缓存解决图像闪动问题
+
+* 问题出现的原因：因为整个窗口中有多个图像，它们是一次调用`paint`方法一个一个地画上去的，不同图像绘画的时间间隔就导致了闪动问题。
+* 解决问题的思路：用一个新的画布，先将所有的图像都绘制到这个画布上，然后再将这个画布整体绘制到窗口中去，这样就不会有不同图像绘制的间隔时间，从而解决闪动问题。
+* 代码分析
+```java
+
+    //定义画布，用于实现双缓存
+    Image offScreenImage;
+
+    /**
+     * 传入画笔，绘制图片
+     */
+    public void paint(Graphics g) {
+        //初始化实现双缓存的画布，和窗口大小相同
+        offScreenImage = this.createImage(768, 1000);
+
+        //创建属于画布的画笔，调用这个画笔就是向这个画布上绘制
+        Graphics gImage = offScreenImage.getGraphics();
+
+        //将各种图案绘制到画布中,先画物体再画线使抓取时线在物体上面
+        bg.paintSelf(gImage);
+
+        //仅在游戏状态才绘制物体和钩子
+        if(state == 1) {
+            //遍历金块集合，将每个金块绘制出来
+            for(Object obj : objs) {
+                obj.paintSelf(gImage);
+            }
+            line.paintSelf(gImage);
+        }
+
+        //将画布绘制到窗口中,使用传入的画笔
+        g.drawImage(offScreenImage, 0, 0, null);
+
+    }
+```
+
 # 总结
 
 * 虽然是一个非常简单的游戏，但是这之中面向对象开发思想得到了淋漓尽致地体现。此外，今后对这种游戏的开发思路也有了一个大致地了解，以后玩游戏的时候看着游戏种种设计，也有了一个思考其实现方法的方向。

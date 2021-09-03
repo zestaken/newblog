@@ -11,7 +11,6 @@ import java.util.List;
  * 使用swing绘制游戏窗口
  * @author zestaken
  */
-//todo JFrame使用研究
 public class GameWindow extends JFrame {
 
     //5种游戏状态: 未开始（0），运行中(1), 商店(2), 游戏失败（3）， 成功过关（4）
@@ -82,7 +81,6 @@ public class GameWindow extends JFrame {
     }
 
     //定义画布，用于实现双缓存
-    //todo 双缓存解决闪动原理
     Image offScreenImage;
     /**
      * 窗口启动设置
@@ -225,7 +223,6 @@ public class GameWindow extends JFrame {
                     //进入商店状态
                     state = 2;
                 }
-                //todo 释放当前窗口
                 dispose();
                 GameWindow gameWindow = new GameWindow();
                 gameWindow.launch();
