@@ -16,6 +16,7 @@ categories: 项目
 * jieba: jieba库是一款优秀的 Python 第三方中文分词库.[github地址](https://github.com/fxsjy/jieba)
 * PIL: Python图像库PIL(Python Image Library)是python的第三方图像处理库，但是由于其强大的功能与众多的使用人数，几乎已经被认为是python官方图像处理库了。
 * 安装以上库：`pip install wordcloud matplotlib jieba pil`，如果使用pycharm的话，也可以不装，在使用到的时候被报错提醒再装。
+* 最好使用Anaconda安装，然后pycharm中使用Anaconda的解释器，毕竟Anaconda是个包管理器，可以一次安装，多次使用：`conda install -c conda-forge wordcloud jieba`,因为Anaconda原生的库中没有wordcloud 和jieba这两个包，所以要到conda-forge这个库中下载，而matplotlib 和 pil比较通用，直接`conda install matplotlib pil`就行。（我的Anaconda都自带这两个包）
 
 # 针对英文文本简单尝试
 
