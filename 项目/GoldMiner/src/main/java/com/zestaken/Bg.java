@@ -28,7 +28,6 @@ public class Bg {
     //进入购买药水状态
     static boolean shop = false;
 
-    //todo 读取图片方式研究
     Image bg = Toolkit.getDefaultToolkit().getImage("imgs/bg.jpg");
     Image bg1 = Toolkit.getDefaultToolkit().getImage("imgs/bg1.jpg");
     Image peo = Toolkit.getDefaultToolkit().getImage("imgs/peo.png");
@@ -39,7 +38,6 @@ public class Bg {
      * 绘制图片
      * @param g 传入的画笔
      */
-    //todo 画笔绘制图片研究
     void paintSelf(Graphics g) {
         //游戏状态
         g.drawImage(bg1, 0, 0, null);
