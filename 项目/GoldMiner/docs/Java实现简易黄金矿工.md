@@ -60,6 +60,8 @@ cover: https://zjpicture.oss-cn-beijing.aliyuncs.com/img/20210901222738.png
 # 一些技术点
 
 * 游戏界面的绘制通过Java提供的AWT（Abstract Window Toolkit）工具包和AWT的升级版Swing用户界面库来实现。
+* Java Swing绘图时的坐标和平常意义的不太一样：在图形坐标系中，其原点位于构件的左上角，坐标轴沿向下和右的方向增长，小圈代表坐标，正方形代表像素，坐标位于像素之间。
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/img/20210905114505.png)
 
 ## 双缓存解决图像闪动问题
 
@@ -98,6 +100,7 @@ cover: https://zjpicture.oss-cn-beijing.aliyuncs.com/img/20210901222738.png
 
     }
 ```
+
 
 # 总结
 

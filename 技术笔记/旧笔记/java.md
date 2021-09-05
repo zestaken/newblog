@@ -815,6 +815,8 @@ public class 类名称 {
    爷爷类的静态初始化(静态属性初始化) >  父类静态初始化块(静态属性初始化）> 子类静态初始化块（静态属性初始化）> 爷爷类普通初始化块(普通属性初始化)>爷爷类构造器>
    父类普通初始化块(普通属性初始化)>父类构造器>
    子类普通初始化块(普通属性初始化)>子类构造器
+   
+* 初始化块常用于动态给对象的属性赋值（有些对象属性的赋值不是固定的，需要通过一些算法现场运算得到）
 
 ## this
 
@@ -1702,9 +1704,9 @@ public abstract class Hero { //声明为抽象类
 ## 内部类
 
 * 在一个类内部声明的类就是**内部类**，相应的外面的类为**外部类**。
-* 内部类对同一个包中的其他类隐藏；
+* 内部类**对同一个包中的其他类隐藏**；
 * 内部类方法可以访问定义这个类的类的作用域中的成员变量和成员方法，包括原本的**私有变量和方法**。
-* 内部类**不可以声明类变量和类方法**（即内部类的成员变量和方法不可以用static来修饰）
+* 内部类**不可以声明类变量和类方法**（即内部类的成员变量和方法**不可以用static来修饰**）
 
 ### 非静态内部类
 
@@ -1769,7 +1771,7 @@ public class Hero {
             if(hp==0){
                 Hero.battleWin();
                  
-                //静态内部类不能直接访问外部类的对象属性
+                //静态内部类不能直接访问外部类的对象属性（非静态）
                 System.out.println(name + " win this game");
             }
         }
@@ -1924,7 +1926,7 @@ public interface Mortal {
 
 * **异常对象**：是派生于Throwable类的类实例。
 * **异常的层次结构**：
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20201015184846.jpg)
+  ![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20201015184846.jpg)
     * 所有的异常类都是由**Throwable类**继承而来，Throwable类属于java.lang类，不需要import即可使用。
     * **Error**类层次结构：描述了java运行时的系统内部错误和资源耗尽错误，不能人工处理的，一般也不要求处理。
     * **Exception**类层次结构：是设计程序时主要关注的异常。
@@ -2010,7 +2012,7 @@ class FileFormatException extends IOException {
     ​```java
         * 还可以用一个catch语句捕获多个异常类型，前提是这些异常类型彼此之间不存在子类关系。如：
     ​```java
-
+    
     try {
         //code that might throw exceptions
     }
@@ -2809,7 +2811,7 @@ public class WriterTest {
 
 * 同一个网络中的计算机在进行连接和通信时需要遵守一定的**规则**，这些规则被称为网络通信协议，它对数据的传输格式，速率，步骤等做了统一规定。
 * TCP/IP协议：传输控制协议/因特网互联协议（Transmission Control Protocol/Internet Protocol）是Internet最基本和广泛的协议，它定义了计算机如何炼乳因特网以及数据在它们之间传输的标准。它包含了一系列协议，并且采用了**4层分层模型**，每一层都呼叫它的下一层所提供的协议来完成自己的需求。
-![20180930155137505](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/20180930155137505.jpeg)
+  ![20180930155137505](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/20180930155137505.jpeg)
   * 链路层：用于定义物理传输通道，通常是对某些网络连接设备的驱动协议。
   * 网络层：网络层是协议的核心，它主要用于将传输的数据进行分组并将分组后的数据放松到目标计算机或者网络。
   * 运输层：主要用于网络程序之间的通信（可以用TCP协议，也可以使用UDP协议）。
@@ -3123,7 +3125,6 @@ public static <T> T requireNonNull(T obj,String message) {
 *` http://www.socs.uts.edu.au:80/MosaicDocs-old/url-primer.html`
 * 通常，URL 可分成几个部分。上面的 URL 示例指示使用的**协议**为 http （超文本传输协议）并且该信息驻留在一台名为 www.socs.uts.edu.au 的**主机**上。主机上的信息名称为 /MosaicDocs-old/url-primer.html。主机上此名称的准确含义取决于协议和主机。该信息一般存储在文件中，但可以随时生成。该 URL 的这一部分称为**路径**部分。URL 可选择指定一个“**端口**”，它是用于建立到远程主机 TCP 连接的端口号。如果未指定该端口号，则使用协议默认的端口。
 * `public String getPath()`:获取此 URL 的路径部分。返回：此 URL 的路径部分，如果没有路径，则返回一个空字符串
-
 
 
 

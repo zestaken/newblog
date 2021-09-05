@@ -23,7 +23,7 @@ public class GameWindow extends JFrame {
    List<Object> objs = new ArrayList<Object>();
    //设置一个静态代码块来初始化金块集合
 
-    //todo 静态代码块使用研究
+    //初始化块动态给对象属性赋值
     {
         //根据关卡不同创建不同的数量
         int nums = bg.goalScore / 2;
@@ -97,7 +97,6 @@ public class GameWindow extends JFrame {
         //点击右上角的X可以关闭窗口
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        //todo 监听鼠标动作
         addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {

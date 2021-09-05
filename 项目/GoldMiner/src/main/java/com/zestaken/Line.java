@@ -51,7 +51,6 @@ public class Line {
      * @param g 画笔
      */
     void line(Graphics g) {
-        //todo 计算机中的坐标轴情况
         endx = (int) (x + (length * Math.cos(n * Math.PI)));
         endy = (int) (y + (length * Math.sin(n * Math.PI)));
         //设置颜色为红色

@@ -19,7 +19,7 @@ public class Gold extends Object {
         this.img = Toolkit.getDefaultToolkit().createImage("imgs/gold1.gif");
     }
 }
-//todo 一个文件中多个类的应用
+//一个文件中多个类的应用，更方便简洁
 class GoldMini extends Gold {
     GoldMini() {
         //重置一些参数
