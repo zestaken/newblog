@@ -2915,10 +2915,15 @@ public class WriterTest {
 
 ## 集合概述
 
-* 集合是java提供的一种容器，可以用来存储多个数据。
+* 集合是java提供的一种容器，可以用来存储多个数据，主要是为常用的数据结构服务。
 * 集合与数组的区别：
   * 集合的长度是可变的；
   * 集合存储的都是**对象**，而且对象的类型可以不一致。
+* 集合的是以接口与实现分离的思想设计的，所以我们经常创建接口的实现类的对象，而以接口类型去接受这个对象，如：`Map<Double, Integer> hashMap = new HashMap<>();`
+
+## 集合接口的框架
+
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/img/20210905203855.png)
 
 ## 单列集合的框架
 
@@ -2970,7 +2975,7 @@ coll.clear();
 ## Iterator接口
 
 * 迭代：获取Collection集合中元素的通用方法。
-* 全称:`java.util.Iterator           ，即实现迭代的迭代器。
+* 全称:`java.util.Iterator`，即实现迭代的迭代器。
 * `boolean hasNext()`:判断集合中还有没有下一个元素，有则返回true。
 * `E next()`；取出集合中的下一个元素。
 * 获取Iterator接口的实现类对象方法：
@@ -2999,7 +3004,47 @@ for(Object i : coll) {
 }
 ```
 
+## 主要具体集合
+
+### 链表
+
+* `java.util.LinkedList<E>`:有序存储元素，支持在元素中间插入和删除。
+* 链表随机存取的效率很低（即根据位置取出元素速度慢）
+* 实现的是`List`接口
+
+### 数组列表
+
+* `java.util.ArrayList`<E>`:封装了一个动态再分配的对象数组（长度可动态变化的数组）
+* 实现`List`接口
+
+### 散列集
+
+* `java.util.HashSet<E>`:实现哈希表的集合，可以快速查看或取出某个元素值。元素是无序存储的。
+* 实现`Set`接口
+
+### 树集
+
+* `java.util.TreeSet<E>`:树集支持快速查找或取出某个元素值。同时树集中的元素是按照某种规定的顺序存储的（不是添加时的顺序，而是添加后按照某种顺序进行的自动排序）
+* 实现`Set`接口。
+
+### 双端队列
+
+* 双端队列允许再队列的头部或尾部添加或删除元素。双端队列的接口为`java.util.Deque<E>`。
+* `java.util.ArrayDeque<E>`:底层用数组实现了双端队列，实现了`Deque`接口。
+* `java.util.LinkedList<E>`：虽然是链表，但是因为是双向链表，所以也是双端队列，同时也实现了`Deque`接口
+
+### 优先队列
+
+* `java.util.PriorityQueue`:也是双端队列，但是它通过底层的堆结构实现了在队列顶部的始终是队列中的最小（这个最值可以由自定义的比较器Comparator对象来得出，通过lambda表达式等来定义这个比较器Comparator对象）元素。
+
+### 映射
+
+* 映射用来存储键值对，映射数据结构用`java.util.Map<K, V>`接口来描述。
+* `java.util.TreeMap<K, V>`: 实现了`Map`接口，通过按照键的顺序将元素组织为一颗搜索树来实现通过键查找元素，元素是有顺序的组织的。
+* `java.util.HashMap<K, V>`:实现了`Map`接口，通过哈希散列对键进行组织，从而保证能根据键的值查找元素。元素是无序组织的。
+
 # Java的API
+
 ---
 实在是太多了，可以在需要时查看API的[官方文档](https://docs.oracle.com/en/java/javase/15/docs/api/index.html)或者[在线中文文档](https://tool.oschina.net/apidocs/apidoc?api=jdk-zh)
 
