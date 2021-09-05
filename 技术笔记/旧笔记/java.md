@@ -221,8 +221,9 @@ categories: 技术笔记
 
 * **判断两个字符串是否相同**：`s.equals(s1)`.
 
-  * `==`用于对象之间，只会判断引用的是否是同一个对象，不会管内容是否相同;
+  * `==`用于对象之间，只会判断引用的是否是同一个对象，不会管内容是否相同，正常`==`只用于基本类型的比较;
   * 而`equal()`判断是否相同的依据是它们的内容是否相同。
+  * 只有`String`类的`equals`才是比较内容，一般类的`equals`方法继承自`Object`类，都是比较引用的是否是同一个对象（比如说`StringBuffer`类和`StringBuilder`类的该方法就不是比较内容的）。
 
 * **获得字符串的子串**：`s.substring(2,4)`或者`s.substring(2)`,括号中是字符的索引，单独的2代表从索引为2以后开始的子串，但是（2，4）代表从索引为2字符以后开始，到索引为4字符之前。
 
@@ -1346,7 +1347,7 @@ public class ADHero extends Hero implements AD{ //ADHero是从Hero继承而来�
 * lambda表达式的重点是使代码延迟执行。这种延迟执行可以用于：
   1.  在一个单独的线程中运行代码；
   2.  多次运行代码；
-  3.  在算法的适当位置执行代码等。
+  3.  在算法的适当位置执行代码（如比较的方法）等。
 ```java
 
 //多个参数
@@ -1999,30 +2000,31 @@ class FileFormatException extends IOException {
     }
 ```
 * **捕获多个异常**：在一个try语句块中可以捕获多个异常类型，并对不同的异常类型做出不同的处理。例如：
-    ```java
-    try {
-        //code that might throw exceptions
-    }
-    catch (FileNotFoundException e) {
-        //emergency action for missing files
-    } 
-    catch (IOException e) { //父类异常必须放在子类异常后面，否则子类异常就失去作用了
-        //emergency action for all other I/O problems
-    }
-    ​```java
-        * 还可以用一个catch语句捕获多个异常类型，前提是这些异常类型彼此之间不存在子类关系。如：
-    ​```java
-    
-    try {
-        //code that might throw exceptions
-    }
-    catch (FileNotFoundException e | UnknownHostException e) { //同时捕获多个异常
-        //emergency action for missing files or unknown hosts
-    } 
-    catch (IOException e) {
-        //emergency action for I/O problems
-    }
-    ```
+
+```java
+try {
+//code that might throw exceptions
+}
+catch (FileNotFoundException e) {
+//emergency action for missing files
+} 
+catch (IOException e) { //父类异常必须放在子类异常后面，否则子类异常就失去作用了
+//emergency action for all other I/O problems
+}
+```
+* 还可以用一个catch语句捕获多个异常类型，前提是这些异常类型彼此之间不存在子类关系。如：
+```java
+
+try {
+//code that might throw exceptions
+}
+catch (FileNotFoundException e | UnknownHostException e) { //同时捕获多个异常
+//emergency action for missing files or unknown hosts
+} 
+catch (IOException e) {
+//emergency action for I/O problems
+}
+```
 * **再次抛出异常**：可以在catch语句中仅记录一个异常（即*不对该异常对象做修改*），之后再将这个异常重新抛出。此时可以在方法上重新加上`throws`关键字，指明抛出的异常类型。示例：
 ```java
 try {
@@ -2051,6 +2053,7 @@ finally {
     in.close();
 }
 ```
+
 * 还可以将两个try嵌套，内层try确保关闭资源，外层try语句确保报告错误。示例：
 ```java
 InputStream in = ...;
@@ -2967,7 +2970,7 @@ coll.clear();
 ## Iterator接口
 
 * 迭代：获取Collection集合中元素的通用方法。
-* 全称:`java.util.Iterator`接口，即实现迭代的迭代器。
+* 全称:`java.util.Iterator           ，即实现迭代的迭代器。
 * `boolean hasNext()`:判断集合中还有没有下一个元素，有则返回true。
 * `E next()`；取出集合中的下一个元素。
 * 获取Iterator接口的实现类对象方法：
