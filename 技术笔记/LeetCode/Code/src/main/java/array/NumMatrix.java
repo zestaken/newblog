@@ -16,16 +16,10 @@ public class NumMatrix {
     }
 
     public int sumRegion(int row1, int col1, int row2, int col2) {
-        for(int i = 0; i < partialSum.length; i++) {
-            System.out.println();
-            for(int j = 0; j < partialSum[0].length; j++) {
-                System.out.print(partialSum[i][j] + " ");
-            }
-        }
         int sum = 0;
         //逐行扫描，每一行依次用前缀和相减计算中间和
         for(int i = row1; i <= row2; i++) {
-            sum += (partialSum[i][col1 + 1] - partialSum[i][col2]);
+            sum += (partialSum[i][col2 + 1] - partialSum[i][col1]);
         }
         return sum;
     }

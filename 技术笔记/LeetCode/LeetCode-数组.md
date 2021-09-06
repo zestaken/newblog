@@ -777,4 +777,32 @@ n == matrix[i].length
 
 ## Java解法
 
-* 
+* 法一：一维前缀和叠加，设置一个二维的前缀和数组，前缀和数组的每一行，都是当行数组的一维前缀和数组。
+  * 结果：![](https://zjpicture.oss-cn-beijing.aliyuncs.com/img/20210906220738.png)
+  * 代码： 
+```java
+    private int[][] partialSum;
+    public NumMatrix(int[][] matrix) {
+        //初始化前缀和数组
+        partialSum = new int[matrix.length][matrix[0].length + 1];
+        //计算前缀和
+        for(int i = 0; i < matrix.length; i++) {
+            for(int j = 0; j < matrix[0].length; j++) {
+                partialSum[i][j+1] = partialSum[i][j] + matrix[i][j];
+            }
+        }
+
+    }
+
+    public int sumRegion(int row1, int col1, int row2, int col2) {
+        int sum = 0;
+        //逐行扫描，每一行依次用前缀和相减计算中间和
+        for(int i = row1; i <= row2; i++) {
+            sum += (partialSum[i][col2 + 1] - partialSum[i][col1]);
+        }
+        return sum;
+    }
+```
+* 法二：二维前缀和（积分图）
+  * 结果：
+  * 代码：
