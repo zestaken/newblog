@@ -9,30 +9,52 @@ public class ReconstructItinerary332 {
         Map<String, PriorityQueue<String>> hashMap = new HashMap<>();
         //临时存储产生站的顺序的队列
         Queue<String> queue = new LinkedList<>();
+
         //遍历票集合，初始化哈希集合
         for(List<String> ticket : tickets) {
-            hashMap.getOrDefault(ticket.get(0), new PriorityQueue<String>()).offer(ticket.get(1));
-        }
-        //从"JFK"站开始，一次寻找字典排序最小的下一个站，然后存储到队列中
-        String firstStop = "JFK";
-        String startStop = new String();
-        for (int i = 0; queue.size() > tickets.size();) {
-            System.out.println(startStop);
-            if(i == 0) {
-                queue.offer(firstStop);
-                startStop = new String(hashMap.get(firstStop).poll());
-                queue.offer(startStop);
-                i++;
+            if(hashMap.containsKey(ticket.get(0))) {
+                hashMap.get(ticket.get(0)).offer(ticket.get(1));
             } else {
-                startStop = hashMap.get(startStop).poll();
-                queue.offer(startStop);
+                PriorityQueue<String> temp = new PriorityQueue<>();
+                temp.offer(ticket.get(1));
+                hashMap.put(ticket.get(0), temp);
             }
         }
-        for(String res : queue) {
-            System.out.println(res);
+        System.out.println("---");
+        System.out.println(hashMap.toString());
+        System.out.println("----");
+
+        //从"JFK"站开始，依次寻找字典排序最小的下一个站，然后存储到队列中
+        String startStop = "JFK";
+        String nextStop = new String();
+        queue.offer(startStop);
+        ArrayList<String> strings = new ArrayList<>();
+        while(queue.size() <= tickets.size()) {
+            boolean flag = false;
+                do {
+                        if(hashMap.get(startStop).isEmpty()) {
+                            flag = true;
+                            break;
+                        } else {
+                            nextStop = hashMap.get(startStop).poll();
+                            strings.add(nextStop);
+                        }
+                } while (!(hashMap.containsKey(nextStop)));
+                if(flag) {
+                    hashMap.get(startStop).addAll(strings);
+                    for(String string : strings) {
+                        queue.offer(string);
+                    }
+                } else {
+                    strings.remove(strings.size() - 1);
+                    hashMap.get(startStop).addAll(strings);
+                    strings.clear();
+                    startStop = nextStop;
+                    queue.offer(startStop);
+                }
         }
-        List<String> res = (List<String>) queue;
-        return res;
+
+        return (List<String>) queue;
     }
 
 }
