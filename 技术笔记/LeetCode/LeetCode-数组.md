@@ -712,32 +712,28 @@ numArray.sumRange(0, 5); // return -3 ((-2) + 0 + 3 + (-5) + 2 + (-1))
 
 ## Java解法
 
-* 法一：构造一个前缀和数组，存储每个位置对应的前缀之后，以后计算中间的和，只需要使用两个前缀和相减即可。虽然感觉构造一个前缀和数组时间复杂度很大，但是可以一次计算，永久使用。（既然他要用一个数组来构造一个对象，想必也是为了这个目的）
-  * 结果：![R0DBL4](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/R0DBL4.png)
+* 法一：构造一个前缀和数组，存储每个位置对应的前缀之后，以后计算中间的和，只需要使用两个前缀和相减即可。虽然感觉构造一个前缀和数组时间复杂度很大，但是可以一次计算，永久使用。（既然他要用一个数组来构造一个对象，想必也是为了这个目的）注意，为了防止越界而使前缀和数组和源数组向后错一位。
+  * 结果：![1293N6](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/1293N6.png)
   * 代码：
 ```java
 public class NumArray {
 
     private int[] partialSum;
     public NumArray(int[] nums) {
-        partialSum = new int[nums.length];
+        //初始默认值为0
+        partialSum = new int[nums.length + 1];
         //构造前缀和数组
         for(int i = 0; i < nums.length;i++) {
-            int sum = 0;
-            for( int j = i; j >= 0; j--) {
-                sum += nums[j];
-            }
-            partialSum[i] = sum;
+            //向后推一位存储
+            partialSum[i + 1] = partialSum[i] + nums[i];
         }
     }
 
     public int sumRange(int left, int right) {
-        //左边为0 ，直接就是第right个前缀和
-        if(left == 0) {
-            return partialSum[right];
-        }
-        //两边相减得到中间的和
-        return partialSum[right] - partialSum[left - 1];
+        //两边相减得到中间的和，因为前缀和数组向后推了一位，所以下标也要向后推一位
+        //正常是right - (left - 1)
+        //向后推一位的目的是防止计算第一位的前缀时超出边界
+        return partialSum[right + 1] - partialSum[left];
     }
 }
 ```
