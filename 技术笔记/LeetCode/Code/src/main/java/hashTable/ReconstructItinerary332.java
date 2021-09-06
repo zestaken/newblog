@@ -41,10 +41,10 @@ public class ReconstructItinerary332 {
                         }
                 } while (!(hashMap.containsKey(nextStop)));
                 if(flag) {
-                    hashMap.get(startStop).addAll(strings);
                     for(String string : strings) {
                         queue.offer(string);
                     }
+                    strings.clear();
                 } else {
                     strings.remove(strings.size() - 1);
                     hashMap.get(startStop).addAll(strings);

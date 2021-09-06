@@ -1,5 +1,6 @@
 package array;
 
+//304
 public class NumMatrix {
 
     private int[][] partialSum;
