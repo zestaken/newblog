@@ -676,3 +676,68 @@ arr[i]是 [0, 1, ..., arr.length - 1]的一种排列。
         return count;
     }
 ```
+
+# 11. 区域和检索 - 数组不可变 303
+
+* [题目](https://leetcode-cn.com/problems/range-sum-query-immutable/)
+---
+给定一个整数数组 nums，求出数组从索引 i 到 j（i ≤ j）范围内元素的总和，包含 i、j 两点。
+实现 NumArray 类：
+```
+NumArray(int[] nums) 使用数组 nums 初始化对象
+int sumRange(int i, int j) 返回数组 nums 从索引 i 到 j（i ≤ j）范围内元素的总和，包含 i、j 两点（也就是 sum(nums[i], nums[i + 1], ... , nums[j])）
+```
+示例：
+```
+输入：
+["NumArray", "sumRange", "sumRange", "sumRange"]
+[[[-2, 0, 3, -5, 2, -1]], [0, 2], [2, 5], [0, 5]]
+输出：
+[null, 1, -1, -3]
+
+解释：
+NumArray numArray = new NumArray([-2, 0, 3, -5, 2, -1]);
+numArray.sumRange(0, 2); // return 1 ((-2) + 0 + 3)
+numArray.sumRange(2, 5); // return -1 (3 + (-5) + 2 + (-1)) 
+numArray.sumRange(0, 5); // return -3 ((-2) + 0 + 3 + (-5) + 2 + (-1))
+```
+提示：
+
+```
+0 <= nums.length <= 104
+-105 <= nums[i] <= 105
+0 <= i <= j < nums.length
+最多调用 104 次 sumRange 方法
+```
+
+## Java解法
+
+* 法一：构造一个前缀和数组，存储每个位置对应的前缀之后，以后计算中间的和，只需要使用两个前缀和相减即可。虽然感觉构造一个前缀和数组时间复杂度很大，但是可以一次计算，永久使用。（既然他要用一个数组来构造一个对象，想必也是为了这个目的）
+  * 结果：![R0DBL4](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/R0DBL4.png)
+  * 代码：
+```java
+public class NumArray {
+
+    private int[] partialSum;
+    public NumArray(int[] nums) {
+        partialSum = new int[nums.length];
+        //构造前缀和数组
+        for(int i = 0; i < nums.length;i++) {
+            int sum = 0;
+            for( int j = i; j >= 0; j--) {
+                sum += nums[j];
+            }
+            partialSum[i] = sum;
+        }
+    }
+
+    public int sumRange(int left, int right) {
+        //左边为0 ，直接就是第right个前缀和
+        if(left == 0) {
+            return partialSum[right];
+        }
+        //两边相减得到中间的和
+        return partialSum[right] - partialSum[left - 1];
+    }
+}
+```
