@@ -212,23 +212,6 @@ for(char temp : address.toCharArray()) {
   * 这其中也要注意一个小细节，用于接收值的变量是每一次循环都要重新声明的，所以foreach循环中的临时变量只能现场声明，不能用之前声明好的。
 * 遍历集合的情况，偷个懒，等遇到了再说。。。
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ---
 
 # 1. IP 地址无效化 1108 
@@ -392,6 +375,36 @@ for(char temp : address.toCharArray()) {
         assert res.equals(expRes) : res;
     }
 ```
+
+# 2. 有效的字母异位词 242 
+
+* [题目](https://leetcode-cn.com/problems/valid-anagram/)
+---
+给定两个字符串 s 和 t ，编写一个函数来判断 t 是否是 s 的字母异位词。
+注意：若 s 和 t 中每个字符出现的次数都相同，则称 s 和 t 互为字母异位词。
+示例 1:
+```
+输入: s = "anagram", t = "nagaram"
+输出: true
+```
+示例 2:
+```
+输入: s = "rat", t = "car"
+输出: false
+```
+提示:
+```
+1 <= s.length, t.length <= 5 * 104
+s 和 t 仅包含小写字母
+```
+
+## Java解法
+
+* 法一：
+  * 结果：
+  * 代码：
+
+
 
 
 
