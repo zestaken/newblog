@@ -400,7 +400,7 @@ s 和 t 仅包含小写字母
 
 ## Java解法
 
-* 法一：
+* 法一：字母异位代表着相同字母的出现次数一样。用一个26位的数组存储字母出现的次数（下标对应字母），遍历一次第一个字符串，存储各个字母的次数，然后再遍历第二个字符串，减去各个字母的次数，最后的数组值全为0，则说明字母异位。
   * 结果：![BuLLAf](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/BuLLAf.png)
   * 代码：
 ```java
@@ -458,9 +458,45 @@ public class ValidAnagram242 {
 
 ## Java解法
 
-* 法一：
-  * 结果：
+* 法一：关键在于确定字母之间的映射关系，然后检测这种关系是否矛盾。字母之间的映射关系是通过字母出现的位置来决定的，字母第一次出现时就与同样位置的另一个字符相映射，如果之后这个字母再次出现，则对应的位置应还是哪个字符，也就是说，那个字符第一次出现的位置应相同。（本题偷懒使用两个哈希表实现，这样还不如直接用一个哈希表中将字母映射关系存好，直接对比。其实用26位的字符数组用以上思路应该也能做出来）
+  * 结果：![](https://zjpicture.oss-cn-beijing.aliyuncs.com/img/20210907223838.png)
   * 代码：
+```java
+public class IsomorphicStrings205 {
+    public boolean isIsomorphic(String s, String t) {
+        //将字符串转化为字符数组，便于遍历
+        char[] s1 = s.toCharArray();
+        char[] s2 = t.toCharArray();
+        //创建两个哈希集合，存储字符串中字符值及其第一次出现的位置
+        Map<Character, Integer> map1 = new HashMap<>();
+        Map<Character, Integer> map2 = new HashMap<>();
+
+        //遍历两个字符数组，同时记录位置，如果对应位置的字符的第一次出现的位置不同，则不是同构字符串
+        for(int i = 0; i < s1.length; i++) {
+            //用两个变量记录对应位置字母第一次出现的位置
+            int pos1 = i;
+            int pos2 = i;
+            //如果当前位置的字母是第一次出现，则存入哈希表，如果不是，则取出第一次出现位置
+            if(!map1.containsKey(s1[i])) {
+                map1.put(s1[i], i);
+            } else {
+               pos1 = map1.get(s1[i]);
+            }
+
+            if(!map2.containsKey(s2[i])) {
+                map2.put(s2[i], i);
+            } else {
+                pos2 = map2.get(s2[i]);
+            }
+            //如果两个字母第一次出现的位置不同，则不是同构字符串
+            if(pos1 != pos2) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+```
 
 
 
