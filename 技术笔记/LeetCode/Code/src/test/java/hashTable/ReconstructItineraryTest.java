@@ -67,7 +67,8 @@ public class ReconstructItineraryTest {
         List<String> res2 = reconstructItinerary.findItinerary(input2);
         assertEquals(expect2, res2);
 
-//        List<String> res3 = reconstructItinerary.findItinerary(input3);
-//        assertEquals(expect3, res3);
+        //todo 漏掉一些站点？
+        List<String> res3 = reconstructItinerary.findItinerary(input3);
+        assertEquals(expect3, res3);
     }
 }
