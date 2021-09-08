@@ -498,6 +498,75 @@ public class IsomorphicStrings205 {
 }
 ```
 
+# 4. 回文子串 647
+
+* [题目](https://leetcode-cn.com/problems/palindromic-substrings/)
+---
+给你一个字符串 s ，请你统计并返回这个字符串中 回文子串 的数目。
+回文字符串 是正着读和倒过来读一样的字符串。
+子字符串 是字符串中的由连续字符组成的一个序列。
+具有不同开始位置或结束位置的子串，即使是由相同的字符组成，也会被视作不同的子串。
+```
+示例 1：
+
+输入：s = "abc"
+输出：3
+解释：三个回文子串: "a", "b", "c"
+示例 2：
+
+输入：s = "aaa"
+输出：6
+解释：6个回文子串: "a", "a", "a", "aa", "aa", "aaa"
+```
+提示：
+
+1 <= s.length <= 1000
+s 由小写英文字母组成
+
+## Java解法
+
+* 法一：回文子串的本质就是前后对称，对称的关键就是对称轴。所以我们以每一个元素确认当前对称轴，然后找寻对称轴前后的元素是否相同，来判断是否是回文子串。需要注意的是，奇数个元素和偶数个元素的对称的对称轴情况不同，需要区别处理。（应该可以通过除法，取余等操作将两个遍历循环合并）
+  * 结果：![](https://zjpicture.oss-cn-beijing.aliyuncs.com/img/20210908095417.png)
+  * 代码：
+```java
+public class PalindromicSubstrings647 {
+
+    public int countSubstrings(String s) {
+
+        //将字符串转化为字符数组
+        char[] s1 = s.toCharArray();
+        int length = s1.length;
+        int count = 0;
+
+        //遍历字符数组，用当前元素确认中轴，找寻前后元素，看是否对称
+        for(int i = 0; i < length; i++) {
+            //要区分回文子串是偶数个还是奇数个
+            //偶数个的中轴在当前元素和下一元素之间（或者说中轴是两个元素）
+            //奇数个的中轴就在当前元素上
+            int l = i;
+            int r1 = i;
+            int r2 = i + 1;
+            //查找奇数个数的回文子串
+            while(l >= 0 && r1 < length && s1[l] == s1[r1]) {
+                count++;
+                l--;
+                r1++;
+            }
+            //复原l的值
+            l = i;
+            //查找偶数个的回文子串
+            while(l >= 0 && r2 < length && s1[l] == s1[r2]) {
+                count++;
+                l--;
+                r2++;
+            }
+        }
+
+        return count;
+    }
+}
+```
+
 
 
 
