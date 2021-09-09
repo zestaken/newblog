@@ -595,10 +595,45 @@ s 只包含“0”或“1”字符。
 
 ## Java解法
 
-* 法一：
-  * 结果：
+* 法一：利用如果满足条件，必须前后不同字符连续出现的次数相同，所以关键在于计算同一字符连续出现的次数，如果之前字符连续出现的次数不小于当前字符连续出现的次数，那么必然可以构成一组。
+  * 结果：![](https://zjpicture.oss-cn-beijing.aliyuncs.com/img/20210909224120.png)
   * 代码：
+```java
+public class CountBinarySubstrings696 {
 
+    public int countBinarySubstrings2(String s) {
+        //统计结果
+        int count = 0;
+        //将字符串转为字符数组，便于遍历
+        char[] s1 = s.toCharArray();
+        //记录当前字符和之前不同字符的连续出现次数
+        int pre = 0, cur = 0;
+
+        //遍历字符数组，记录当前字符连续出现次数，以及之前相对当前字符不同的字符的连续出现次数
+        //temp标记当前字符是0还是1
+        char temp = '0';
+        for(char c : s1) {
+
+            if(c == temp) {
+                //如果字符没变，则计数加一
+                cur++;
+            } else {
+                //如果字符变化了，则将之前记录的字符连续次数，赋给统计之前次数的变量，重新开始计数
+                pre = cur;
+                cur = 1;
+                //修改当前字符种类
+                temp = c;
+            }
+            //当之前连续出现的字符的次数的不小于当前字符连续出现次数时，可以构成对称，计数一次
+            if(pre >= cur) {
+                count++;
+            }
+        }
+
+        return count;
+    }
+}
+```
 
 
 
