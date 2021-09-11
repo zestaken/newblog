@@ -17,13 +17,20 @@ public class BasicCalculatorII227 {
         for(int i = 0; i < s1.length;) {
             char c = s1[i];
 
-            i = getNums(s1, i);
+            if(isNum(c)) {
+                i = getNums(s1, i);
+            }
 
             if(isSpace(c)) {
+                if(!tempNums.isEmpty()) {
+                    nums.add(getNum(tempNums));
+                }
                 i++;
                 continue;
             } else if(isOp(c)) {
-                nums.add(getNum(tempNums));
+                if(!tempNums.isEmpty()) {
+                    nums.add(getNum(tempNums));
+                }
 
                 if(ops.isEmpty()) {
                     ops.add(c);
@@ -32,43 +39,58 @@ public class BasicCalculatorII227 {
                 }
                char temp = ops.peek();
                if(temp == '+' || temp == '-' ) {
+                   if (c == '*' ) {
+                       int num1 = nums.pop();
+                       i = getNums(s1, i + 1);
+                       int num2 = getNum(tempNums);
+                       int num3;
+                       num3 = num2 * num1;
+                       nums.push(num3);
+                   } else if (c == '/') {
+                       int num1 = nums.pop();
+                       i = getNums(s1, i + 1);
+                       int num2 = getNum(tempNums);
+                       int num3;
+                       num3 = num1 / num2;
+                       nums.push(num3);
+                   } else {
+                       i++;
+                       ops.add(c);
+                       continue;
+                   }
+               } else {
                    i++;
                    ops.add(c);
                    continue;
                }
-               if (c == '*' ) {
-                   int num1 = nums.pop();
-                   i = getNums(s1, i);
-                   int num2 = getNum(tempNums);
-                   int num3;
-                   num3 = num2 * num1;
-                   nums.push(num3);
-               }
 
-               if(c == '/') {
-                   int num1 = nums.pop();
-                   i = getNums(s1, i);
-                   int num2 = getNum(tempNums);
-                   int num3;
-                   num3 = num2 * num1;
-                   nums.push(num3);
-               }
             }
+        }
+
+        if(!tempNums.isEmpty()) {
+            nums.add(getNum(tempNums));
+        }
+
+        if(ops.isEmpty()) {
+            return nums.pop();
         }
 
         while(!nums.isEmpty() && !ops.isEmpty()) {
             int num1 = nums.pop();
             int num2 = nums.pop();
-            int num3;
             char op = ops.pop();
             if(op == '+') {
-                num3 = num1 + num2;
-                res += num3;
-            } else {
-                num3 = num2 - num1;
-                res += num3;
+                res = num1 + num2;
+            } else if (op == '-'){
+                res = num2 - num1;
+            } else if (op == '*') {
+                res = num2 * num1;
+            } else if(op == '/') {
+                res = num2 / num1;
             }
+            nums.add(res);
         }
+
         return res;
     }
 
@@ -109,16 +131,30 @@ public class BasicCalculatorII227 {
         return res;
     }
 
+    /**
+     * 获取连续数字，并依次存入集合中
+     * @param s
+     * @param start 开始位置
+     * @return 返回下一个非数字字符位置
+     */
     public int getNums(char[] s, int start) {
         int i;
+        int j;
         for(i = start; i < s.length; i++) {
             char c = s[i];
+            if(!isSpace(c)) {
+                break;
+            }
+        }
+
+        for(j = i; j < s.length; j++) {
+            char c = s[j];
             if(isNum(c)) {
                 tempNums.add(c - '0');
             } else {
                 break;
             }
         }
-        return i;
+        return j;
     }
 }
