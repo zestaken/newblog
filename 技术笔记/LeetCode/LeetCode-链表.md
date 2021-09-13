@@ -5,7 +5,7 @@ tags: [LeetCode, 数据结构]
 categories: 技术笔记
 ---
 
-# 删除中间结点 面试题02.03
+# 1. 删除中间结点 面试题02.03
 
 * 题目：
 ---
@@ -66,7 +66,7 @@ class Solution {
 }
 ```
 
-# 二进制链表转整数 1290
+# 2. 二进制链表转整数 1290
 
 * 题目
 ---
@@ -193,7 +193,7 @@ class Solution {
     }
 ```
 
-# 链表中倒数第k个结点 剑指 Offer 22
+# 3. 链表中倒数第k个结点 剑指 Offer 22
 
 * 题目：
 ---
@@ -338,7 +338,7 @@ class Solution {
 }
 ```
 
-# 从尾到头打印链表 剑指offer 06. 
+# 4. 从尾到头打印链表 剑指offer 06. 
 
 * 题目：
 
@@ -559,7 +559,7 @@ class Solution {
 }
 ```
 
-# 移除重复节点 面试题02.01 
+# 5. 移除重复节点 面试题02.01 
 
 * 题目
 
@@ -780,3 +780,33 @@ class Solution {
     }
 }
 ```
+
+# 6. 反转链表 206
+
+* [题目](https://leetcode-cn.com/problems/reverse-linked-list/)
+---
+给你单链表的头节点 head ，请你反转链表，并返回反转后的链表。
+
+示例1:
+![igLWdV](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/igLWdV.jpg)
+```
+输入：head = [1,2,3,4,5]
+输出：[5,4,3,2,1]
+```
+示例2:
+![HOrmk9](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/HOrmk9.jpg)
+```
+输入：head = [1,2]
+输出：[2,1]
+```
+示例3:
+```
+输入：head = []
+输出：[]
+```
+提示：
+链表中节点的数目范围是` [0, 5000]`
+`-5000 <= Node.val <= 5000`
+
+## Java解法
+
