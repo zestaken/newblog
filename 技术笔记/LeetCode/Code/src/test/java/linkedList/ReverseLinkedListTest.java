@@ -3,6 +3,22 @@ package linkedList;
 import org.junit.jupiter.api.Test;
 
 public class ReverseLinkedListTest {
+    @Test
+    public void test1() {
+        ReverseLinkedList206 reverseLinkedList = new ReverseLinkedList206();
+
+        ListNode head1 = new ListNode(1, new ListNode(2));
+        ListNode e1 = new ListNode(2, new ListNode(1));
+
+
+        ListNode res1 = reverseLinkedList.reverseList1(head1);
+        ListNode e = e1, res = res1;
+        while(res != null && e != null) {
+            assert e.val == res.val : res.val;
+            e = e.next;
+            res = res.next;
+        }
+    }
 
     @Test
     public void test() {
@@ -14,7 +30,7 @@ public class ReverseLinkedListTest {
 
         ListNode res1 = reverseLinkedList.reverseList(head1);
         ListNode e = e1, res = res1;
-        while(res == null || e == null) {
+        while(res != null && e != null) {
             assert e.val == res.val : res.val;
             e = e.next;
             res = res.next;

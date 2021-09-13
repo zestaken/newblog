@@ -810,3 +810,52 @@ class Solution {
 
 ## Java解法
 
+* 法一：迭代遍历法。从头遍历每个节点，并记录当前节点的前一节点和后一节点，然后使当前节点的next指向前一节点，然后当前节点移动到后一节点，直到当前节点为空。
+  * 结果：![jBZsRi](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/jBZsRi.png)
+  * 代码：
+```java
+public class ReverseLinkedList206 {
+
+    public ListNode reverseList(ListNode head) {
+        //定义前一节点和后一节点
+        ListNode pre = null; // pre开始为null，因为head之前没有节点
+        ListNode next;
+        while(head != null) {
+            //记录当前节点的下一节点
+            next = head.next;
+            //当前节点的下一节点变为pre
+            head.next = pre;
+            //同时移动当前节点和对应的前一节点到下一节点
+            pre = head;
+            head = next;
+        }
+        //最后返回pre
+        //因为，head此时指向空，pre是其前一位正好指向原链表的最后一节点，即新链表的头节点
+        return pre;
+    }
+}
+```
+* 法二：递归的思想。逆向思考，假设当前节点的之后的节点都已经完成的反转，每一次递归只要考虑当前节点和之后已经反转好的链表之间的反向连接问题即可，每一次递归返回已经完成反转连接的当前节点。
+  * 结果：![SeBJuw](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/SeBJuw.png)
+  * 代码：
+```java
+public class ReverseLinkedList206 {
+
+    /**
+     * 递归解法
+     * @param head
+     * @return
+     */
+    public ListNode reverseList(ListNode head) {
+        //当当前节点或其下一节点为null时返回
+        if(head == null || head.next == null) {
+            return head;
+        }
+        //逆向考虑，每次调用本方法说明当前节点的前面节点都已经完成了反转
+        //现在只需将当前节点和前面反转好的链表反向连接好就行
+        ListNode nextHead = reverseList1(head.next);
+        head.next.next = head;
+        //因为是逆向思考，所以反转后当前节点的下一节点始终为null，前面的情况并不清楚
+        head.next = null;
+        return nextHead;
+}
