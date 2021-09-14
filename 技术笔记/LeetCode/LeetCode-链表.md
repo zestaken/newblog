@@ -859,3 +859,36 @@ public class ReverseLinkedList206 {
         head.next = null;
         return nextHead;
 }
+```
+
+# 7. 合并两个有序链表 21
+
+* [题目](https://leetcode-cn.com/problems/merge-two-sorted-lists/)
+---
+将两个升序链表合并为一个新的 升序 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 
+示例1:
+![Ohem7h](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/Ohem7h.jpg)
+```
+输入：l1 = [1,2,4], l2 = [1,3,4]
+输出：[1,1,2,3,4,4]
+```
+示例2:
+```
+输入：l1 = [], l2 = []
+输出：[]
+```
+示例3:
+```
+输入：l1 = [], l2 = [0]
+输出：[0]
+```
+提示：
+两个链表的节点数目范围是 `[0, 50]`
+`-100 <= Node.val <= 100`
+l1 和 l2 均按 非递减顺序 排列
+
+## Java解法
+
+* 法一：
+  * 结果：
+  * 代码：
