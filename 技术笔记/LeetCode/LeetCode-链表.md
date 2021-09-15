@@ -973,3 +973,64 @@ public class MergeTwoSortedLists21 {
         return l1;
     }
 ```
+
+# 8. 两两交换链表中的节点 24
+
+* [题目](https://leetcode-cn.com/problems/swap-nodes-in-pairs/)
+---
+给定一个链表，两两交换其中相邻的节点，并返回交换后的链表。
+你不能只是单纯的改变节点内部的值，而是需要实际的进行节点交换。
+示例1:
+![zEFNJ0](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/zEFNJ0.jpg)
+```
+输入：head = [1,2,3,4]
+输出：[2,1,4,3]
+```
+示例2:
+```
+输入：head = []
+输出：[]
+```
+示例3:
+```
+输入：head = [1]
+输出：[1]
+```
+提示：
+链表中节点的数目在范围 `[0, 100] `内
+`0 <= Node.val <= 100`
+
+## Java解法
+
+* 法一：通过“指针”变化来转换节点之间的相对位置
+  * 结果：![2DxNqn](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/2DxNqn.png)
+  * 代码：
+```java
+public class SwapNodesInPairs24 {
+
+    public ListNode swapPairs(ListNode head) {
+        //设置一个前导节点，便于连接两组交换的元素
+        ListNode pre = new ListNode();
+        pre.next = head;
+        ListNode cur = head;
+        ListNode head1 = head;
+        if(head != null && head.next != null) {
+            head1 = head.next;
+        }
+        //遍历整个链表，然后每次处理连续两位
+        while (cur != null && cur.next != null) {
+                ListNode temp1;
+                temp1 =  cur.next;
+                pre.next = temp1;
+                cur.next = temp1.next;
+                temp1.next = cur;
+                //每次移动前导节点指针2位
+                pre = pre.next.next;
+                //每次将当前节点指针移动到前导节点指针之后
+                cur = pre.next;
+        }
+        return head1;
+    }
+
+}
+```
