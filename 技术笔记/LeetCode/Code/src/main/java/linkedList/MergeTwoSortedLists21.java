@@ -50,4 +50,29 @@ public class MergeTwoSortedLists21 {
         //头节点是虚拟的，从它的下一节点开始才有值
         return head.next;
     }
+
+    /**
+     * 递归解法
+     * @param l1
+     * @param l2
+     * @return
+     */
+    public ListNode mergeTwoLists1(ListNode l1, ListNode l2) {
+        //当有链表为空时，直接返回非空链表
+        if(l2 == null) {
+            return l1;
+        }
+        if(l1 == null) {
+            return l2;
+        }
+        //当l2的头节点比l1小时，将
+        if(l1.val > l2.val) {
+            //因为l2的头节点较小，所以将l2之后的节点和l1合并然后将其连在当前头节点之后
+            l2.next = mergeTwoLists1(l1, l2.next);
+            return l2;
+        }
+        l1.next = mergeTwoLists1(l2, l1.next);
+        return l1;
+    }
+
 }

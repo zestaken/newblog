@@ -39,6 +39,7 @@ public class ListNode {
         for(int num : nums) {
             cur = new ListNode(num);
             pre.next = cur;
+            pre = cur;
         }
         return head.next;
     }
