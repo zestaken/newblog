@@ -3,6 +3,7 @@ title: Python实现词云
 date: 2021-06-13 08:00:19
 tags: [Python, 深度学习]
 categories: 项目
+cover: https://gitee.com/zhangjie0524/picgo/raw/master/20210613142756.png
 ---
 
 # 准备工作

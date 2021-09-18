@@ -3,6 +3,7 @@ title: Python深度学习环境
 date: 2021-06-13 08:01:19
 tags: [Python, 深度学习]
 categories: 技术笔记
+cover: https://zjpicture.oss-cn-beijing.aliyuncs.com/img/20210918175729.png
 ---
 
 # Anaconda
