@@ -258,8 +258,40 @@ for word in words:
   print(word)
 ```
 * for循环常用来遍历列表或者字符串等序列，循环会在序列尾部自动结束。而在示例程序中的`word`变量是定义的列表序列中的单个元素。注意`for...in...`的格式。
+
 * for语句的末尾有一个**冒号**。
+
 * 循环中的语句依靠**缩进**来识别。
+
+* python 循环高级用法 `[expression for x in X [if condition] for y in Y [if condition] ... for n in N [if condition] ]`按照从左至右的顺序，分别是外层循环到内层循环:
+
+  * `expression`是满足循环到满足if条件时返回的值,可以使用当前遍历得到的值，也可以使用完全的表达式，如常值等。
+  * 我们可以在 `for` 语句后面跟上一个 `if` 判断语句，用于过滤掉那些不满足条件的结果项。
+
+  ```python
+  L = [x for x in L if x % 2 != 0]
+  [1, 3, 5]
+  ```
+
+  
+
+  * 在复杂一点的列表推导式中，可以嵌套有多个 `for` 语句。按照从左至右的顺序，分别是外层循环到内层循环。
+
+  ```python
+  [x + y for x in 'ab' for y in 'jk']
+  ['aj', 'ak', 'bj', 'bk']
+  ```
+
+  * 列表推导式可以带任意数量的嵌套 `for` 循环，并且每一个 `for` 循环后面都有可选的 `if` 语句。
+
+  ```python
+  [ expression for x in X [if condition]
+               for y in Y [if condition]
+               ...
+               for n in N [if condition] ]
+  ```
+
+  
 
 ## while循环
 
@@ -931,7 +963,7 @@ unittest.main()
   ```python
   import unittest 
   from survey import AnonymousSurvey 
-
+  
   class TestAnonymousSurvey(unittest.TestCase): 
     """针对AnonymousSurvey类的测试""" 
     def setUp(self): 
@@ -951,7 +983,7 @@ unittest.main()
         self.my_survey.store_response(response) 
       for response in self.responses: 
         self.assertIn(response, self.my_survey.responses) 
-
+  
   unittest.main()
   ```
 ```
