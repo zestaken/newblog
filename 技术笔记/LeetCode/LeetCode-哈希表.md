@@ -151,7 +151,7 @@ public class LongestConsecutiveSequence128 {
         return longestLength;
     }
 }
-````
+```
 
 # 3. 直线上最多的点数 149
 
