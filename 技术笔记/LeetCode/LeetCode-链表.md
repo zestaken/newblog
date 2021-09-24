@@ -1120,4 +1120,87 @@ public class IntersectionOfTwoLinkedLists160 {
     }
 }
 ```
-  
+
+# 10. 回文链表 234
+
+* [题目](https://leetcode-cn.com/problems/palindrome-linked-list/)
+---
+给你一个单链表的头节点 head ，请你判断该链表是否为回文链表。如果是，返回 true ；否则，返回 false 。
+示例1：
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/img/20210924090500.png)
+```
+输入：head = [1,2,2,1]
+输出：true
+```
+示例2：
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/img/20210924090534.png)
+```
+输入：head = [1,2]
+输出：false
+```
+提示：
+链表中节点数目在范围`[1, 105] `内
+`0 <= Node.val <= 9`
+
+## Java解法
+
+* 法一：回文的实质是链表前后对称。对称问题的关键在于找到对称轴。找到对称轴后利用栈的压栈和出栈来比较前后两部分是否相同。需要注意的是链表结点数为奇数和偶数的对称轴情况不太相同。
+  * 结果：![](https://zjpicture.oss-cn-beijing.aliyuncs.com/img/20210924094116.png)
+  * 代码：
+```java
+public class PalindromeLinkedList234 {
+
+    public boolean isPalindrome(ListNode head) {
+
+        Stack<Integer> stack = new Stack<>();
+        //统计链表结点的数量
+        ListNode node = head;
+        int count = 0;
+        while (node != null) {
+            count++;
+            node = node.next;
+        }
+        count -= 1;
+
+        //将链表结点数量为奇数和偶数分别处理
+        if(count % 2 == 0) {
+            //链表结点数量为奇数
+            //找到链表的“对称轴”，将前半部分结点的压栈，然后遍历后半部分，与出栈的值比较
+            ListNode node1 = head;
+            for(int i = 0; i < count / 2; i++) {
+                stack.push(node1.val);
+                node1 = node1.next;
+            }
+            //奇数个结点，以中间结点为对称轴，不用比较其值，直接跳过
+            node1 = node1.next;
+            for(int i = 1 + count / 2; i <= count; i++) {
+                int val = stack.pop();
+                if(val == node1.val) {
+                    node1 = node1.next;
+                } else {
+                    return false;
+                }
+            }
+        } else {
+            //链表结点数量为偶数
+            ListNode node2 = head;
+            for(int i = 0; i <= count / 2; i++) {
+                stack.push(node2.val);
+                node2 = node2.next;
+            }
+            for(int i = 1 + count / 2; i <= count; i++) {
+                int val = stack.pop();
+                if(val == node2.val) {
+                    node2 = node2.next;
+                } else {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+}
+```
+* 法二：将链表值复制到数组，同时从数组两端向中间遍历，比较值是否相同。
+
