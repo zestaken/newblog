@@ -5,17 +5,17 @@ tags: [大数据, 机器学习算法, TF-IDF]
 categories: 技术笔记
 ---
 
-# TF-IDF原理
+# TF-IDF简述
 
-## TF-IDF简述
-
-* **TF-IDF(Term Frequency-Inverse Document Frequency, 词频-逆文件频率)**是一种用于资讯检索与资讯探勘的常用加权技术。
+* **TF-IDF**(Term Frequency-Inverse Document Frequency, 词频-逆文件频率)是一种用于资讯检索与资讯探勘的常用加权技术。
 * TF-IDF是一种统计方法，用以评估一字词对于一个文件集或一个语料库中的其中一份文件的重要程度。字词的重要性随着它在文件中出现的次数成正比增加，但同时会随着它在语料库中出现的频率成反比下降。即：一个词语在一篇文章中出现次数越多, 同时在所有文档中出现次数越少, 越能够代表该文章。
 * **TF（Term Frequency）**：TF(Term Frequency, 词频)表示词条在文本中出现的频率，这个数字通常会被归一化(一般是词频除以文章总词数), 以防止它偏向长的文件（同一个词语在长文件里可能会比短文件有更高的词频，而不管该词语重要与否）。
 * **IDF(Inverse Document Frequency)**: IDF表示关键词的普遍程度。如果包含词条的文档越少，IDF越大，则说明该词条具有很好的类别区分能力。某一特定词语的IDF，可以由总文件数目除以包含该词语之文件的数目，再将得到的商取对数得到
 * 某一特定文件内的高词语频率，以及该词语在整个文件集合中的低文件频率，可以产生出高权重的TF-IDF。因此，TF-IDF倾向于过滤掉常见的词语，保留重要的词语。
 
-## Python手动实现TF-IDF
+# Python手动实现TF-IDF
+
+[github地址](https://github.com/zestaken/newblog/tree/master/%E9%A1%B9%E7%9B%AE/pythonProject/TF-IDF)
 
 1. 导入相应包
 
@@ -113,7 +113,7 @@ for i, count in enumerate(count_list):
         # round函数表示只取5位小数
         print("\tword: {}, TF-IDF: {}".format(word, round(score, 5)))
 ```
-
+```
     第1个文档的统计信息
     	word: first, TF-IDF: 0.05754
     	word: this, TF-IDF: 0.0
