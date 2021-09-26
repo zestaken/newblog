@@ -3,6 +3,7 @@ title: 数据分析算法-TF-IDF原理与实现
 date: 2021-09-18 11:20:59
 tags: [大数据, 机器学习算法, TF-IDF]
 categories: 技术笔记
+cover: https://zjpicture.oss-cn-beijing.aliyuncs.com/img/20210926220226.png
 ---
 
 # TF-IDF简述
