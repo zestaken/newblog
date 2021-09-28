@@ -71,3 +71,70 @@ public class MaximumDepthOfBinaryTree104 {
          return treeNodes.get(0);
     }
 ```
+
+# 2. 平衡二叉树 110
+
+* [题目](https://leetcode-cn.com/problems/balanced-binary-tree/)
+---
+给定一个二叉树，判断它是否是高度平衡的二叉树。
+本题中，一棵高度平衡二叉树定义为：一个二叉树每个节点 的左右两个子树的高度差的绝对值不超过 1 。
+示例 1：
+![IGtDFV](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/IGtDFV.jpg)
+```
+输入：root = [3,9,20,null,null,15,7]
+输出：true
+```
+示例2:
+![JRslxu](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/JRslxu.jpg)
+```
+输入：root = [1,2,2,3,3,null,null,4,4]
+输出：false
+```
+示例3:
+```
+输入：root = []
+输出：true
+```
+提示：
+ 树中的节点数在范围 [0, 5000] 内
+ -104 <= Node.val <= 104
+
+## Java解法
+
+* 法一：递归获取左右子树的高度，并比较，如果高度差不大于1，则正常返回左右子树中最大高度，否则返回-1。
+  * 结果：![V0Yg9H](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/V0Yg9H.png)
+  * 代码：
+```java
+public class BalancedBinaryTree110 {
+
+    public boolean isBalanced(TreeNode root) {
+        if (getDepth(root) != -1) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * 递归获取左右子树的高度并比较，如果高度差大于1，则返回-1
+     * @param root
+     * @return
+     */
+    int getDepth(TreeNode root) {
+        //当root为null，说明已遍历到底部，返回0
+        if(root == null) {
+            return 0;
+        }
+        //获取左右子树的高度，并比较
+        int left = getDepth(root.left);
+        int right = getDepth(root.right);
+        //如果左右子树高度返回为-1，说明左右子树内部高度差超过了1
+        if(left == -1 || right == -1 ||Math.abs(left - right) > 1) {
+            return -1;
+        }
+        //如果正常，返回左右子树中的最大高度
+        return 1 + Math.max(left, right);
+    }
+}
+```
+
+
