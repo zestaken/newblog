@@ -137,4 +137,19 @@ public class BalancedBinaryTree110 {
 }
 ```
 
+# 3. 二叉树的直径 543
+
+* [题目](https://leetcode-cn.com/problems/diameter-of-binary-tree/)
+---
+示例 :
+给定二叉树
+![JuYUaG](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/JuYUaG.png)
+返回 3, 它的长度是路径 [4,2,1,3] 或者 [5,2,1,3]。
+注意：两结点之间的路径长度是以它们之间边的数目表示。
+
+## Java解法
+
+* 法一：
+  * 结果：
+  * 代码：
 
