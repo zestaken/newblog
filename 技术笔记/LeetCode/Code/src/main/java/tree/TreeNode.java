@@ -41,8 +41,11 @@ public class TreeNode {
          }
         //遍历前一半的节点（因为只有这些节点不是叶子节点）
         // 根据子节点与根节点的下标对应关系，找到每一个非叶子节点的左右子节点并连接
-         for(int i = 0; i < nums.length / 2; i++) {
+         for(int i = 0; i < nums.length; i++) {
              TreeNode cur = treeNodes.get(i);
+             if(cur == null) {
+                 continue;
+             }
              if(2 * (i + 1) - 1 < nums.length) {
                  cur.left = treeNodes.get(2 * (i + 1) - 1);
              }
