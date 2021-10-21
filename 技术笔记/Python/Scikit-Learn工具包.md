@@ -21,7 +21,7 @@ categories: 技术笔记
 
 * scikit-learn库包含了可以使用的鸢尾花数据集iris
 
-1. 载入支持库
+* 载入支持库
 
 
 ```python
@@ -32,7 +32,7 @@ from sklearn.model_selection import train_test_split
 import pydotplus
 ```
 
-2. 准备数据
+* 准备数据
 
 
 ```python
@@ -45,7 +45,7 @@ iris_label = iris.target
 X_train,X_test,Y_train,Y_test = train_test_split(iris_feature,iris_label,test_size=0.3,random_state=30)
 ```
 
-3. 训练与测试
+* 训练与测试
 
 
 ```python
@@ -57,7 +57,7 @@ clf=clf.fit(X_train,Y_train)
 predict=clf.predict(X_test)
 ```
 
-4. 统计结果
+* 统计结果
 
 
 ```python
@@ -75,7 +75,7 @@ print(accuracy_score(predict,Y_test))
     0.9777777777777777
 
 
-5. 输出决策树图
+*  输出决策树图
 
 
 ```python
