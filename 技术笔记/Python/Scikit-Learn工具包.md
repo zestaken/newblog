@@ -4,7 +4,14 @@ date: 2021-10-21 09:10:19
 tags: [Python, 大数据, Scikit-Learn, 机器学习]
 categories: 技术笔记
 ---
-png)
+# Scikit-Learn概述
+
+* Scikit-Learn是由DavidCournapeau 在2007 年发起的项目，是一种基于python的机器学习模块。
+* Scikit-Learn库已经实现了几乎所有常用的机器学习算法
+
+* 通过conda安装Scikit-Learn库
+
+* Scikit-Learn库包含的算法：![](https://zjpicture.oss-cn-beijing.aliyuncs.com/img/20211021085145.png)
 
 ## Scikit-Learn实现决策树算法
 
