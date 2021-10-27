@@ -1,5 +1,5 @@
 ---
-title: 深度学习二：Tensorflow基础
+title: 深度学习二——Tensorflow基础
 date: 2021-10-25 15:47:19
 tags: [深度学习, Tensorflow]
 categories: 技术笔记
