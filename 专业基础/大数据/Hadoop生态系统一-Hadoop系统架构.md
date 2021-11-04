@@ -53,4 +53,37 @@ categories: 专业基础
 
 # Hadoop生态系统
 
+* Hadoop平台的核心部分为HDFS（提供海量数据存储功能）和MapReduce（提供数据处理功能）。后来的2.0版本又加入了YARN（集群资源管理器）及其他多种开发工具包。
+  * 基于HDFS/HBase的数据存储系统
+  * 基于YARN/Zookeeper的管理调度系统。
+  * 支持不同计算模式的处理引擎。
+* 主节点运行的程序或进程：
+  * 主节点程序Namenode
+  * Jobtracker 守护进程
+  * 管理集群所用的Hadoop 工具程序和集群监控浏览器
+* 从节点运行的程序： 
+  * 从节点程序Datanode
+  * 任务管理进程Tasktracker
+* 区别：
+  * 主节点程序提供 Hadoop 集群管理、协调和资源调度功能
+  * 从节点程序主要实现 Hadoop 文件系统（HDFS）存储功能和节点数据处理功能。
+* Hadoop1.0生态体系：
+  ![](https://zjpicture.oss-cn-beijing.aliyuncs.com/img/20211104091850.png)
+* Hadoop2.0生态体系：
+  ![](https://zjpicture.oss-cn-beijing.aliyuncs.com/img/20211104091946.png)
+* Hadoop数据存储系统构件：
+  * 分布式文件系统HDFS（Hadoop Distributed File System）。HDFS文件系统构成了Hadoop数据存储体系的基础。
+  * 分布式非关系型数据库Hbase
+  * 数据仓库及数据分析工具Hive和Pig
+  * 用于数据采集、转移和汇总的工具Sqoop和Flume。
+* Hadoop管理调度系统构件：
+  * Zookeeper：提供分布式协调服务管理
+  * Oozie：负责作业调度
+  * Ambari：提供集群配置、管理和监控功能
+  * Chukwa：大型集群监控系统
+  * YARN：集群资源调度管理系统
+
+
+
+
 
