@@ -79,11 +79,16 @@ $$
 = \sum_{i=1}^n l(\mathbf{y}^{(i)}, \hat{\mathbf{y}}^{(i)}),
 $$
 
-* 其中，对于任何标签$\mathbf{y}$和模型预测$\hat{\mathbf{y}}$，损失函数为（怎么推导出来的？）：
+* 更一般地对于单个训练样本地损失函数为：
 
-$$ l(\mathbf{y}, \hat{\mathbf{y}}) = - \sum_{j=1}^q y_j \log \hat{y}_j. $$
+  ​	$$ l(\mathbf{y}_j, \hat{\mathbf{y}_j}) = -(y_j \log\hat{y}_j + (1-y_j)\log(1-\hat{y}_j))$$
 
-* 上面的损失函数通常被称为*交叉熵损失*（cross-entropy loss）。由于$\mathbf{y}$是一个长度为$q$的独热编码向量，所以除了一个项以外的所有项$j$都消失了。由于所有$\hat{y}_j$都是预测的概率，所以它们的对数永远不会大于$0$。
+  * 上面的损失函数通常被称为*交叉熵损失*（cross-entropy loss）。由于$\mathbf{y}$是一个长度为$q$的独热编码向量，所以除了一个项以外的所有项$j$都消失了。由于所有$\hat{y}_j$都是预测的概率，所以它们的对数永远不会大于$0$。
+  * 交叉熵损失函数理解：对于二分类问题，实际标签只有y=0和y=1，当y=0时，式子只剩下后半部分，此时$\hat{y}$越小，损失函数越小，即输出值越接近于0，损失函数越小，偏差越小；当y=1时同理。所以能用它来衡量损失
+
+* 对于整个样本集而言，成本函数为损失值的平均再归一化：
+
+​			$$ J(w,b)= - \frac {1}{m}\sum_{i=1}^m( y_j \log \hat{y}_j+(1-y_j)\log(1-\hat{y}_j)) = - \frac {1}{m} \sum_{i=1}^ml(y_i,\hat{y_i}). $$ 
 
 ### softmax及其导数
 
@@ -97,11 +102,10 @@ l(\mathbf{y}, \hat{\mathbf{y}}) &=  - \sum_{j=1}^q y_j \log \frac{\exp(o_j)}{\su
 \end{aligned}
 $$
 
-为了更好地理解发生了什么，考虑相对于任何未归一化的预测$o_j$的导数。我们得到：
-
-    $$
-    \partial_{o_j} l(\mathbf{y}, \hat{\mathbf{y}}) = \frac{\exp(o_j)}{\sum_{k=1}^q \exp(o_k)} - y_j = \mathrm{softmax}(\mathbf{o})_j - y_j.
-    $$
+* 为了更好地理解发生了什么，考虑相对于任何未归一化的预测$o_j$的导数。我们得到：
+  $$
+  \partial_{o_j} l(\mathbf{y}, \hat{\mathbf{y}}) = \frac{\exp(o_j)}{\sum_{k=1}^q \exp(o_k)} - y_j = \mathrm{softmax}(\mathbf{o})_j - y_j.
+  $$
 
 * 换句话说，导数是我们模型分配的概率（由softmax得到）与实际发生的情况（由独热标签向量表示）之间的差异。从这个意义上讲，与我们在回归中看到的非常相似，其中梯度是观测值$y$和估计值$\hat{y}$之间的差异。
 
