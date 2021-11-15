@@ -955,9 +955,55 @@ public class ImplementStrStr28 {
 }
 ```
 
-* 法二：KMP
-  * 结果：
+* 法二：KMP(字符串模式匹配算法)[KMP解析](https://www.zestaken.top/post/%E4%B8%93%E4%B8%9A%E5%9F%BA%E7%A1%80%2F%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%2F%E7%AC%AC%E5%9B%9B%E7%AB%A0%20%E4%B8%B2):其中心思想是利用子串的对称性来在比较的时候跳过一些对称的部分，以起到加速匹配的效果。
+  * 结果：![](https://zjpicture.oss-cn-beijing.aliyuncs.com/img/20211114114926.png)
   * 代码：
+```java
+    public int strStr(String haystack, String needle) {
+        char[] s1 = haystack.toCharArray();
+        char[] s2 = needle.toCharArray();
+        int l1 = s1.length;
+        int l2 = s2.length;
+        int result = -1; //结果默认为-1
+        //子串为空串直接返回0
+        if(l2 == 0) {
+            result = 0;
+            return  result;
+        }
+
+        //求子串每一个元素的next数组（即当前元素之前对称的元素对数）
+        int i = 0, k = -1;
+        int[] next = new int[l2];
+        next[0] = -1; //第一个元素设为-1，因为它之前没有元素
+        while(i < l2 - 1) { //最后一个元素在倒数第二个元素遍历时已经记录
+            if(k == -1 || s2[i] == s2[k]) {
+                i++; //若之前有元素相等，则记在下一个元素的next值上
+                k++; //k值从-1开始，与i对应元素依此比过来，如果相等则k与i同时移位，如果不等k回溯到它的next值处再比较，i不变
+                //next值的求取实质是子串前半部分与后半部分比较，得元素对应相等个数；可以看成是两个串的匹配，又可以用next回溯的思想，有点递归的感觉
+                next[i] = k; //k的值代表着对称相等的元素对数
+            } else {
+                k = next[k];
+            }
+        }
+
+        int j = 0, m = 0;
+        while(j + l2 - m <= l1 && m < l2) {
+            if(m == -1 || s2[m] == s1[j]) { //m等于负一说明子串从头开始寻找，主串后移一位
+                j++;
+                m++;
+            } else {
+                m = next[m];
+            }
+
+            if(m  == l2) {
+                result = j - m; //当前位置是子串最后一个元素对应的位置，减去子串长度即为开始匹配的位置
+            }
+
+        }
+
+        return result;
+    }
+```
 
 
 
