@@ -46,6 +46,7 @@ public class TreeNode {
              if(cur == null) {
                  continue;
              }
+             //减一是为了与数组下标对应
              if(2 * (i + 1) - 1 < nums.length) {
                  cur.left = treeNodes.get(2 * (i + 1) - 1);
              }

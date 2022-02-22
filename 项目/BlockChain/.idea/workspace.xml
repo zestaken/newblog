@@ -22,7 +22,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ab367a6-38d4-44bc-a964-5b8ad9c77d6f" name="Default Changelist" comment="" />
+    <list default="true" id="6ab367a6-38d4-44bc-a964-5b8ad9c77d6f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -56,7 +58,38 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.ZJChainTest">
+    <configuration name="BlockTest.test1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="BlockChain" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ZJChain.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ZJChain" />
+      <option name="MAIN_CLASS_NAME" value="ZJChain.BlockTest" />
+      <option name="METHOD_NAME" value="test1" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ZJChainTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="BlockChain" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ZJChain.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ZJChain" />
+      <option name="MAIN_CLASS_NAME" value="ZJChain.ZJChainTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ZJChainTest.test2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="BlockChain" />
       <extension name="coverage">
@@ -75,6 +108,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ZJChainTest" />
+        <item itemvalue="JUnit.BlockTest.test1" />
         <item itemvalue="JUnit.ZJChainTest.test2" />
       </list>
     </recent_temporary>
@@ -90,6 +125,8 @@
       <workItem from="1627311320824" duration="2159000" />
       <workItem from="1627818108651" duration="4000" />
       <workItem from="1628172062057" duration="23000" />
+      <workItem from="1642920861939" duration="213000" />
+      <workItem from="1643161858320" duration="46000" />
     </task>
     <servers />
   </component>
@@ -109,53 +146,21 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="208" y="28" key="#Project_Structure" timestamp="1627543218803">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="208" y="28" key="#Project_Structure/0.0.1440.900@0.0.1440.900" timestamp="1627543218803" />
-    <state x="549" y="187" key="FileChooserDialogImpl" timestamp="1628172082657">
+    <state width="1482" height="208" key="GridCell.Tab.0.bottom" timestamp="1642921076164">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="549" y="187" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1628172082657" />
-    <state width="1398" height="304" key="GridCell.Tab.0.bottom" timestamp="1627628723079">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1482" height="208" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1642921076164" />
+    <state width="1482" height="208" key="GridCell.Tab.0.center" timestamp="1642921076164">
+      <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1398" height="304" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1627628723079" />
-    <state width="1398" height="304" key="GridCell.Tab.0.center" timestamp="1627628723078">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1482" height="208" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1642921076164" />
+    <state width="1482" height="208" key="GridCell.Tab.0.left" timestamp="1642921076163">
+      <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1398" height="304" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1627628723078" />
-    <state width="1398" height="304" key="GridCell.Tab.0.left" timestamp="1627628723077">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1482" height="208" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1642921076163" />
+    <state width="1482" height="208" key="GridCell.Tab.0.right" timestamp="1642921076164">
+      <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1398" height="304" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1627628723077" />
-    <state width="1398" height="304" key="GridCell.Tab.0.right" timestamp="1627628723079">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state width="1398" height="304" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1627628723079" />
-    <state width="1398" height="304" key="GridCell.Tab.1.bottom" timestamp="1627628723081">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state width="1398" height="304" key="GridCell.Tab.1.bottom/0.0.1440.900@0.0.1440.900" timestamp="1627628723081" />
-    <state width="1398" height="304" key="GridCell.Tab.1.center" timestamp="1627628723080">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state width="1398" height="304" key="GridCell.Tab.1.center/0.0.1440.900@0.0.1440.900" timestamp="1627628723080" />
-    <state width="1398" height="304" key="GridCell.Tab.1.left" timestamp="1627628723080">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state width="1398" height="304" key="GridCell.Tab.1.left/0.0.1440.900@0.0.1440.900" timestamp="1627628723080" />
-    <state width="1398" height="304" key="GridCell.Tab.1.right" timestamp="1627628723081">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state width="1398" height="304" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1627628723081" />
-    <state x="258" y="109" key="Maven.ArtifactSearchDialog" timestamp="1627549520587">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="258" y="109" key="Maven.ArtifactSearchDialog/0.0.1440.900@0.0.1440.900" timestamp="1627549520586" />
-    <state x="208" y="28" key="SettingsEditor" timestamp="1627376511961">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="208" y="28" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1627376511961" />
+    <state width="1482" height="208" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1642921076164" />
   </component>
 </project>
