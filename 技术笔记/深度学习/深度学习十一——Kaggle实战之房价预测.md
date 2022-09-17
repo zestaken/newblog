@@ -3,6 +3,7 @@ title: 深度学习十一——Kaggle实战之房价预测
 date: 2021-11-26 12:02:19
 tags: [深度学习]
 categories: 技术笔记
+mathjax: true
 ---
 
 # Kaggle房价预测比赛简介

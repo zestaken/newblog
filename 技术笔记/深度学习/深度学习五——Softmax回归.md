@@ -3,6 +3,7 @@ title: 深度学习五——Softmax回归
 date: 2021-11-09 15:39:19
 tags: [深度学习]
 categories: 技术笔记
+mathjax: true
 ---
 # softmax回归
 
