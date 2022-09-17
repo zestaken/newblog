@@ -12,20 +12,20 @@ categories: 技术笔记
 2. 在VMware安装iso镜像；
 3. 启动虚拟机后，经过一会儿的等待，会自动进入命令行界面；
 4. arch安装需要连接网络，检查网络是否畅通，可使用`ping`命令：
-   ![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20210307094657.png)
+   ![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20210307094657.png)
 5. 更新系统时间：`timedatectl set-ntp true`
 6. 检查引导模式：` ls /sys/firmware/efi/efivars`
    1. 如果显示目录，则是EFI模式；
    2. 如果有错，不显示，则是BIOS模式
-   ![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20210307101020.png)
+   ![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20210307101020.png)
 7. 分区：
    1. 查看目前分区情况:`fdisk -l`
-    ![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20210307101409.png)
+    ![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20210307101409.png)
    2. 创建分区：`fdisk /dev/sda
-    ![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20210307102000.png)
+    ![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20210307102000.png)
    3. 格式化分区：
       1. 格式化swap分区，并启动：`mkswap /dev/sda1`,`swapon /dev/sda1`
-        ![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20210307102440.png)
+        ![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20210307102440.png)
       2. 将另外一个大容量的分区，格式化为ETX4格式,并挂载到`/mnt`目录：`mkfs.ext4 /dev/sda2`,`mount /dev/sda2 /mnt`
 8. 安装软件包：
    1. 配置镜像源：暂时省略,因为现在在live环境中使用reflector进行镜像的管理，貌似你一连接网络，live系统会自动执行reflector命令来帮你选择镜像源，默认的是根据下载速率进行排序，
@@ -33,9 +33,9 @@ categories: 技术笔记
       1. 这里要注意的是，上面的命令并不包括所有的基本程序，如网络管理程序、文本编辑器等，如果你想安装这些程序，可以将名字添加到pacstrap后，并用空格隔开。你也可以在Chroot进新系统后使用`pacman`手动安装软件包或组。
 9. 配置系统:
    1. 生成自动挂载分区的fstab文件:`genfstab -U /mnt >> /mnt/etc/fstab`
-    ![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20210307105154.png)
+    ![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20210307105154.png)
    2. 切换到新系统,Chroot意为Change root，相当于把操纵权交给我们新安装（或已经存在）的Linux系统，执行了这步以后，我们的操作都相当于在磁盘上新装的系统中进行。`arch-chroot /mnt`
-    ![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20210307105356.png)
+    ![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20210307105356.png)
    3. 更改时区，依次执行如下命令设置我们的时区为上海并生成相关文件：`ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime`,`hwclock --systohc`
    4. 安装一个vim，便于之后的操作：`pacman -S vim`
    5. 设置Locale，即语言选项,执行如下命令来编辑/etc/locale.gen文件：`vim /etc/locale.gen`
@@ -65,7 +65,7 @@ categories: 技术笔记
     10. 写在已经挂载好的分区：`umount -R /mnt`
     11. 重启:`reboot`
     12. 再次打开会有如下页面,输入root，再输入之前设置的密码，显示出命令提示符，恭喜你，你已经成功安装ArchLinux！
-        ![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20210307113916.png)
+        ![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20210307113916.png)
 
 # 美化Arch
 

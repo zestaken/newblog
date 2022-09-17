@@ -32,7 +32,7 @@ db = pymysql.connect(host="localhost", user="root", password="root", database="m
 cursor = db.cursor()
 ```
 
-* 查询的表的数据内容：![j05IIX](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/j05IIX.png)
+* 查询的表的数据内容：![j05IIX](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/j05IIX.png)
 
 * cursor对象通过execute()方法执行sql语句，sql语句以字符串的形式传入
 

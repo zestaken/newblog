@@ -987,7 +987,7 @@ public class Hero {
 }
 ```
 * 包与类的关系示例：
-![java](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/java.jpg)
+![java](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/java.jpg)
 
 ### 类的导入
 
@@ -1048,7 +1048,7 @@ public class Hero {
 * **聚合**："has-a"关系，即一个类中的对象包含另一个类的一些对象。
 * **继承**："is-a"关系，表示一个更特殊的类与更一般的类之间的关系。，这个更特殊的类中不但包含了原来的类中的所有对象和方法，还增加一些额外的功能。
 * **UML**:unified Modeling Language:统一建模语言，可以用来绘制类图。
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20200922073144.jpg)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20200922073144.jpg)
 
 ### private
 
@@ -1927,7 +1927,7 @@ public interface Mortal {
 
 * **异常对象**：是派生于Throwable类的类实例。
 * **异常的层次结构**：
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20201015184846.jpg)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20201015184846.jpg)
     * 所有的异常类都是由**Throwable类**继承而来，Throwable类属于java.lang类，不需要import即可使用。
     * **Error**类层次结构：描述了java运行时的系统内部错误和资源耗尽错误，不能人工处理的，一般也不要求处理。
     * **Exception**类层次结构：是设计程序时主要关注的异常。
@@ -2812,7 +2812,7 @@ public class WriterTest {
 
 * 同一个网络中的计算机在进行连接和通信时需要遵守一定的**规则**，这些规则被称为网络通信协议，它对数据的传输格式，速率，步骤等做了统一规定。
 * TCP/IP协议：传输控制协议/因特网互联协议（Transmission Control Protocol/Internet Protocol）是Internet最基本和广泛的协议，它定义了计算机如何炼乳因特网以及数据在它们之间传输的标准。它包含了一系列协议，并且采用了**4层分层模型**，每一层都呼叫它的下一层所提供的协议来完成自己的需求。
-![20180930155137505](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/20180930155137505.jpeg)
+![20180930155137505](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/20180930155137505.jpeg)
   * 链路层：用于定义物理传输通道，通常是对某些网络连接设备的驱动协议。
   * 网络层：网络层是协议的核心，它主要用于将传输的数据进行分组并将分组后的数据放松到目标计算机或者网络。
   * 运输层：主要用于网络程序之间的通信（可以用TCP协议，也可以使用UDP协议）。
@@ -2905,7 +2905,7 @@ public class WriterTest {
 * 客户端和服务器端的逻辑连接中包含一个IO对象（字节流类型对象），客户端和服务器端使用IO对象进行通信。
 * **多个客户端**可以同时与**一个服务器**进行交互。在服务器端通过**accept方法**来获取发送请求的客户端对象。**服务器端没有IO流**，服务器获取客户端Socket对象，使用每个客户端Socket对象中提供的IO流和客户端进行交互。即服务器端不会新建IO流，而是直接借用客户端的IO流来与客户端交互。
 * 服务器端与客户端交互模型：
-![IMG_2180](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/IMG_2180.JPG)
+![IMG_2180](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/IMG_2180.JPG)
 
 ### TCP通信程序实现
 
@@ -2920,7 +2920,7 @@ public class WriterTest {
 
 ## 单列集合的框架
 
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20201204142553.png) 
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20201204142553.png) 
 * List集合:有存储顺序，可以存储重复元素，有索引；
   * ArrayList：底层是**数组**实现的，查询快，增删慢；
   * LinkedList:底层是**链表**实现的，查询慢，增删快。
@@ -3110,7 +3110,7 @@ public static <T> T requireNonNull(T obj,String message) {
 
 * Properties类继承自Hashtable类并且实现了Map接口。该类主要用于**读取Java**的配置文件，不同的编程语言有自己所支持的配置文件，配置文件中很多变量是经常改变的，为了方便用户的配置，能让用户够脱离程序本身去修改相关的变量设置。就像在Java中，其配置文件常为`.properties`文件，是以键值对的形式进行参数配置的。
 * 层次关系：
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20201206084813.jpg)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20201206084813.jpg)
 * 字段：`protected Properties defaults`,一个属性列表，包含属性列表中所有**未找到值**的键的默认值。
 * 构造方法：
   * `public Properties()`:创建一个无默认值的空属性列表。

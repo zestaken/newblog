@@ -13,7 +13,7 @@ tags:
   * [官网](https://archive.apache.org/dist/hadoop/common/)
   * [镜像源](http://mirrors.hust.edu.cn/apache/)
 * 源码中有官方对编译安装的说明文件Building.txt:
-    ![](https://gitee.com/zhangjie0524/picgo/raw/master/20210316172624.png)
+    ![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/20210316172624.png)
 
 ## Ubuntu中源码编译
 
@@ -64,12 +64,12 @@ sudo make install
 ```
 * 安装fuse：`sudo apt-get install fuse libfuse-dev`
 * 将这些都准备好后，在idea中打开hadoop的hdfs模块，使用maven安装：
-![](https://gitee.com/zhangjie0524/picgo/raw/master/20210317005112.png)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/20210317005112.png)
 
 # HDFS源码工程结构
 
 * hadoop中HDFS工程模块如图：
-    ![](https://gitee.com/zhangjie0524/picgo/raw/master/20210316215444.png)
+    ![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/20210316215444.png)
 * `hadoop-hdfs`：
   * 该模块提供整个HDFS的核心功能，是hdfs工程的核心模块。
 * `hadoop-client`:

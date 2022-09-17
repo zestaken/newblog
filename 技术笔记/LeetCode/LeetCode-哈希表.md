@@ -253,13 +253,13 @@ public class MaxPointsOnALine149 {
 例如，行程 `["JFK", "LGA"] 与 ["JFK", "LGB"]` 相比就更小，排序更靠前。
 假定所有机票至少存在一种合理的行程。且所有的机票 必须都用一次 且 只能用一次。
 示例1:
-![pz0dhe](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/pz0dhe.jpg)
+![pz0dhe](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/pz0dhe.jpg)
 ```
 输入：tickets = [["MUC","LHR"],["JFK","MUC"],["SFO","SJC"],["LHR","SFO"]]
 输出：["JFK","MUC","LHR","SFO","SJC"]
 ```
 示例2:
-![SIHzdm](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/SIHzdm.jpg)
+![SIHzdm](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/SIHzdm.jpg)
 ```
 输入：tickets = [["JFK","SFO"],["JFK","ATL"],["SFO","ATL"],["ATL","JFK"],["ATL","SFO"]]
 输出：["JFK","ATL","JFK","SFO","ATL","SFO"]

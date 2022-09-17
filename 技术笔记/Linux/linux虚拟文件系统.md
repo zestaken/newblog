@@ -22,7 +22,7 @@ date: 2020-11-20 11:15:11
   * 支持**多种逻辑文件系统**之间相互访问；
   * 接受**内核其他子系统**的操作请求，特别是内存管理子系统。
 * linux文件系统逻辑关系：
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20201120114340.jpg)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20201120114340.jpg)
 
 
 # Unix文件系统

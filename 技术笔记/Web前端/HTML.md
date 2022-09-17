@@ -47,7 +47,7 @@ date: 2020-12-08 09:05:40
     </body>
 </html>
 ```
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20201208092240.jpg)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20201208092240.jpg)
 
 # 标签
 
@@ -106,7 +106,7 @@ date: 2020-12-08 09:05:40
   * 直接使用链接也可以
 * 示例：
 ```html
-<img src = "https://gitee.com/zhangjie0524/picgo/raw/master/img/20201208092240.jpg">
+<img src = "https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20201208092240.jpg">
 ```
 
 ## 列表标签
@@ -124,7 +124,7 @@ date: 2020-12-08 09:05:40
 </ol>
 ```
 效果：
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20201211102931.jpg)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20201211102931.jpg)
 * 无序列表：
   * ul:定义无序列表
     * 通过type属性来定义列表项前面的符号样式：有disc，square，circle三种样式。
@@ -138,7 +138,7 @@ date: 2020-12-08 09:05:40
 </ul>
 ```
 效果：
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20201211103137.jpg)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20201211103137.jpg)
 
 ## 链接标签
 
@@ -152,7 +152,7 @@ date: 2020-12-08 09:05:40
     * "_blank":在一个空白标签页打开链接的网页
 * 示例：
 ```html
-<a href = "https://gitee.com/zhangjie0524/picgo/raw/master/img/20201211103137.jpg" target = "_blank">我是超链接</a>
+<a href = "https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20201211103137.jpg" target = "_blank">我是超链接</a>
 ```
 
 ## div和span
@@ -207,7 +207,7 @@ date: 2020-12-08 09:05:40
 </table>
 ```
 * 效果：
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20201212111419.jpg)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20201212111419.jpg)
 * caption:表格的标题
 * thead,tbody,tfoot；分别定义表格的头部分，体部分和脚部分，与语义标签类似，起到增强代码可读性的作用。
 
@@ -277,7 +277,7 @@ date: 2020-12-08 09:05:40
 </form>
 ```
   * 效果：
- ![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20201212175934.jpg)
+ ![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20201212175934.jpg)
 
 #### select标签
 
@@ -351,4 +351,4 @@ date: 2020-12-08 09:05:40
 </html>
 ```
 * 效果
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20201212201738.jpg)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20201212201738.jpg)

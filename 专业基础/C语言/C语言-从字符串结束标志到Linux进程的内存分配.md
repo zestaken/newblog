@@ -60,7 +60,7 @@ int main(int argc, char *argv[]) {
 ```
 * 我这个铁憨憨不仅忘了字符串只有最后一位是`'\0'`，而且还很自然地实现了越界访问（菜，是一种怎样的忧伤）。
 * 看一看越界后会有什么效果：
-![J5zLVA](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/J5zLVA.png)
+![J5zLVA](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/J5zLVA.png)
   * 所以T和E是两个什么玩意儿？虽然它们很不正常，但是为什么每次越界后得到的都是T和E？越界之后的结果不应该是随机的？
   * 本次测试使用的是MacOS操作系统，clang 11.0.0编译器
 
@@ -70,14 +70,14 @@ int main(int argc, char *argv[]) {
 
 * 首先怀疑的是越界之后的结果和不同的编译器有关，因为每次越界的结果都一样。
 * MacOS虽然明面上使用的是gcc命令编译，但是实质上用的是clang（LLVM clang）。
-![jbwrRj](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/jbwrRj.png)
+![jbwrRj](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/jbwrRj.png)
 * 对于当前主流桌面操作系统而言，可使用 Visual C++、GCC 以及 LLVM Clang 这三大编译器。
   * Visual C++（简称 MSVC）是由微软开发的，只能用于 Windows 操作系统；
   * GCC 和 LLVM Clang 除了可用于 Windows 操作系统之外，主要用于 Unix/Linux 操作系统。
 * 给Mac电脑装一个真正的gcc试试：(`brew install gcc`)
-![Bh7lSd](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/Bh7lSd.png)
+![Bh7lSd](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/Bh7lSd.png)
   * 用gcc编译之后再运行：
-  ![h0YSc8](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/h0YSc8.png)
+  ![h0YSc8](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/h0YSc8.png)
   * 结果竟然一模一样！难道不是编译器不同导致的!
 
 ### 越界之后的结果查看
@@ -139,14 +139,14 @@ int main(int argc, char *argv[]) {
 }
 ```
   * 运行结果如图：
-    ![rnHYOO](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/rnHYOO.png)
+    ![rnHYOO](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/rnHYOO.png)
 * 真是拨云见日，在data数组之后存放的是一个字符串`TERM_SESSION_ID=w0t0p0:6389D1E3-6A5A-4F0C-9AAB-7BBF04CC0875`,每次越界之后读取的就是这个字符串中的内容了，T和E这两个奇怪的东西就是这样来的。
 * 但是还有一个问题，为什么每次运行程序的结果都一样，我的data数组紧邻的为什么就一定是这个奇怪的字符串。
 
 ### Linux的全局环境变量
 
 * 使用`printenv`或`env`命令可以查看linux的全局环境变量（mac也适用),部分全局环境变量截图如下：
-![BSX2O1](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/BSX2O1.png)
+![BSX2O1](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/BSX2O1.png)
 * 全局变量的第一条便是`TERM_SESSION_ID=w0t0p0:6389D1E3-6A5A-4F0C-9AAB-7BBF04CC0875`，看来我们越界之后极有可能访问到来存储全局环境变量字符串的空间。
 * 感觉有点不放心，在网上看了一种能直接在程序内查看当前进程环境变量的方法：
 ```c
@@ -171,7 +171,7 @@ int main(int argc, char *argv[]) {
 }
 ```
   * 结果：
-    ![ZNXP0L](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/ZNXP0L.png)
+    ![ZNXP0L](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/ZNXP0L.png)
     * 也出现了`TERM_SESSION_ID=w0t0p0:6389D1E3-6A5A-4F0C-9AAB-7BBF04CC0875`而且也在第一个。
     * 当前进程的环境变量应该是继承而来的。
 
@@ -179,7 +179,7 @@ int main(int argc, char *argv[]) {
 
 * 通过前面的尝试发现，在我定义的数组之后应该存储的是进程的环境变量。所以，linux中，一个进程的内存究竟是如何组织的？
 * 进程的内存组织：
-![h0oHPe](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/h0oHPe.png)
+![h0oHPe](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/h0oHPe.png)
 * 如果是按照这种组织，那么我在进程运行时创建的数组应该在堆中，那么才有可能访问到紧邻的静态数据。堆的数据一般是通过malloc分配的。
 * 不太确定这种方式定义的数组是在堆中分配的，将我们的数组用malloc分配试一试。
   * 原来：
@@ -191,7 +191,7 @@ int main(int argc, char *argv[]) {
     char *data = (char *)malloc(sizeof(argv[1]));
     data = argv[1];
   ```
-![ZH5ILP](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/ZH5ILP.png)
+![ZH5ILP](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/ZH5ILP.png)
   * 结果和原来一模一样，越界之后依然是`TERM_SESSION_ID=w0t0p0:6389D1E3-6A5A-4F0C-9AAB-7BBF04CC0875`。那么证明了，我创建的字符数组，是存放在堆中的。
 * 哪些数据存放在哪些位置：
   * `.text`（代码)段：程序源代码编译后得到的机器指令放在这个地方。也就是说是它是可执行程序在内存中的镜像。代码段需要防止在运行时被非法修改，所以只准许读取操作，而不允许写入（修改）操作——它是不可写的。
@@ -200,4 +200,4 @@ int main(int argc, char *argv[]) {
   * **堆（heap）**：堆是用于存放进程运行中被动态分配的内存段，它的大小并不固定，可动态扩张或缩减。当进程调用malloc等函数分配内存时，新分配的内存就被动态添加到堆上（堆被扩张）；当利用free等函数释放内存时，被释放的内存从堆中被剔除（堆被缩减）。
   * **栈（stack）**：栈是用户存放程序临时创建的局部变量，也就是说我们函数括弧“{}”中定义的变量（但不包括static声明的变量，static意味着在数据段中存放变量）。除此以外，在函数被调用时，其参数也会被压入发起调用的进程栈中，并且待到调用结束后，函数的返回值也会被存放回栈中。由于栈的先进先出特点，所以栈特别方便用来保存/恢复调用现场。从这个意义上讲，我们可以把堆栈看成一个寄存、交换临时数据的内存区。
   * **共享库的内存映射区域**：存放一些共享的对象，如动态链接库。
-![r2gQFe](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/r2gQFe.png)
+![r2gQFe](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/r2gQFe.png)

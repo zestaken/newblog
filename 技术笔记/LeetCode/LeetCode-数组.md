@@ -436,7 +436,7 @@ n == nums.length
 
 * 法一：排序后双指针扫描确定
     * 结果：
-    ![EEorl6](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/EEorl6.png)
+    ![EEorl6](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/EEorl6.png)
     * 代码：
     ```java
     public List<Integer> findDisappearedNumbers(int[] nums) {
@@ -483,7 +483,7 @@ n == nums.length
     ```
 * 法二：利用数组脚标可对应连续整数，通过修改原数组指定位置的值来筛选没有出现过的数。不用排序，所以时间复杂度减少
   * 结果：
-  ![XfqEaq](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/XfqEaq.png)
+  ![XfqEaq](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/XfqEaq.png)
   * 代码：
   ```java
     public List<Integer> findDisappearedNumbers(int[] nums) {
@@ -655,7 +655,7 @@ arr[i]是 [0, 1, ..., arr.length - 1]的一种排列。
 ## Java解法
 
 * 法一：值为连续整数，将值与下标对应，当目前最大值与下标对应时，将数组分为左边一定比目前最大值都小，右边一定比当前最大值都大，可以划分
-  * 结果：![ZYfn0h](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/ZYfn0h.png)
+  * 结果：![ZYfn0h](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/ZYfn0h.png)
   * 代码：
 ```java
   //连续整数的一个排列，用下标与值对应
@@ -713,7 +713,7 @@ numArray.sumRange(0, 5); // return -3 ((-2) + 0 + 3 + (-5) + 2 + (-1))
 ## Java解法
 
 * 法一：构造一个前缀和数组，存储每个位置对应的前缀之后，以后计算中间的和，只需要使用两个前缀和相减即可。虽然感觉构造一个前缀和数组时间复杂度很大，但是可以一次计算，永久使用。（既然他要用一个数组来构造一个对象，想必也是为了这个目的）注意，为了防止越界而使前缀和数组和源数组向后错一位。
-  * 结果：![1293N6](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/1293N6.png)
+  * 结果：![1293N6](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/1293N6.png)
   * 代码：
 ```java
 public class NumArray {
@@ -750,7 +750,7 @@ public class NumArray {
 `int sumRegion(int row1, int col1, int row2, int col2)` 返回左上角` (row1, col1)` 、右下角 `(row2, col2) `的子矩阵的元素总和。
 
 示例：
-![n4dUJm](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/n4dUJm.jpg)
+![n4dUJm](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/n4dUJm.jpg)
 ```
 输入: 
 ["NumMatrix","sumRegion","sumRegion","sumRegion"]
@@ -833,7 +833,7 @@ n == matrix[i].length
 ## Java解法
 
 * 法一：一边计算当前元素的前缀和，一边查找与当前前缀和差值为0的前面的前缀和。将每次计算得到的前缀和存入哈希表中，哈希表的键为前缀和，值为前缀和目前出现的次数。
-  * 结果：![sT7AHQ](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/sT7AHQ.png)
+  * 结果：![sT7AHQ](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/sT7AHQ.png)
   * 代码：
 ```java
 public class SubarraySumEqualsK560 {

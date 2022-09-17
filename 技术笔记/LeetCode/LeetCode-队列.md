@@ -53,7 +53,7 @@ lists[i].length 的总和不超过 10^4
 ## Java解法
 
 * 法一：使用[优先队列](https://www.apiref.com/java11-zh/java.base/java/util/PriorityQueue.html)，开始将各个链表的头节点加入优先队列中，优先队列会自动按值大小顺序添加到队列中，之后弹出队列元素，因为链表自身是有序的，弹出的一定是当前最小的元素，之后将弹出元素的下一节点添加到优先队列中，则又会自动排序，直到队列为空时，所有链表的元素都已经添加完了。
-  * 结果：![KM82lW](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/KM82lW.png)
+  * 结果：![KM82lW](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/KM82lW.png)
   * 代码：
 ```java
 public class MergeKLists23 {
@@ -134,7 +134,7 @@ heighti 是第 i 座建筑物的高度。
 
 
 示例1:
-![AIl1gT](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/AIl1gT.jpg)
+![AIl1gT](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/AIl1gT.jpg)
 ```
 输入：buildings = [[2,9,10],[3,7,15],[5,12,12],[15,20,10],[19,24,8]]
 输出：[[2,10],[3,15],[7,12],[12,0],[15,10],[20,8],[24,0]]
@@ -256,7 +256,7 @@ public class SkyLine218 {
 ## Java解法
 
 * 法一：使用双端队列存储窗口内容，每次移动窗口就是将双端队列的最前面去掉在尾部加入新元素。将双端队列中的新元素加入优先队列中去，并且记录每个元素对应的下标。每次移动窗口后，获取优先队列的顶部元素，并根据下标判断他是否是窗口中的元素，如果不是则弹出，再取出新的顶部元素，直到属于窗口中为止，这个顶部元素就是当前窗口最大的元素，将其加入结果数组中。
-    * 结果：![M6GE8z](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/M6GE8z.png)
+    * 结果：![M6GE8z](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/M6GE8z.png)
     * 代码：
 ```java
 public class SlidingWindowMaximum239 {

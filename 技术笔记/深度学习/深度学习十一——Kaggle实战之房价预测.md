@@ -354,11 +354,11 @@ train_and_pred(train_features, test_features, train_labels, test_data,
 # 提交预测数据
 
 * 生成的预测数据样式：
-    ![R2uWkc](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/R2uWkc.png)
+    ![R2uWkc](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/R2uWkc.png)
 
 * 提交到kaggle结果：
-    ![BHSK4g](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/BHSK4g.png)
+    ![BHSK4g](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/BHSK4g.png)
 * 其中的score就是代表预测值与实际值的误差，越小越好。（这里的score计算方法，就是我们计算的对数相对误差）
 * 顺便看个排名：
-    ![dWvv0J](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/dWvv0J.png)
+    ![dWvv0J](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/dWvv0J.png)
 

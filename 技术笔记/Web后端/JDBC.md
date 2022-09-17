@@ -581,7 +581,7 @@ public class DruidDemo2 {
 ## Spring JDBC的使用步骤
 
 1. 导入jar包
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20201207173331.jpg)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20201207173331.jpg)
 2. 创建JDBCTemplate对象。依赖于数据源对象`DataSource ds`
    1. `JDBCTemplate template = new JDBCTemplate(ds);`
 3. 调用JDBCTemplate的方法来完成CRUD的操作：

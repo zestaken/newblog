@@ -24,11 +24,11 @@ date: 2020-10-10 07:40:40
 
 * 使用的ide是IDEA，需要先在IDEA上配置Tomcat。(需要IDEA的utilmate版).
   1. 点击Run---EDit Configurations...
-    ![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20201010165243.jpg)
+    ![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20201010165243.jpg)
   2.点击左侧“+”号，找到Tomcat Server---Local。
-    ![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20201010165641.jpg)
+    ![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20201010165641.jpg)
   3.找到tomcat存放位置并配置到idea中：
-    ![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20201010165926.jpg)
+    ![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20201010165926.jpg)
 * IDEA会为每一个tomcat部署的项目单独建立一份配置文件
   * 查看控制台的log找到这个配置文件的存储位置：`CATALINA_BASE:     /home/zestaken/.cache/JetBrains/IntelliJIdea2020.2/tomcat/Tomcat_9_0_411_tomcat3`
 * WEB-INF目录下的资源不能被浏览器直接访问。
@@ -209,7 +209,7 @@ public @interface WebServlet {
 
 # JAVAWEB的目录结构
 
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20201009104107.png)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20201009104107.png)
 
 * bbs目录代表一个web应用
 * bbs目录下的html,jsp文件可以直接被浏览器访问
@@ -286,7 +286,7 @@ public @interface WebServlet {
   * 浏览器地址栏路径不会发生变化;
   * 只能转发到当前服务器内部资源中;
   * 转发是一次请求（即多个资源共用一次请求的信息）。
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20210106131528.png)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20210106131528.png)
 
 #### 共享数据
 
@@ -379,7 +379,7 @@ public class ServletDemo3 extends HttpServlet {
   * 浏览器地址栏路径**会发生变化**;
   * 重定向可以访问**其他站点（服务器）**资源;
   * 重定向是**两次请求**。**不能使用request对象来共享数据**。
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20210106130407.png)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20210106130407.png)
 * 动态方式获取**虚拟目录**。`String contextPath = request.getContextPath();`
 * 路径写法：
   * 相对路径：

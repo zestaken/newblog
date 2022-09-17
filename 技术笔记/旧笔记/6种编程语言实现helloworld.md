@@ -43,7 +43,7 @@ int main() {
 }
 ```
 * 实现截图：
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20200919104340.jpg)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20200919104340.jpg)
 
 # Python
 
@@ -55,7 +55,7 @@ int main() {
 * 之后`make`一下（make是运行Python3的包里的Makefile文件，自动进行编译安装）,记忆中这个过程耗时有一丢丢的长。
 * 最后`make install`，完成安装。
 * 在命令行输入`python3 --version`来查看安装的版本。
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20200919105429.jpg)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20200919105429.jpg)
 
 ## helloworld实现
 
@@ -64,14 +64,14 @@ int main() {
 print("hello world! I'm 2019091615004 张杰")
 ```
 * 实现截图：
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20200919110141.jpg)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20200919110141.jpg)
 
 # Java
 
 ## 环境
 
 * Java的环境在Windows上需要去官网下载jdk并安装，然后修改环境变量。当然还可以直接下载安装idea这种IDE，什么都不用做了，直接编程就完事儿。在linux上就更简单啦，直接一波`sudo apt-get install openjdk-14-jdk`就搞定（openjdk对于我这种菜鸡来说应该完全够了/哈哈），然后使用`java --version`查看安装的版本以及是否安装成功。
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20200919110845.jpg)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20200919110845.jpg)
 
 ## helloworld实现
 
@@ -87,7 +87,7 @@ public class Hello {
 ```
 
 * 实现截图：
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20200919112209.jpg)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20200919112209.jpg)
 （不过y1s1,除了打helloworld，其它程序还是用IDEA香，Java补全不行是真的难受）
 
 # JavaScript
@@ -110,7 +110,7 @@ public class Hello {
 ```
 * 新建一个.html类型的文件（因为JavaScript是嵌入到HTML中使用的），之后将代码写入，最后用浏览器（我用的是edge）打开即可。
 * 实现截图：
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20200919130507.jpg)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20200919130507.jpg)
 
 # PHP
 
@@ -131,7 +131,7 @@ public class Hello {
 ?>
 ```
 * 实现截图：
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20201001204857.jpg)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20201001204857.jpg)
 
 
 # Ruby
@@ -140,7 +140,7 @@ public class Hello {
 
 * 去[官网](https://rubyinstaller.org/downloads/)下载Ruby安装器。跟随安装向导即可一步步安好。
 * 安装好后打开cmd，输入`ruby -v`即可查看是否安装好了。
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20201001210503.jpg)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20201001210503.jpg)
 
 ## helloworld实现
 
@@ -150,6 +150,6 @@ puts("hello world！I'm 2019091615004 张杰");
 ```
 * 实现截图：
       
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20201001211814.jpg)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20201001211814.jpg)
 
 

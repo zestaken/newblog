@@ -14,12 +14,12 @@ banner_img: /img/gcc.jpg
 
 ### 查看当前GCC的版本
 * 命令：`gcc --version`或者`gcc -v`
-  ![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20200728181043.jpg)
+  ![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20200728181043.jpg)
 
 ### 快速安装GCC
 * 此处以ubuntu系统的为例
 * 命令:`sudo apt-get install gcc`
-  ![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20200728181521.jpg)
+  ![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20200728181521.jpg)
   * 因为已经安装了所以没有安装的过程
 * 注：采用此方式安装的 GCC 编译器，版本通常较低。
 
@@ -28,16 +28,16 @@ banner_img: /img/gcc.jpg
 * 编译安装 GCC 编译器需要提前到 GCC 官网下载指定版本的 GCC 源码安装包，读者可直接点击[GCC源码包](http://mirror.hust.edu.cn/gnu/gcc/)进行下载。
 * 安装步骤：
   1. 找到下载好的 gcc-10.2.0.tar.gz 安装包(2020年7月23日更新），将其解压至 /usr/local/ 目录下，命令为：`sudo tar -xf gcc-10.1.0.tar.gz -C /usr/local`
-   ![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20200728183112.jpg)
+   ![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20200728183112.jpg)
   2. 紧接着执行如下指令，下载安装 GCC 所需要的依赖包（如 gmp、mpfr、mpc 等）:进入/usr/local/gcc-10.2.0目录下 `cd /usr/local/gcc-10.2.0`，之后执行安装依赖包的命令 `  ./contrib/download_prerequisites`
-   ![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20200728183918.jpg)
+   ![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20200728183918.jpg)
   3. 在/usr/local目录下手动创建一个目录，用于存放编译 GCC 源码包生成的文件。执行如下命令：创建目录`sudo mkdir gcc-build-10.2.0` 之后进入gcc-10.2.0目录下` cd gcc-10.2.0`
   4. 通过执行如下指令，可以配置 GCC 支持编译 C 和 C++ 语言:` ../gcc-10.2.0/configure --enable-checking=release --enable-languages=c,c++ --disable-multilib`
-  ![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20200728184348.jpg)
+  ![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20200728184348.jpg)
   5. 在第 4 步创建好 makefile 文件之后，接下来就可以使用 make 命令来编译 GCC 源程序:`sudo make `(此过程十分耗时，本机使用vmware虚拟机，运行内存4GB，用了8个线程`make -j8`花了35分钟)
   6. 最后在漫长的等待后不要忘了执行如下命令安装 gcc：`sudo make install`(如果此时直接执行 gcc --version，则 GCC 版本仍会显示之前安装的版本。操作系统重启之后，GCC 版本就会自行更正过来。)
   7. 注意：因为/usr/local所在目录本身需要sudo权限才能访问，所以最好在每个命令前加上sudo;如果某个命令执行不成功也可加上sudo再试一下。
-   ![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20200728192642.jpg)
+   ![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20200728192642.jpg)
 
 ## gcc和g++命令的区别
 * 实际使用中我们更习惯使用 gcc 指令编译 C 语言程序，用 g++ 指令编译 C++ 代码。需要强调的一点是，这并不是 gcc 和 g++ 的区别，gcc 指令也可以用来编译 C++ 程序，同样 g++ 指令也可以用于编译 C 语言程序。
@@ -48,15 +48,15 @@ banner_img: /img/gcc.jpg
 ## 指定编译标准
 * 命令：`gcc/g++ -std=标准 ...`
 * GCC支持的标准一览：
-  ![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20200729173010.jpg)
-  ![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20200729173106.jpg)
+  ![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20200729173010.jpg)
+  ![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20200729173106.jpg)
 
 ## GCC一步编译c/c++程序
 * 编译命令：`gcc xx.c  -o <指定生成的文件名>`
   * 若编译c++ 程序换为g++即可
   * -o 选项后面接上想要GCC在当前目录下生成的可执行文件的文件名，若去掉-o选项则默认在当前目录下生成一个名为a.out的可执行文件
 * 执行命令：在当前目录下`./a.out(文件名)`，即只要在终端输入可执行的文件的全路径（绝对或相对均可）就可运行相应可执行文件。
-  ![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20200729180045.jpg)
+  ![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20200729180045.jpg)
 ## GCC分布编译c/c++程序
 * 无论是 C 还是 C++ 程序，其从源代码转变为可执行代码的过程，具体可分为 4 个过程，分别为预处理（Preprocessing）、编译（Compilation）、汇编（Assembly）和链接（Linking）。默认情况下，gcc 指令会一气呵成，直接将源代码历经这 4 个过程转变为可执行代码，且不会保留各个阶段产生的中间文件。
 * 如果想查看这 4 个阶段各自产生的中间文件，最简单直接的方式就是对源代码进行“分步编译”，即控制 GCC 编译器逐步对源代码进行预处理、编译、汇编以及链接操作。
@@ -84,7 +84,7 @@ banner_img: /img/gcc.jpg
     * 前往默认的系统路径下搜索；
     * 前往 -idirafter 选项指定的目录中搜索。
 
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20200730100839.jpg)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20200730100839.jpg)
 
 ### 编译
 * 编译是整个程序构建的核心部分，也是最复杂的部分之一。所谓编译，简单理解就是将预处理得到的程序代码，经过一系列的词法分析、语法分析、语义分析以及优化，加工为当前机器支持的汇编代码。
@@ -95,7 +95,7 @@ banner_img: /img/gcc.jpg
   * 如果操作对象为 .i 文件，则 GCC 编译器只需编译此文件；
   * 如果操作对象为 .c 或者 .cpp 源代码文件，则 GCC 编译器会对其进行**预处理和编译**这 2 步操作。
  
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20200730142545.jpg)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20200730142545.jpg)
 
 ### 汇编
 * 汇编其实就是将汇编代码转换成可以执行的机器指令。大部分汇编语句对应一条机器指令，有的汇编语句对应多条机器指令。相对于编译操作，汇编过程会简单很多，它并没有复杂的语法，也没有语义，也不需要做指令优化，只需要根据汇编语句和机器指令的对照表一一翻译即可。
@@ -106,14 +106,14 @@ banner_img: /img/gcc.jpg
   * 如果指定文件为刚刚经过**编译后的文件**（例如 demo.s），则 gcc -c 指令只对 demo.s 文件执行汇编这 1 步操作。
   * 如果文件已经是.o文件,则gcc -c指令不做任何操作。
 
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20200730143825.jpg)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20200730143825.jpg)
 
 ### 链接
 
 #### 执行默认链接操作
 * gcc 会根据所给文件的后缀名 .o，自行判断出此类文件为目标文件，仅需要进行链接操作。
 * 命令：`gcc xx.o -o xx`,若不指定文件名，则默认输出为a.out
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20200731090856.jpg)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20200731090856.jpg)
 
 #### 手动添加链接库
 
@@ -121,7 +121,7 @@ banner_img: /img/gcc.jpg
 * 链接器把多个二进制的目标文件（object file）链接成一个单独的可执行文件。在链接过程中，它必须把符号（变量名、函数名等一系列标识符）用对应的数据的内存地址（变量地址、函数地址等）替代，以完成程序中多个模块的外部引用。而且，链接器也必须将程序中所用到的所有C标准库函数加入其中。对于链接器而言，链接库不过是一个具有许多目标文件的集合，它们在一个文件中以方便处理。
 * 标准库的大部分函数通常放在文件 libc.a 中（文件名后缀.a代表“achieve”，译为“获取”），或者放在用于共享的动态链接文件 libc.so 中（文件名后缀.so代表“share object”，译为“共享对象”）。这些链接库一般位于 /lib/ 或 /usr/lib/。当使用 GCC 编译和链接程序时，GCC 默认会链接 libc.a 或者 libc.so，但是对于其他的库（例如非标准库、第三方库等），就需要手动添加。
 * GCC 的-l选项（小写的 L）可以让我们手动添加链接库。基本命令格式：`gcc xx.c -lxx`,前缀lib和后缀.a是标准的，xx是基本名称，GCC 会在-l选项后**紧跟着**的基本名称的基础上自动添加这些前缀、后缀。
-  ![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20200731105555.jpg)
+  ![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20200731105555.jpg)
   * 标准头文件 <math.h> 对应的数学库默认也不会被链接，如果没有手动将它添加进来，就会发生函数未定义错误。
   * 数学库的文件名是 libm.a。前缀lib和后缀.a是标准的，m是基本名称，GCC 会在-l选项后紧跟着的基本名称的基础上自动添加这些前缀、后缀，本例中，基本名称为 m。math.c代码如下：
   ```c
@@ -138,7 +138,7 @@ banner_img: /img/gcc.jpg
   }
   ```
   * 又例如Linux的多线程程序：因为pthread的库不是linux系统的库，所以在进行编译的时候要加上-lpthread，否则编译不过。
-    ![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20200714212245.jpg)
+    ![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20200714212245.jpg)
 
 ##### 添加其它目录中的库
 * 通常，GCC 会自动在标准库目录中搜索文件，例如 /usr/lib，如果想链接其它目录中的库，就得特别指明。

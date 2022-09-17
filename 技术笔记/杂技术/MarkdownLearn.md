@@ -203,9 +203,9 @@ Markdown具有一系列衍生版本，用于扩展Markdown的功能（如表格�
 
 #### 将图片上传至图床，生成链接
 
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20200619184526.jpg)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20200619184526.jpg)
 ```
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20200619184526.jpg)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20200619184526.jpg)
 圆括号内放图片链接，其余一样
 ```
 

@@ -41,7 +41,7 @@ tags:
 
 ## Yarn架构概述
 
-![IMG_2177](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/IMG_2177.JPG)
+![IMG_2177](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/IMG_2177.JPG)
 * ResourceManger(RM：**整个资源管理**老大)主要作用：
   1.  处理客户端请求
   2.  监控NodeManger
@@ -67,7 +67,7 @@ tags:
 ## 大数据技术生态
   
 * 大数据技术生态图：
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20201027094308.png)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20201027094308.png)
 
 # Hadoop运行环境搭建
 

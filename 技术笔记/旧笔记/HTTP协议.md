@@ -68,7 +68,7 @@ categories: 技术笔记
 * 格式： HTTP版本号　状态码　原因叙述
 * 响应行：HTTP/1.1 200 OK
 * 状态码用于表示服务器对请求的处理结果和响应的状态，它是一个三位的十进制数。响应状态码分为5类:
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20201010121055.png)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20201010121055.png)
   1. 1xx:服务器接收客户端消息，但没有接收完成，等待一段时间后，发送1xx代码;
   2. 2xx：成功。代表：200
   3. 3xx:重定向。代表：302（重定向），304（访问缓存）。

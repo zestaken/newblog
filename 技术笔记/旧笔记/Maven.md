@@ -38,7 +38,7 @@ categories: 技术笔记
 # maven构建生命周期
 
 * 生命周期概述：
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20200922005205.jpg)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20200922005205.jpg)
 
 * 默认生命周期：
 
@@ -127,7 +127,7 @@ categories: 技术笔记
   * 管理jar包
   * 设置jar包的作用域来解决jar包冲突
     * 不同的作用域的区别：
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20210201200309.jpg)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20210201200309.jpg)
 ```xml
 <dependencies>
     <!-- 在这里添加你的依赖 -->
@@ -142,7 +142,7 @@ categories: 技术笔记
 ```
 * 插件（plugins）
   * 生命周期的每一个过程都对应底层的一个插件
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20210201130751.jpg) 
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20210201130751.jpg) 
 * 修改运行环境：
 ```xml
 <! 将服务器环境改为tomcat7-->

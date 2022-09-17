@@ -14,13 +14,13 @@ cover: https://zjpicture.oss-cn-beijing.aliyuncs.com/img/20210918175543.png
 
 * 在知乎上看到一个漫画讲得很形象：
 
-  ![0QlkTi](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/0QlkTi.jpg)
+  ![0QlkTi](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/0QlkTi.jpg)
 
-  ![XhKOwy](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/XhKOwy.jpg)
+  ![XhKOwy](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/XhKOwy.jpg)
 
   ![preview](https://pic2.zhimg.com/v2-8317abc7bb2e2058bb2e5242739aba01_r.jpg)
 
-  ![y71QB4](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/y71QB4.jpg)
+  ![y71QB4](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/y71QB4.jpg)
 
 * 看着这些概念头脑中也难以形成一个具体的印象，不如实现一个区块链的demo来看一看。
 
@@ -202,9 +202,9 @@ public class ZJChain {
     }
 ```
 * 简单来看挖矿难度的高低就是生成区块头的哈希值有多少0，前面固定的0越多，满足条件的值就越少，计算得到符合标准的hash值的概率就低，宏观上说需要计算的次数就越多。difficulty每增加1，运算量都是呈几何速率增加，十分恐怖。
-* 当难度为4:![SAWTcE](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/SAWTcE.png)
-* 当难度为5:![lVcfrW](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/lVcfrW.png)
-* 当难度为6:![4IZwd2](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/4IZwd2.png)（好家伙，直接跑了8分多钟。。。）
+* 当难度为4:![SAWTcE](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/SAWTcE.png)
+* 当难度为5:![lVcfrW](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/lVcfrW.png)
+* 当难度为6:![4IZwd2](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/4IZwd2.png)（好家伙，直接跑了8分多钟。。。）
 * 对比可以看出，难度增加1，运算量（nonce可以表示运算的次数）直接增加一个量级，怪不得作为工作量衡量的标准（proof-of-work)。
 * 这里还可以看出，挖矿之所以很耗算力，并不是因为这个哈希计算本身有多么复杂，而是它是需要重复这个哈希计算很多次（我这随便提一点难度，都到千万级了。。。）直到满足要求。这也是为什么GPU挖矿效率比CPU高的原因：其实不是GPU运算速度比CPU快，而是GPU运算的数据是单一的，是经过CPU运算往后分离出来的单一数据。CPU运算的所需求的东西许多，而且不是单一的某种数据。CPU可以运行更复杂的指令。如果是做一个简单的数学计算，一个最大16核的CPU最多只能同时跑16个线程，而一个普通的GPU就可以同时跑3000多个线程，所以做简单数学，GPU就比CPU要快几个数量级，而生成区块要做的哈希计算偏偏就是一个很简单的数学题。
 * 另外，在检查区块链的有效性(isChainValid)的时候，还需要增加检查hash值是否满足难度要求这一点：
@@ -980,7 +980,7 @@ public class ZJChain {
     }
 ```
 * 结果：
-![5N08eT](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/5N08eT.png)
+![5N08eT](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/5N08eT.png)
 
 
 # 9. 写在最后

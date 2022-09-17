@@ -30,7 +30,7 @@ categories: 技术笔记
 
 * HDFS是一个主从(Master/Slave)体系结构的分布式系统。
 * 体系结构如图；
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20201213221011.jpg)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20201213221011.jpg)
 * **NameNode**是HDFS的Master节点，负责管理文件系统的**命名空间(namespace)**,以及**数据块到具体DataNode的映射**等信息。
 * **DataNode**一般是一个节点上一个，负责管理它所在节点上的存储。
 * 用户与HDFS的交互：
@@ -141,14 +141,14 @@ categories: 技术笔记
 ### 对命名空间的管理相关方法
 
 * HDFS对NameNode信息的修改的相关方法与FileSystem类抽象的所有方法。
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20201216103550.jpg)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20201216103550.jpg)
 
 ### 系统问题与管理操作
 
 * ClientProtocol支持**DFSAdmin工具（供HDFS管理员管理HDFS集群的命令行工具）**的接口方法。
 * 典型的dfsadmin命令：`hdfs dfsadmin[参数]`;
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20201216135353.jpg)
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20201216135358.jpg)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20201216135353.jpg)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20201216135358.jpg)
 * **安全模式**：
   * 安全模式是NameNode的一种状态，处于安全模式的NameNode不接受client对NameSpace的修改操作，NameSpace处于**只读状态**。同时，NameNode也不会**向DataNode下发任何数据块的复制，删除操作**。
   * 刚刚启动的NameNode会**自动进入安全模式**。
@@ -157,12 +157,12 @@ categories: 技术笔记
 
 * 快照保存了HDFS在一个时间点某个路径中所有数据的拷贝；
 * 快照可以将集群回滚到之间的一个正常的时间点上。
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20201217151155.jpg)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20201217151155.jpg)
 
 ### 缓存操作
 
 * 集中式缓存管理功能：用户可以指定一些经常使用的数据或者高优先级任务的数据，使它们常驻缓存而不被淘汰到磁盘上。
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20201217151806.jpg)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20201217151806.jpg)
 
 ### 其它操作
 
@@ -226,7 +226,7 @@ categories: 技术笔记
   * `Sender类`:发送DataTransferProtocol请求；
   * `Receiver类`:接收DataTransferProtocol请求；
   * 调用示例：
-  ![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20201217190221.jpg)
+  ![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20201217190221.jpg)
 
 ## Active Namenode和Standby之间的HTTP接口
 
@@ -252,7 +252,7 @@ categories: 技术笔记
 4. 关闭输入流：
    1. 完成文件读取后，通过`HdfsDataInputStream()`方法，关闭输入流。
 5. 如果数据出现损坏DFSStream会尝试从存有该数据块副本的其它DataNode读取数据。
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20201218100559.jpg)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20201218100559.jpg)
 
 ## 客户端写流程
 
@@ -273,7 +273,7 @@ categories: 技术笔记
 5. DataNode汇报
    1. 当DataNode成功接收一个数据块时，会调用`Datanode.blockRecievedAndDeleted()`向NameNode汇报；
    2. 之后，NameNode会更新内存中数据块与DataNode之间的对应关系。
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20201218113317.jpg)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20201218113317.jpg)
 
 ## 客户端追加写流程
 
@@ -310,6 +310,6 @@ categories: 技术笔记
   * 服务器端Stub程序：接收调用请求，触发对应的服务程序，并返回响应信息。
   * 请求程序：调用客户端Stub程序，然后接收服务器Stub程序返回的响应信息。
   * 服务程序：接收来自服务器端的调用请求，执行对应的操作，并返回结果。
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20201218180708.jpg)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20201218180708.jpg)
 
 

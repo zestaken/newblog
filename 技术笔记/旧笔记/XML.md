@@ -56,7 +56,7 @@ categories: 技术笔记
 
 * 约束：规定XML文档的书写规则
 * XML与约束之间的关系图：
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20201225180146.png)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20201225180146.png)
 * 分类：
   * DTD:简单的约束技术
   * Schema:复杂的约束技术

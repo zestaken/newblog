@@ -216,7 +216,7 @@ training/webapp     latest              6fae60ef3446        11 months ago       
 
 * 我们可以从 Docker Hub 网站来搜索镜像，Docker Hub 网址为： https://hub.docker.com/
 * 我们也可以使用`docker search <镜像名>` 命令来搜索镜像。比如我们需要一个 httpd 的镜像来作为我们的 web 服务。我们可以通过 `docker search httpd` 来寻找适合我们的镜像。
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20201125085937.jpg)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20201125085937.jpg)
 * 选项说明：
   * NAME: 镜像仓库源的名称
   * DESCRIPTION: 镜像的描述

@@ -23,10 +23,10 @@ date: 2020-10-07 09:39:28
 3.  在linux中安装net-tools来查看局域网ip
   * 使用命令`sudo apt-get install net-tools`。
   * 使用命令`ifconfig`来查看ip。
-    ![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20201007114241.jpg)
+    ![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20201007114241.jpg)
 4. 启动putty
     * 在putty中输入局域网IP
-    * 之后开启一个黑色终端界面，在里面输入用户名和密码，连接到linux。![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20201007115016.jpg)
+    * 之后开启一个黑色终端界面，在里面输入用户名和密码，连接到linux。![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20201007115016.jpg)
 
 # 法二：ssh通过账号密码登录远程linux服务器
 
@@ -38,12 +38,12 @@ date: 2020-10-07 09:39:28
 * 不用输入密码即可登录，可应用于自动登录。
 * 在客户端中使用`ssh-keygen`来生成ssh秘钥和公钥
 * 将公钥部署到linux服务器上去。命令为`ssh-copy-id -i ~/.ssh/id_rsa.pub  root@111.111.111.111`
-* 在客户端中使用`ssh root@111.111.111.111 -p 22`即可登录linux服务器。![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20201007172656.jpg)
+* 在客户端中使用`ssh root@111.111.111.111 -p 22`即可登录linux服务器。![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20201007172656.jpg)
 
 
 # 查看linux的网络情况
 
-* 使用`ifconfig`命令可以查看本机的网络情况。![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20201007115709.jpg)
+* 使用`ifconfig`命令可以查看本机的网络情况。![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20201007115709.jpg)
 
 # top查看工具
 
@@ -61,7 +61,7 @@ date: 2020-10-07 09:39:28
 | i            | 忽略闲置和僵死的进程，这是一个开关式命令                     |
 | k            | 终止一个进程，系统提示输入 PID 及发送的信号值。一般终止进程用 15 信号，不能正常结束则使用 9 信号。安全模式下该命令被屏蔽。 |
 
-- 示例：![img](https://gitee.com/zhangjie0524/picgo/raw/master/img/20200715105949.jpg)
+- 示例：![img](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20200715105949.jpg)
 - top 显示的第一排，
 
 | 内容                         | 解释                                    |

@@ -19,12 +19,12 @@ date: 2021-03-04 09:35:32
   * DispatcherServlet是一个实际的Servlet，它继承自HttpServlet类。
 * SpringMVC和许多其他的MVC框架一样，以请求为驱动，围绕一个中心servlet分派请求及提供其他功能。
 * 传统MVC架构：
-  ![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20210307210022.png)
+  ![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20210307210022.png)
 
 # SpringMVC执行原理
 
 * SpringMVC核心架构：
-  ![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20210307210107.png)
+  ![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20210307210107.png)
 
 # 快速入门
 
@@ -163,7 +163,7 @@ public class HelloController {
     </html>
    ```
 8. 启动tomcat，访问/HelloController/hello1。
-   ![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20210307221352.png)
+   ![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20210307221352.png)
 
 # Restful风格
 
@@ -605,12 +605,12 @@ public class Controller2 implements Controller {
 </project>
 ```
 2. 编写基本目录结构：
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20210312104652.png)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20210312104652.png)
 
 ## 一：mybaits层编写
 
 1. 连接数据库
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20210311225308.png)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20210311225308.png)
 
 2. 编写mybatis层配置：
    1. mybatis-config.xml，并管理
@@ -720,7 +720,7 @@ public class T_college {
    * 属性名与数据库字段名相同；
    * 并编写每个属性的getter和setter方法
    * 编写toString方法
-   * ![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20210312110729.png)
+   * ![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20210312110729.png)
    * 类名就是表名配合首字母大写
 5. 编写操作数据库的方法（dao层）接口，命名为pojo实体类加Mapper，如：T_collegeMapper
 ```java
@@ -867,9 +867,9 @@ public class T_collegeServiceImpl implements T_collegeService{
 
 * 要将Spring相关的所有配置文件整合在到一起（本质上写一个spring的配置文件就足够了，分开写只是为了思路更清晰）
   * 可以通过用import配置文件的方法实现:
-    ![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20210313164643.png)
+    ![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20210313164643.png)
   * 也可以利用idea配置实现：
-    ![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20210313164431.png)
+    ![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20210313164431.png)
 
 ### Spring整合dao层
 
@@ -1116,7 +1116,7 @@ public class T_collegeController {
 }
 ```
 * 编写页面：
-  * ![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20210313220441.png)
+  * ![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20210313220441.png)
 ```jsp
 <%--
   Created by IntelliJ IDEA.
@@ -1161,4 +1161,4 @@ public class T_collegeController {
 
 * 配置Tomcat，启动项目。
 * 最后总架构：
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20210313220644.png)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20210313220644.png)

@@ -28,11 +28,11 @@ tags:
 
 * 可以在[官网](https://start.spring.io/)直接配置下载入门项目。
 * 也可以在idea中通过spring initializer快速创建springboot项目。
-* ![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20210314111338.png)
+* ![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20210314111338.png)
 * 默认项目结构如下图：
-    ![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20210314111453.png)
+    ![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20210314111453.png)
   * 可以删除不必要的文件，如.mvn,.gitignore等。
-    ![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20210314112222.png)
+    ![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20210314112222.png)
 * 项目结构解释：
   * `SpringbootApplicaton.java`（项目名+Application.java）:是整个SpringBoot项目的主入口，不能删也不能改。
   * `application.properties`是SpringBoot的配置文件（一般会用.yml文件）。
@@ -56,8 +56,8 @@ tags:
     }
     ```
     * 无需编写视图层，便能直接将结果显示到页面上：
-    ![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20210314113132.png)
-    ![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20210314113033.png)
+    ![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20210314113132.png)
+    ![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20210314113033.png)
 * pom.xml配置解释：
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -120,7 +120,7 @@ tags:
   ```
     
 * 修改背景图片：使用在线工具生成banner.txt 放到application.properties的同级目录下：
-    ![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20210315182722.png)
+    ![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20210315182722.png)
 
 # Springboot自动装配原理
 
@@ -188,10 +188,10 @@ public class SpringbootApplication {
     * 语法结构：`key : (此处有空格) value`
 * 配置文件的作用：修改SpringBoot的自动配置的默认值。
 * 在springboot项目中，在配置文件中设置`debug=true`（yaml中是`debug: true`），在控制台查看springboot自动配置的服务.
-  ![](https://gitee.com/zhangjie0524/picgo/raw/master/20210318085939.png)
-  ![](https://gitee.com/zhangjie0524/picgo/raw/master/20210318085955.png)
-  ![](https://gitee.com/zhangjie0524/picgo/raw/master/20210318090009.png)
-  ![](https://gitee.com/zhangjie0524/picgo/raw/master/20210318090018.png)
+  ![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/20210318085939.png)
+  ![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/20210318085955.png)
+  ![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/20210318090009.png)
+  ![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/20210318090018.png)
 
 ## yaml
 
@@ -318,7 +318,7 @@ public class Person {
     private Dog dog;
 ```
 8、IDEA 提示，springboot配置注解处理器没有找到，让我们看文档，我们可以查看文档，找到一个依赖
-![](https://gitee.com/zhangjie0524/picgo/raw/master/20210317182009.png)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/20210317182009.png)
 ```xml
 <!-- 导入配置文件处理器，配置文件进行绑定就会有提示，需要重启 -->
 <dependency>
@@ -349,7 +349,7 @@ class Springboot01PropertyApplicationTests {
 * JSR-303 是 JAVA EE 6 中的一项子规范，叫做 Bean Validation。
 * Bean Validation 为 JavaBean 验证定义了相应的元数据模型和 API。缺省的元数据是 Java Annotations，通过使用 XML 可以对原有的元数据信息进行覆盖和扩展。在应用程序中，通过使用 Bean Validation 或是你自己定义的 constraint，例如 @NotNull, @Max, @ZipCode， 就可以确保数据模型（JavaBean）的正确性。constraint 可以附加到字段，getter 方法，类或者接口上面。对于一些特定的需求，用户可以很容易的开发定制化的 constraint。Bean Validation 是一个运行时的数据验证框架，在验证之后验证的错误信息会被马上返回。
 * Bean Validation 规范内嵌的约束注解：
-![](https://gitee.com/zhangjie0524/picgo/raw/master/20210317183152.png)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/20210317183152.png)
 * SpringBoot使用：
   1. 引入依赖
 ```xml
@@ -405,7 +405,7 @@ public class UserController {
    2. 项目根目录中config目录下
    3. 项目的resources目录下
    4. 项目resources目录中config目录下
-   ![](https://gitee.com/zhangjie0524/picgo/raw/master/20210318082734.png)
+   ![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/20210318082734.png)
 * 不同位置的配置文件的优先级：
   1. config/application.properties（项目根目录中config目录下）
   2. config/application.yml
@@ -492,7 +492,7 @@ public void addResourceHandlers(ResourceHandlerRegistry registry) {
     <version>3.4.1</version>
   </dependency>
   ```
-  ![](https://gitee.com/zhangjie0524/picgo/raw/master/20210318094929.png)
+  ![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/20210318094929.png)
   * 运行：只要是静态资源，SpringBoot就会去对应的路径寻找资源，我们这里访问：http://localhost:8080/webjars/jquery/3.4.1/jquery.js
 * 当请求是`/**`时，会去下面这四个目录找静态资源
   * "classpath:/META-INF/resources/":就是上述的webjars
@@ -507,14 +507,14 @@ public void addResourceHandlers(ResourceHandlerRegistry registry) {
 ## 首页与图标定制
 
 * 首页可以放在任何一个静态资源目录里，取名为index，就可以被映射到 http://localhost:8080/端口;
-  ![](https://gitee.com/zhangjie0524/picgo/raw/master/20210318180843.png)
+  ![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/20210318180843.png)
 * 网站的图标，可以在配置文件中关闭默认图标以后，把想要使用的图标放到静态资源目录里，就可以生效:
   ```yml
   #关闭默认图标
   spring.mvc.favicon.enabled=false
   ```
 * 较新版本中，不需要关闭默认图标，只需要把图标名称和格式写为：`favicon.ico`，放到静态资源目录下就可以了
-  ![](https://gitee.com/zhangjie0524/picgo/raw/master/20210318181059.png)
+  ![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/20210318181059.png)
 
 # thymyleaf模板引擎
 
@@ -527,8 +527,8 @@ public void addResourceHandlers(ResourceHandlerRegistry registry) {
   * Groovy
   * JSP
   * 上面并没有列举所有SpringBoot支持的页面模板技术。其中Thymeleaf是SpringBoot官方所推荐使用的，下面来谈谈Thymeleaf一些常用的语法规则。
-  ![](https://gitee.com/zhangjie0524/picgo/raw/master/20210318184053.png)
-  ![](https://gitee.com/zhangjie0524/picgo/raw/master/20210318184148.png)
+  ![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/20210318184053.png)
+  ![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/20210318184148.png)
 * 要想使用Thhymeleaf，首先要在pom.xml文件中单独添加Thymeleaf依赖。
 ```xml
 <dependency>
@@ -538,7 +538,7 @@ public void addResourceHandlers(ResourceHandlerRegistry registry) {
 ```
   * Spring Boot默认存放模板页面的路径在`src/main/resources/templates`或者`src/main/view/templates`，这个无论是使用什么模板语言都一样，当然默认路径是可以自定义的，不过一般不推荐这样做。另外Thymeleaf默认的页面文件后缀是`.html`。
 * 我们首先得按照SpringBoot的自动配置原理看一下我们这个Thymeleaf的自动配置规则，在按照那个规则，我们进行使用。我们去找一下Thymeleaf的自动配置类：`ThymeleafProperties`:
-  ![](https://gitee.com/zhangjie0524/picgo/raw/master/20210318184337.png)
+  ![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/20210318184337.png)
 * 在MVC的开发过程中，我们经常需要通过Controller将数据传递到页面中，让页面进行动态展示。
   * 创建一个Controller对象，在其中进行参数的传递
   ```java

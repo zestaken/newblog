@@ -49,10 +49,10 @@ date: 2021-02-10 08:30:49
 * 缺点：配置繁琐
 
 * Spring的组成：
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20210210093918.jpg)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20210210093918.jpg)
 
 * Spring的拓展：
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20210210094952.jpg)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20210210094952.jpg)
   * SpringBoot：
     * 一个快速开发的脚手架；
     * 基于SpringBoot可以快速开发单个的微服务；
@@ -367,7 +367,7 @@ xmlns:p="http://www.springframework.org/schema/p"
 # Bean的作用域
 
 1. 单例模式:从一个bean中无论获取多少次获取的都是同一个对象。
-    ![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20210220100546.jpg)
+    ![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20210220100546.jpg)
     * 单例模式是bean的默认作用域，也可以显式设置：
     ```xml
     <bean id="accountService" class="com.something.DefaultAccountService"/>
@@ -376,7 +376,7 @@ xmlns:p="http://www.springframework.org/schema/p"
     <bean id="accountService" class="com.something.DefaultAccountService" scope="singleton"/>
     ```
 2. 原型模式：每次从bean中获取的对象都是新的对象。
-   ![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20210220100858.jpg)
+   ![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20210220100858.jpg)
    * 设置原型模式：
     ```xml
     <bean id="accountService" class="com.something.DefaultAccountService" scope="prototype"/>
@@ -614,7 +614,7 @@ public class ServiceTest {
 
 * **AOP(Aspect Oriented Programming)**:面向切面编程，通过==预编译技术和运行期间动态代理==实现程序功能的统一维护的一种技术。
 * Spring中AOP：
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20210228205043.jpg)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20210228205043.jpg)
 * AOP在Spring中的作用：
   * 提供声明式事务：允许用户自定义切面。
 
@@ -653,7 +653,7 @@ public class ServiceTest {
   * 切面通知执行“地点”的定义；
 * **连接点（JointPoint）**：
   * 与切入点匹配的执行点。
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20210228211039.jpg)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20210228211039.jpg)
 
 ## Spring实现AOP
 

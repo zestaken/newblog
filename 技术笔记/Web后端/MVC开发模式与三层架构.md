@@ -49,4 +49,4 @@ date: 2021-01-19 09:03:12
   * 操作数据库存储文件。
   * 定义了对于数据库最基本的CRUD操作;、
   * 用MyBatis框架实现。
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20210119193423.PNG)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20210119193423.PNG)

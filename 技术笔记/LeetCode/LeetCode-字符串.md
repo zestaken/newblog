@@ -240,7 +240,7 @@ for(char temp : address.toCharArray()) {
 * 法一：
   * 遍历整个字符串，同时新建一个空的StringBuilder，遇到`.`的时候，加上`[]`使用`append()`添加进入StringBuilder中去。
   * 评测结果：
-![](https://gitee.com/zhangjie0524/picgo/raw/master/20210611201714.png)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/20210611201714.png)
 ```java
 //解题代码
     public String deFangIpaddr1 (String address) {
@@ -271,7 +271,7 @@ for(char temp : address.toCharArray()) {
 * 法二
   * 调用String的`replace()`方法，直接将`.`替换为`[.]`
   * 评测结果：
-![](https://gitee.com/zhangjie0524/picgo/raw/master/20210611202515.png)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/20210611202515.png)
 ```java
 //解题代码
     public String deFangIpaddr2(String address) {
@@ -290,7 +290,7 @@ for(char temp : address.toCharArray()) {
 * 法三：
   * 创建StringBuilder对象，并把原字符串赋给它，调用其`insert`方法，在`.`的前后插入`[]`。
   * 评测结果：
-![](https://gitee.com/zhangjie0524/picgo/raw/master/20210611204856.png)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/20210611204856.png)
 ```java
 //解题代码
     //StringBuilder的insert
@@ -319,7 +319,7 @@ for(char temp : address.toCharArray()) {
 * 法四：
   * 同一一样，但是append方法可以直接添加字符串。。。
   * 评测结果：
-![](https://gitee.com/zhangjie0524/picgo/raw/master/20210611205634.png)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/20210611205634.png)
 ```java
 //解题代码
     //StringBuilder的append可以直接添加字符串。。。
@@ -351,7 +351,7 @@ for(char temp : address.toCharArray()) {
 * 法五：
   * 将String转为字符数组，利用foreach循环遍历
   * 评测结果：
-![](https://gitee.com/zhangjie0524/picgo/raw/master/20210611211051.png)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/20210611211051.png)
 ```java
 //解题代码
     //将String转为字符数组，利用foreach循环遍历
@@ -401,7 +401,7 @@ s 和 t 仅包含小写字母
 ## Java解法
 
 * 法一：字母异位代表着相同字母的出现次数一样。用一个26位的数组存储字母出现的次数（下标对应字母），遍历一次第一个字符串，存储各个字母的次数，然后再遍历第二个字符串，减去各个字母的次数，最后的数组值全为0，则说明字母异位。
-  * 结果：![BuLLAf](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/BuLLAf.png)
+  * 结果：![BuLLAf](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/BuLLAf.png)
   * 代码：
 ```java
 public class ValidAnagram242 {
@@ -667,7 +667,7 @@ s 表示一个 有效表达式
 ## Java解法
 
 * 法一：用两个队列分别存储数值和运算符。遍历字符串时，从队列尾部插入，尾部读取，把队列当作栈使用，如果遇到比存入队列中的的运算符优先级高的运算符，则将该运算符前后的数值获取，计算出结果再存入数值队列中。遍历字符串结束后，需要从左到右计算，从队列头部读取，从队列头部插入，因为高优先级运算符已经转换为运算结果，所以运算时都是同级的运算符，只需从左到右运算即可。从左到右运算时，将每一次运算的结果插入队列头部，作为下一次运算的左运算数。
-  * 结果：![dzELwI](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/dzELwI.png)
+  * 结果：![dzELwI](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/dzELwI.png)
   * 代码：
 ```java
 public class BasicCalculatorII227 {

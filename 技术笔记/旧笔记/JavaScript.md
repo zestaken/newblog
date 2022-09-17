@@ -181,7 +181,7 @@ switch(a) {
 </html>
 ```
 * 效果：
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20201214170043.jpg)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20201214170043.jpg)
 * 在html代码中，使用转义字符`&nbsp`表示1个空格,在html代码中每输入一个转义字符`&nbsp`就表示一个空格，输入十个`&nbsp`，页面中就显示10个空格位置。而在html代码中输入空格，**不管输入多少个空格，最终在页面中显示的空格位置只有一个**。
 * 在JavaScript的字符串中嵌套html的语句中如果含有双引号，则全部**使用单引号**，防止和字符串的双引号起冲突。
 
@@ -401,7 +401,7 @@ eval(jscode);//等效于直接写alert（123）；
 * 概念：Document Object Model 文档对象模型
 * 功能：将标记语言文档的各个组成部分，封装为对象。可以使用这些对象，对**标记语言文档进行CRUD的动态操作**。
 * DOM将HTMl表达为一个**树**型结构
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20201220211801.jpg)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20201220211801.jpg)
 * W3C DOM标准被分为3个不同的部分：
   * 核心DOM：针对**任何结构化文档**的标准模型。
     * Document:文档对象

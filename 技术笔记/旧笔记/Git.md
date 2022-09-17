@@ -105,7 +105,7 @@ tags:
 
 * 使用`git branch`可以查看所有分支，当前分支前面会有一个`*`标识。
 * 切换至分支上后，我们所有的提交都是在分支上延伸出去。分支的开始位置是在主分支上申请分支的结点。
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20200901175215.jpg)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20200901175215.jpg)
 
 ### 合并分支
 

@@ -21,7 +21,7 @@ date: 2021-06-13 08:01:19
   1. Anaconda 可用于多个平台（ Windows、Mac OS X 和 Linux）。你可以在[官网](https://docs.anaconda.com/anaconda/install/)上找到安装程序和安装说明。根据你的操作系统是32位还是64位选择对应的版本下载。
   2. 启动下载的Anaconda安装器(如果是windows 10系统，注意在安装Anaconda软件的时候，右击安装软件→选择以管理员的身份运行。)
 * 最终效果：
-  ![](https://gitee.com/zhangjie0524/picgo/raw/master/20210613111434.png)
+  ![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/20210613111434.png)
 * 不知道为什么，在我的vpn开着的时候，Anaconda的界面启动不了。。。
 * 在Windows上使用与Anaconda相关的功能（如启动Jupyter，安装包等）尽量都先用管理员身份启动Anaconda Navigator页，然后再在这里面启动相关的功能，不然会有很多奇怪的问题。
 
@@ -46,7 +46,7 @@ date: 2021-06-13 08:01:19
     * CUDA可以在官网获得一个安装程序，运行安装即可。	
   * NVIDIA cuDNN是用于深度神经网络的GPU加速库。它强调性能、易用性和低内存开销。NVIDIA cuDNN可以集成到更高级别的机器学习框架中，如谷歌的Tensorflow、加州大学伯克利分校的流行caffe软件。[下载CUDNN](https://developer.nvidia.com/cudnn-download-survey)
     * CUDNN下载获得一个压缩文件，解压缩后将CUDNN中的文件复制到CUDA对应的目录中去。
-	  ![](https://gitee.com/zhangjie0524/picgo/raw/master/20210613132548.png)	
+	  ![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/20210613132548.png)	
   * 将`C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.3\lib\x64`添加到环境变量
 * 使用`import tensorflow as tf`检查tensorflow是否安装好。
 

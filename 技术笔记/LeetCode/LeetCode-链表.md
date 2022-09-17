@@ -788,13 +788,13 @@ class Solution {
 给你单链表的头节点 head ，请你反转链表，并返回反转后的链表。
 
 示例1:
-![igLWdV](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/igLWdV.jpg)
+![igLWdV](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/igLWdV.jpg)
 ```
 输入：head = [1,2,3,4,5]
 输出：[5,4,3,2,1]
 ```
 示例2:
-![HOrmk9](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/HOrmk9.jpg)
+![HOrmk9](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/HOrmk9.jpg)
 ```
 输入：head = [1,2]
 输出：[2,1]
@@ -811,7 +811,7 @@ class Solution {
 ## Java解法
 
 * 法一：迭代遍历法。从头遍历每个节点，并记录当前节点的前一节点和后一节点，然后使当前节点的next指向前一节点，然后当前节点移动到后一节点，直到当前节点为空。
-  * 结果：![jBZsRi](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/jBZsRi.png)
+  * 结果：![jBZsRi](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/jBZsRi.png)
   * 代码：
 ```java
 public class ReverseLinkedList206 {
@@ -836,7 +836,7 @@ public class ReverseLinkedList206 {
 }
 ```
 * 法二：递归的思想。逆向思考，假设当前节点的之后的节点都已经完成的反转，每一次递归只要考虑当前节点和之后已经反转好的链表之间的反向连接问题即可，每一次递归返回已经完成反转连接的当前节点。
-  * 结果：![SeBJuw](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/SeBJuw.png)
+  * 结果：![SeBJuw](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/SeBJuw.png)
   * 代码：
 ```java
 public class ReverseLinkedList206 {
@@ -867,7 +867,7 @@ public class ReverseLinkedList206 {
 ---
 将两个升序链表合并为一个新的 升序 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 
 示例1:
-![Ohem7h](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/Ohem7h.jpg)
+![Ohem7h](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/Ohem7h.jpg)
 ```
 输入：l1 = [1,2,4], l2 = [1,3,4]
 输出：[1,1,2,3,4,4]
@@ -890,7 +890,7 @@ l1 和 l2 均按 非递减顺序 排列
 ## Java解法
 
 * 法一：非递归解法。遍历两个链表，比较大小之后加入合并链表后。注意，如果有一条链表遍历完成了，可以直接将另一条链表的剩余部分直接连在合并链表后。
-  * 结果：![tI6YFk](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/tI6YFk.png)
+  * 结果：![tI6YFk](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/tI6YFk.png)
   * 代码：
 ```java
 public class MergeTwoSortedLists21 {
@@ -946,7 +946,7 @@ public class MergeTwoSortedLists21 {
 }
 ```
 * 法二：递归解法。比较两个链表的头节点，将头节点较小的头部截取，将截取之后的链表与另一个链表合并后，再连在该头节点之后。
-  * 结果：![HnPiyE](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/HnPiyE.png)
+  * 结果：![HnPiyE](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/HnPiyE.png)
   * 代码：
 ```java
     /**
@@ -981,7 +981,7 @@ public class MergeTwoSortedLists21 {
 给定一个链表，两两交换其中相邻的节点，并返回交换后的链表。
 你不能只是单纯的改变节点内部的值，而是需要实际的进行节点交换。
 示例1:
-![zEFNJ0](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/zEFNJ0.jpg)
+![zEFNJ0](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/zEFNJ0.jpg)
 ```
 输入：head = [1,2,3,4]
 输出：[2,1,4,3]
@@ -1003,7 +1003,7 @@ public class MergeTwoSortedLists21 {
 ## Java解法
 
 * 法一：通过“指针”变化来转换节点之间的相对位置
-  * 结果：![2DxNqn](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/2DxNqn.png)
+  * 结果：![2DxNqn](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/2DxNqn.png)
   * 代码：
 ```java
 public class SwapNodesInPairs24 {
@@ -1041,11 +1041,11 @@ public class SwapNodesInPairs24 {
 ---
 给你两个单链表的头节点 headA 和 headB ，请你找出并返回两个单链表相交的起始节点。如果两个链表没有交点，返回 null 。
 图示两个链表在节点 c1 开始相交：
-![1UHBvW](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/1UHBvW.jpg)
+![1UHBvW](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/1UHBvW.jpg)
 题目数据 保证 整个链式结构中不存在环。
 注意，函数返回结果后，链表必须 保持其原始结构。
 示例1：
-![tcmvgZ](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/tcmvgZ.jpg)
+![tcmvgZ](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/tcmvgZ.jpg)
 ```
 输入：intersectVal = 8, listA = [4,1,8,4,5], listB = [5,0,1,8,4,5], skipA = 2, skipB = 3
 输出：Intersected at '8'
@@ -1054,7 +1054,7 @@ public class SwapNodesInPairs24 {
 在 A 中，相交节点前有 2 个节点；在 B 中，相交节点前有 3 个节点。
 ```
 示例 2：
-![jJzS6t](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/jJzS6t.jpg)
+![jJzS6t](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/jJzS6t.jpg)
 ```
 输入：intersectVal = 2, listA = [0,9,1,2,4], listB = [3,2,4], skipA = 3, skipB = 1
 输出：Intersected at '2'
@@ -1063,7 +1063,7 @@ public class SwapNodesInPairs24 {
 在 A 中，相交节点前有 3 个节点；在 B 中，相交节点前有 1 个节点。
 ```
 示例3:
-![45jteX](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/45jteX.jpg)
+![45jteX](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/45jteX.jpg)
 ```
 输入：intersectVal = 0, listA = [2,6,4], listB = [1,5], skipA = 3, skipB = 2
 输出：null
@@ -1087,7 +1087,7 @@ listB 中节点数目为 n
 ## Java解法
 
 * 法一：遍历一个链表，将其节点与另一个链表中所有节点对比，如果与另一个链表中的某个节点相同，则该节点就是相交节点。时间复杂度是$O(n^2)$级别，很慢。
-  * 结果：![9REX8i](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/9REX8i.png)
+  * 结果：![9REX8i](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/9REX8i.png)
   * 代码：
 ```java
 public class IntersectionOfTwoLinkedLists160 {

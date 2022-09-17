@@ -3,7 +3,7 @@ title: Python实现词云
 date: 2021-06-13 08:00:19
 tags: [Python, 深度学习]
 categories: 项目
-cover: https://gitee.com/zhangjie0524/picgo/raw/master/20210613142756.png
+cover: https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/20210613142756.png
 ---
 
 # 准备工作
@@ -11,7 +11,7 @@ cover: https://gitee.com/zhangjie0524/picgo/raw/master/20210613142756.png
 * 什么是词云：
   * “词云”就是通过形成“关键词云层”或“关键词渲染”，对网络文本中出现频率较高的“关键词”的视觉上的突出。
   * 示例：
-	![](https://gitee.com/zhangjie0524/picgo/raw/master/20210613142756.png)
+	![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/20210613142756.png)
 * wordcloud包：wordcloud是优秀的词云展示第三方库，[官网](http://amueller.github.io/word_cloud/index.html)
 * Matplotlib：是 Python 的绘图库。 它可与 NumPy 一起使用，提供了一种有效的 MatLab 开源替代方案。[官网](https://matplotlib.org/)
 * jieba: jieba库是一款优秀的 Python 第三方中文分词库.[github地址](https://github.com/fxsjy/jieba)
@@ -41,7 +41,7 @@ plt.show()	#展示结果图
 wc.to_file("wordcloud.png")
 ```
 * 效果：
-  ![](https://gitee.com/zhangjie0524/picgo/raw/master/20210613153856.png)
+  ![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/20210613153856.png)
 * 文本：
 ```
 Everybody has to face bad days in their life. Some face ailments, some face fears, some face poverty, some face helplessness etc etc. No one can escape from it. It is a rule of life. Two things always combines together like joy and sadness, laugh and cry, health and illness, profit and loss, morning and night, confidence and inferiority complex, victory and failure likewise good days and bad days.
@@ -91,15 +91,15 @@ plt.show()	#展示结果图
 wc.to_file("wordcloud2.png")
 ```
 * 分词的效果：
-  ![](https://gitee.com/zhangjie0524/picgo/raw/master/20210613171040.png)
+  ![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/20210613171040.png)
 
 # 蒙版的使用
 
 * 需要一张蒙版图片，最后词云会对应图片中白色的部分不显示内容，黑色的部分显示内容
   * 原始图片
-	![](https://gitee.com/zhangjie0524/picgo/raw/master/20210613173258.jpg)
+	![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/20210613173258.jpg)
   * 词云样式：
-	![](https://gitee.com/zhangjie0524/picgo/raw/master/20210613173325.png)
+	![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/20210613173325.png)
 * 代码
 ```python
 from wordcloud import WordCloud
@@ -160,7 +160,7 @@ plt.show()	#展示结果图
 wc.to_file("wordcloud2.png")
 ```
 * 效果；
-  ![](https://gitee.com/zhangjie0524/picgo/raw/master/20210613174516.png)
+  ![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/20210613174516.png)
 
 # 去掉无实意的词
 
@@ -168,9 +168,9 @@ wc.to_file("wordcloud2.png")
 * 对于英文：
   * wordcloud自带了一个停用词表，是一个集合数据类型。
   * 没有停用词
-	![](https://gitee.com/zhangjie0524/picgo/raw/master/20210613184511.png)
+	![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/20210613184511.png)
   * 有停用词：
-	![](https://gitee.com/zhangjie0524/picgo/raw/master/20210613184706.png)
+	![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/20210613184706.png)
   * 代码：需要引入wordcloud的STOPWORDS
 ```python
 from wordcloud import WordCloud
@@ -210,9 +210,9 @@ wc.to_file("wordcloud2.png")
 ```
 * 对于中文，原理一样，但是需要自己去准备停用词表，[下载链接](https://github.com/goto456/stopwords)
   * 没有停用词
-	  ![](https://gitee.com/zhangjie0524/picgo/raw/master/20210613174516.png)
+	  ![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/20210613174516.png)
   * 有停用词
-	![](https://gitee.com/zhangjie0524/picgo/raw/master/20210613185335.png)
+	![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/20210613185335.png)
   * 代码：
 ```python
 from wordcloud import WordCloud

@@ -14,13 +14,13 @@ categories: 技术笔记
 说明: 叶子节点是指没有子节点的节点。
 示例：
 给定二叉树 `[3,9,20,null,null,15,7]`
-![hKwQG4](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/hKwQG4.png)
+![hKwQG4](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/hKwQG4.png)
 返回它的最大深度 3 。
 
 ## Java解法
 
 * 法一：递归进行深度优先搜索：将一一颗二叉树划为三个部分：根节点，左子树，右子树，子树的高度加上根节点的高度（1）就是整颗二叉树的高度。
-  * 结果：![Su4uv1](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/Su4uv1.png)
+  * 结果：![Su4uv1](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/Su4uv1.png)
   * 代码：
 ```java
 public class MaximumDepthOfBinaryTree104 {
@@ -79,13 +79,13 @@ public class MaximumDepthOfBinaryTree104 {
 给定一个二叉树，判断它是否是高度平衡的二叉树。
 本题中，一棵高度平衡二叉树定义为：一个二叉树每个节点 的左右两个子树的高度差的绝对值不超过 1 。
 示例 1：
-![IGtDFV](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/IGtDFV.jpg)
+![IGtDFV](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/IGtDFV.jpg)
 ```
 输入：root = [3,9,20,null,null,15,7]
 输出：true
 ```
 示例2:
-![JRslxu](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/JRslxu.jpg)
+![JRslxu](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/JRslxu.jpg)
 ```
 输入：root = [1,2,2,3,3,null,null,4,4]
 输出：false
@@ -102,7 +102,7 @@ public class MaximumDepthOfBinaryTree104 {
 ## Java解法
 
 * 法一：递归获取左右子树的高度，并比较，如果高度差不大于1，则正常返回左右子树中最大高度，否则返回-1。
-  * 结果：![V0Yg9H](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/V0Yg9H.png)
+  * 结果：![V0Yg9H](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/V0Yg9H.png)
   * 代码：
 ```java
 public class BalancedBinaryTree110 {
@@ -143,14 +143,14 @@ public class BalancedBinaryTree110 {
 ---
 示例 :
 给定二叉树
-![JuYUaG](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/JuYUaG.png)
+![JuYUaG](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/JuYUaG.png)
 返回 3, 它的长度是路径 [4,2,1,3] 或者 [5,2,1,3]。
 注意：两结点之间的路径长度是以它们之间边的数目表示。
 
 ## Java解法
 
 * 法一：递归获取左右子树的节点数，每层相对根节点都根据左右子树节点数计算直径，最后选择最大的直径。
-  * 结果：![lGTZ2E](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/lGTZ2E.png)
+  * 结果：![lGTZ2E](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/lGTZ2E.png)
   * 代码：
 ```java
 public class DiameterOfBinaryTree543 {
@@ -194,7 +194,7 @@ public class DiameterOfBinaryTree543 {
 ---
 给定一个二叉树的根节点 root ，和一个整数 targetSum ，求该二叉树里节点值之和等于 targetSum 的 路径 的数目。路径不需要从根节点开始，也不需要在叶子节点结束，但是路径方向必须是向下的（只能从父节点到子节点）。
 示例 1：
-![n1g3RH](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/n1g3RH.jpg)
+![n1g3RH](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/n1g3RH.jpg)
 ```
 输入：root = [10,5,-3,3,2,null,11,3,-2,null,1], targetSum = 8
 输出：3

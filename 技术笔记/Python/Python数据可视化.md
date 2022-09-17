@@ -106,7 +106,7 @@ plt.show()
 
 ### 线条属性
 
-* 色彩和样式通过在绘图函数如`plot()`中添加参数来控制，常用参数：![MF7g00](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/MF7g00.png)
+* 色彩和样式通过在绘图函数如`plot()`中添加参数来控制，常用参数：![MF7g00](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/MF7g00.png)
 
 * 颜色修改示例：
 

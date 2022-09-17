@@ -197,7 +197,7 @@ INSERT time_db() VALUES('3 10');
 -- 直接使用数字代替也可以
 INSERT time_db() VALUES(253621);
 ```
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20201121142312.png)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20201121142312.png)
 
 * `DATE`: 支持的范围是 '1000-01-01'到 '9999-12-31';
   * 示例：
@@ -207,7 +207,7 @@ INSERT date_db() VALUES(“2018-06-1”);
 INSERT date_db() VALUES(“2018-4-1”);
 INSERT date_db() VALUES(“2018-04-07”);
 ```
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20201121142549.png)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20201121142549.png)
 
 * `DATETIME`: **日期和时间组合**。支持的范围是 '1000-01-01 00:00:00.000000'到 '9999-12-31 23:59:59.999999';
   * 示例：
@@ -216,7 +216,7 @@ INSERT datetime_db() VALUES(20180102235432);
 INSERT datetime_db() VALUES("2015-04-21 21:14:32");
 INSERT datetime_db() VALUES("2015-04-23");
 ```
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20201121142737.png)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20201121142737.png)
 
 * `TIMESTAMP`: 时间戳。范围是'1970-01-01 00:00:01.000000'UTC到'2038-01-19 03:14:07.999999'UTC。与datetime类型有差不多，只是范围较小。
   * 示例：
@@ -229,14 +229,14 @@ INSERT timestamp_db() VALUES(NULL);
 INSERT timestamp_db() VALUES(CURRENT_TIMESTAMP);
 INSERT timestamp_db() VALUES();
 ```
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20201121143202.png)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20201121143202.png)
 * `YEAR`: 范围是 1901到2155;
   * 示例：
 ```sql
 INSERT year_db() VALUES("1993");
 INSERT year_db() VALUES(1993);
 ```
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20201121143340.png)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20201121143340.png)
 
 ##### 字符串类型
 
@@ -257,10 +257,10 @@ INSERT str_db() VALUES("ab","ab");
 INSERT str_db() VALUES("abcd","abcd");
 INSERT str_db() VALUES("abcdefg","abcdefg");//在严格模式下，改条数据会插入失败，非严格模式则会对数据进行截取
 ```
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20201123110639.png)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20201123110639.png)
   * char的参数M规定的是字符串必须的长度，不够长度用空格来补充；
   * varchar的参数M规定的是字符串最长的长度，没有超出最长的长度就存储字符串原来的长度。
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20201123110718.png)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20201123110718.png)
 
 ###### text系列
 
@@ -297,7 +297,7 @@ a SET('1','2','3','4','5')
 INSERT set_db() VALUES('1')
 INSERT set_db() VALUES('1,2,3')
 ```
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20201123111656.png)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20201123111656.png)
 ## DML
 
 1. 添加数据：

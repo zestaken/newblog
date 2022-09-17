@@ -25,7 +25,7 @@ start cmd /c "cd C:\02Permanent\Blog\source && git push orgin master"
 * 设置关机自动执行
   * 使用 组策略： gpedit.msc，windows+r搜索gpedit.msc
   * 之后进入：
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20201229211947.webp)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20201229211947.webp)
 
 * 编写pull脚本
 ```bat

@@ -150,9 +150,9 @@ http {
 # Nginx的反向代理和负载均衡
 
 * **正向代理(代理)**:意思是一个位于客户端和原始服务器(origin server)之间的服务器，为了从原始服务器取得内容，客户端向代理发送一个请求并指定目标(原始服务器)，然后**代理向原始服务器转交请求并将获得的内容返回给客户端**。客户端才能使用正向代理。
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20210203122231.jpeg)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20210203122231.jpeg)
 * **反向代理**:反向代理服务器位于用户与目标服务器之间，但是对于用户而言，反向代理服务器就相当于目标服务器，即用户**直接访问反向代理服务器就可以获得目标服务器的资源**。同时，用户不需要知道目标服务器的地址，也无须在用户端作任何设定。反向代理服务器通常可用来作为Web加速，即使用反向代理作为Web服务器的前置机来降低网络和服务器的负载，提高访问效率。
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20210203122317.jpeg)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20210203122317.jpeg)
 
 ## 配置Nginx的反向代理
 

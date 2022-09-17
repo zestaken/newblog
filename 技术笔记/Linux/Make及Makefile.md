@@ -128,7 +128,7 @@ test:
   @echo "x => $(x)"
 ```
 结果：
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20200829225226.jpg)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20200829225226.jpg)
 
 * 递归赋值：`=`,又叫做迟滞展开，每次使用的变量都是用的最新的定义，所以这种方式甚至能做到等式右边的式子中的变量在之后才被定义,即遇到递归赋值，会在使用整个变量时才将它展开。
 
@@ -141,7 +141,7 @@ test:
   @echo "x => $(x)"
 ```
 结果：
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20200829230330.jpg)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20200829230330.jpg)
 * 与简单赋值不同的是，递归赋值y中的x使用的是在最后赋给x的new,而不是开始就赋给x的foo(实际上递归赋值相当于最后在使用y变量的时候，才将y的赋值式代入，此时它前面已经又有了对x的新的赋值，所以最后呈现出来的是x最后的赋值,也因此把对x的第二个赋值语句改为简单赋值也是同样的输出)。
 
 * 条件赋值：`?=`如果当前变量从未被赋值过，则相当于`=`;但如果当前变量已将被赋值过，则什么也不做，不会再重新赋值。
@@ -153,7 +153,7 @@ test:
   @echo "y => $(y)"
   @echo "x => $(x)"
 ```
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20200830190810.jpg)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20200830190810.jpg)
 * 最后给x的条件赋值实际没有任何效果。
 
 * 追加赋值：`+=`,追加赋值类似于c语言中的`+=`,可理解为变量本身再在后面加上`+=`后面的值，但是不同定义得到的变量它的`+=`的理解会有不同。比如说，如果变量object使用`:=`定义的，那么`object += foo`,与`object := $(object) foo`,注意最后合成的object的两部分的变量间会自动生成一个空格。
@@ -166,7 +166,7 @@ test:
   @echo "x => $(x)"
 ```
 结果：
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20200830192748.jpg)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20200830192748.jpg)
 
 #### 自动化变量
 
@@ -225,7 +225,7 @@ test3: test3.o
 #### 回声
 
 * 默认情况下，make会打印它执行的命令行，这叫做“回声”。
-![](https://gitee.com/zhangjie0524/picgo/raw/master/img/20200830213731.jpg)
+![](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/img/20200830213731.jpg)
 * 在每行命令前加上`@`符号就可以关闭回声，例如经常使用的`@echo`
 
 #### Makefile中的函数

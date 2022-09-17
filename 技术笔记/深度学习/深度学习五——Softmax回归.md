@@ -236,7 +236,7 @@ show_images(X, 2, 9, titles=get_fashion_mnist_labels(y))
            <AxesSubplot:title={'center':'t-shirt'}>], dtype=object)
 
 
-  ![output_12_1](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/output_12_1.png)
+  ![output_12_1](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/output_12_1.png)
     
 
 
@@ -685,7 +685,7 @@ def predict_ch3(net, test_iter, n=6):
 predict_ch3(net, test_iter)
 ```
 
-![output_35_0](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/output_35_0.png)  
+![output_35_0](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/output_35_0.png)  
 
 # softmax回归的简洁实现
 
@@ -884,7 +884,7 @@ predict_ch3(net, test_iter)
 ```
 
 
-   ![output_14_0](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/output_14_0.png)
+   ![output_14_0](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/output_14_0.png)
     
 
 ​    

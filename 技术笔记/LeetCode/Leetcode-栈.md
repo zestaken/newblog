@@ -530,7 +530,7 @@ pop、top 和 getMin 操作总是在 非空栈 上调用。
 ## Java解法
 
 * 法一：使用一个辅助栈，将当前最小的元素压入栈顶，每次pop的时候检查元素是否与辅助栈的栈顶元素相同，如果相同则将辅助栈栈顶元素也弹出。因为栈先进后出的特性，所以当当前最小元素弹出后顶替上来的元素值在栈中一定还存在。
-  * 结果：![d58FXH](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/d58FXH.png)
+  * 结果：![d58FXH](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/d58FXH.png)
   * 代码：
 ```java
 public class MinStack155 {
@@ -613,7 +613,7 @@ s 仅由括号 '()[]{}' 组成
 ## Java解法
 
 * 法一：利用栈的先进先出特性，左括号进栈，遇右括号则出栈匹配
-  * 结果：![XBDlRE](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/XBDlRE.png)
+  * 结果：![XBDlRE](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/XBDlRE.png)
   * 代码：
 ```java
 public class ValidParentheses20 {
@@ -691,7 +691,7 @@ public class ValidParentheses20 {
 ## Java解法
 
 * 法一：单调栈的思路：用栈存储温度对应的下标，每遇到温度较高的则出栈存储，温度小的则入栈，保证栈中对应温度呈递减排列
-  * 结果：![l6kYqI](https://gitee.com/zhangjie0524/picgo/raw/master/uPic/l6kYqI.png)
+  * 结果：![l6kYqI](https://zjpicture.oss-cn-beijing.aliyuncs.com/giteePic/picgo-master/uPic/l6kYqI.png)
   * 与[最多能完成排序的块](https://leetcode-cn.com/problems/max-chunks-to-make-sorted/)类似，因为都是根据值的大小来划分位置，所以存值不重要，存位置下标才重要。此外，都利用了在关键结果出现前左右两边的值都是单纯的比关键结果小或者大的单调性。
   * 代码：
 ```java
